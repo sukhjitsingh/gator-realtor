@@ -1,0 +1,19 @@
+{
+  "name": "csc648-fall17-team11",
+  "version": "1.0.0",
+  "description": "Simple website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CSC-648-SFSU/csc648-fall17-team11.git"
+  },
+  "author": "Group 11",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CSC-648-SFSU/csc648-fall17-team11/issues"
+  },
+  "homepage": "https://github.com/CSC-648-SFSU/csc648-fall17-team11#readme"
+}
