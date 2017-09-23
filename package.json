@@ -2,7 +2,7 @@
   "name": "csc648-fall17-team11",
   "version": "1.0.0",
   "description": "Simple website",
-  "main": "index.js",
+  "main": "Server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/CSC-648-SFSU/csc648-fall17-team11/issues"
   },
-  "homepage": "https://github.com/CSC-648-SFSU/csc648-fall17-team11#readme"
+  "homepage": "https://github.com/CSC-648-SFSU/csc648-fall17-team11#readme",
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "express": "^4.15.4"
+  }
 }
