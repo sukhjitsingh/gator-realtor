@@ -1,11 +1,14 @@
 const express = require('express');
+const path = require('path');
 
 const app = express();
 
 const port = 17011;
 
 //Store all HTML files in public folder.
-app.use(express.static(__dirname + '/public'));
+app.use('/fa17g11', express.static('public')); // use this on server.
+app.use(express.static('public'));  // use this on local machine to test.
+
 
 // Routes
 
@@ -43,7 +46,6 @@ app.get('*', function (req, res) {
     res.send('<h1>Page Not Found</h1>')
 });
 
-
 app.listen(port, function () {
-   console.log('This app is running on localhost: ' +port)
+    console.log('This app is running on localhost:' +port)
 });
