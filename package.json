@@ -1,23 +1,19 @@
 {
   "name": "csc648-fall17-team11",
-  "version": "1.0.0",
-  "description": "Simple website",
-  "main": "Server.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CSC-648-SFSU/csc648-fall17-team11.git"
-  },
-  "author": "Group 11",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/CSC-648-SFSU/csc648-fall17-team11/issues"
-  },
-  "homepage": "https://github.com/CSC-648-SFSU/csc648-fall17-team11#readme",
   "dependencies": {
-    "body-parser": "^1.18.1",
-    "express": "^4.15.4"
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "hbs": "~4.0.1",
+    "morgan": "~1.9.0",
+    "mysql": "^2.15.0",
+    "sequelize": "^4.13.8",
+    "serve-favicon": "~2.4.5"
   }
 }
