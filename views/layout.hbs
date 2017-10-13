@@ -2,26 +2,18 @@
 <html>
   <head>
     <title>{{title}}</title>
-      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-      <link rel="stylesheet" href = 'stylesheets/searchbox.css'/>
-    <link rel='stylesheet' href='stylesheets/style.css'/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-      <meta name="description" content="">
-      <meta name="author" content="">
-      <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+    <title>Narrow Jumbotron Template for Bootstrap</title>
 
-      <!-- Bootstrap core CSS -->
-      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">    <!-- Custom styles for this template -->
+    <link href="http://getbootstrap.com/docs/4.0/examples/narrow-jumbotron/narrow-jumbotron.css" rel="stylesheet">
 
-      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-      <link href="http://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href = 'stylesheets/searchbox.css'/>
 
-      <!-- Custom styles for this template -->
-      <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
   </head>
   <body>
   <div class="container">
@@ -29,9 +21,9 @@
           <nav>
               <ul class="nav nav-pills pull-right">
                   <li role="presentation"><a href="/">Dashboards</a></li>
-                  <li role="presentation"><a href="/login">Login</a></li>
-                  <li role="presentation"><a href="/register">Register</a></li>
-                  <li role="presentation"><a href="/logout">Logout</a></li>
+                  <li role="presentation"><a href="/users/login">Login</a></li>
+                  <li role="presentation"><a href="/users/register">Register</a></li>
+                  <li role="presentation"><a href="/users/logout">Logout</a></li>
               </ul>
           </nav>
           <h3 class="text-muted">Demo page</h3>
@@ -41,8 +33,15 @@
           <div class="col-lg-12">
             {{{body}}}
           </div>
-
-
+      </div>
   </div> <!-- /container -->
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>  -->
   </body>
 </html>
