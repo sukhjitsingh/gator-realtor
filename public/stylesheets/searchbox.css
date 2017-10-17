@@ -1,12 +1,12 @@
 .container-4{
     overflow: hidden;
-    width: 300px;
+    width: 400px;
     vertical-align: middle;
     white-space: nowrap;
 }
 
 .container-4 input#search{
-    width: 300px;
+    width: 400px;
     height: 50px;
     background: #2b303b;
     border: none;
@@ -47,7 +47,7 @@
     background: #232833;
     height: 50px;
     width: 50px;
-    color: #4f5b66;
+    color: #546f86;
     opacity: 0;
     font-size: 10pt;
 
