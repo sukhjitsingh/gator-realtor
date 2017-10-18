@@ -55,7 +55,7 @@ router.post('/', urlencodedParser, function(request, response) {
   More examples can be found here: http://docs.sequelizejs.com/manual/tutorial/raw-queries.html
   */
   function searchByCity(city) {
-    models.Agent.sequelize.query("SELECT * FROM `Agents` WHERE `city` LIKE :search_name", 
+    models.Agent.sequelize.query("SELECT * FROM `Properties` WHERE `city` LIKE :search_name", 
     { replacements: { search_name: '%'+city+'%' }, type: sequelize.QueryTypes.SELECT })
     .then(agents => {response.send(agents)
     })

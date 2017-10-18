@@ -1,15 +1,13 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Agent = sequelize.define('Agent', {
+  const Agent = sequelize.define('Agent', {
     agentId: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    fName: DataTypes.STRING,
-    lName: DataTypes.STRING,
-    phoneNumber: DataTypes.STRING,
+    firstName: DataTypes.STRING,
+    lastName: DataTypes.STRING,
+    phoneNumber: DataTypes.INTEGER,
     email: DataTypes.STRING,
-    streetAddress: DataTypes.STRING,
-    city: DataTypes.STRING,
-    state: DataTypes.STRING,
-    zipcode: DataTypes.INTEGER
+    password: DataTypes.STRING,
+    passwordVerify: DataTypes.STRING,
   }, {
     classMethods: {
       associate: function(models) {

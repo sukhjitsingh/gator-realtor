@@ -15,27 +15,19 @@ router.get('/register', function(req, res){
 
 // Working in progess will be moving this in the near future.
 router.post('/register', function (req, res) {
-  let user = new models.User ({
-
-    userName: req.body.username,
+  let agent = new models.Agent ({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     email: req.body.email,
+    phoneNumber: req.body.phoneNumber,
     password: req.body.password,
-    password: req.body.password2
+    passwordVerify: req.body.password2
   })
 
-  user.save((err) => {
-  if (err) {
-      return res.send(err);
-  }
-
-  models.User
-    .find()
-    .then((data) => {
-        res.render('register', { title: 'List', data: data });
-    })
-    .catch((err) => {
+  agent.save((err) => {
+    if (err) {
         return res.send(err);
-    });
+    }
   });
 })
 
