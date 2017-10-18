@@ -16,10 +16,11 @@ router.get('/register', function(req, res){
 // Working in progess will be moving this in the near future.
 router.post('/register', function (req, res) {
   let user = new models.User ({
-    id: req.body.id,
+
     userName: req.body.username,
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    password: req.body.password2
   })
 
   user.save((err) => {

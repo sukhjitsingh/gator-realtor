@@ -6,12 +6,11 @@ const sequelize = require('sequelize');
 const Op = sequelize.Op;
 const validator = require('validator');
 
-const urlencodedParser = bodyParser.urlencoded({ extended: false })
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 /* GET search listing. */
 router.post('/', urlencodedParser, function(request, response) {
   if (!request.body) return response.sendStatus(400)
-  
   const query = request.body.searchQuery;
 
 
@@ -26,7 +25,7 @@ router.post('/', urlencodedParser, function(request, response) {
   } 
   else { 
     if(!validator.isPostalCode(query, 'US')) {
-      return response.send('Invalid Zipcode')
+      return response.send('Invalid Zip Code')
     }
     else {
       searchByZipcode(query)
@@ -58,8 +57,7 @@ router.post('/', urlencodedParser, function(request, response) {
   function searchByCity(city) {
     models.Agent.sequelize.query("SELECT * FROM `Agents` WHERE `city` LIKE :search_name", 
     { replacements: { search_name: '%'+city+'%' }, type: sequelize.QueryTypes.SELECT })
-    .then(agents => {
-      response.send(agents)
+    .then(agents => {response.send(agents)
     })
     .catch((err) => {
       return response.send(err);
@@ -67,6 +65,6 @@ router.post('/', urlencodedParser, function(request, response) {
   }
 
   
-})
+});
 
 module.exports = router;
