@@ -7,7 +7,6 @@ module.exports = (sequelize, DataTypes) => {
     phoneNumber: DataTypes.INTEGER,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
-    passwordVerify: DataTypes.STRING,
   }, {
     classMethods: {
       associate: function(models) {

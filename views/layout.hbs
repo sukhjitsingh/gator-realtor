@@ -32,21 +32,32 @@
                 <input id="search" type="search" name="searchQuery" placeholder="Search by city or zip"/>
                 <button class="icon"><i class="fa fa-search"></i></button>
             </form>
-            <form action="#" method="get" id="searchForm" class="input-group">
+            <!--<form action="#" method="get" id="searchForm" class="input-group">-->
 
-                <div class="input-group-btn search-panel">
-                    <select name="search_param" id="search_param" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        <option value="all">All</option>
-                        <option value="zipcode">Zip Code</option>
-                        <option value="city">City</option>
-                        <option value="state">State</option>
-                    </select>
-                </div>
-            </form>
+                <!--<div class="input-group-btn search-panel">-->
+                    <!--<select name="search_param" id="search_param" class="btn btn-default dropdown-toggle" data-toggle="dropdown">-->
+                        <!--<option value="all">All</option>-->
+                        <!--<option value="zipcode">Zip Code</option>-->
+                        <!--<option value="city">City</option>-->
+                        <!--<option value="state">State</option>-->
+                    <!--</select>-->
+                <!--</div>-->
+            <!--</form>-->
         </div>
     </div>
       <div class="row">
           <div class="col-lg-12">
+              {{#if success_msg}}
+                  <div class="alert alert-success">{{success_msg}}</div>
+              {{/if}}
+
+              {{#if error_msg}}
+                  <div class="alert alert-danger">{{error_msg}}</div>
+              {{/if}}
+
+              {{#if error}}
+                  <div class="alert alert-danger">{{error}}</div>
+              {{/if}}
             {{{body}}}
           </div>
       </div>
