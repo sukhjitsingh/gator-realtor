@@ -77,7 +77,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/search', search);
 app.use('/upload', upload);
-app.use('/listing', listing)
+app.use('/listing', listing);
 
 
 // catch 404 and forward to error handler
