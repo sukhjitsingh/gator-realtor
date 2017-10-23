@@ -1,22 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcryptjs');
-const passport = require('passport');
 const models = require('../models');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
 
-// Register
-router.get('/register', function(req, res){
-    res.render('register');
+router.get('/listing', function(req, res, next) {
+    res.render('listing');
 });
-
 
 // Working in progress will be moving this in the near future.
-router.post('/register', function (req, res) {
+router.post('/listing', function (req, res) {
     let firstName = req.body.firstName;
     let lastName = req.body.lastName;
     let email = req.body.email;
@@ -56,7 +48,7 @@ router.post('/register', function (req, res) {
                 res.redirect('login');
                 agent.save((err) => {
                     if (err) {
-                         return res.send(err);
+                        return res.send(err);
                     }
                 });
             });
@@ -71,9 +63,9 @@ router.get('/login', function(req, res){
 
 router.post('/login',function(req, res, next){
     passport.authenticate('local', {
-            successRedirect:'/',
-            failureRedirect:'login',
-            failureFlash: true
+        successRedirect:'/',
+        failureRedirect:'login',
+        failureFlash: true
     })(req, res, next);
 });
 

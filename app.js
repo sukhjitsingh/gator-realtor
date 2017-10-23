@@ -10,12 +10,16 @@ var session = require('express-session');
 var passport = require('passport');
 var index = require('./routes/index');
 var users = require('./routes/users');
+var listing = require('./routes/listing');
+var upload = require('./routes/upload');
 var search = require('./routes/search');
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -29,12 +33,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     secret: 'secret',
     saveUninitialized: true,
-    resave: true
+    resave: true,
+   // cookie: {secure: true }
 }));
 
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(flash());
 
+//express validator middleware
 app.use(expressValidator({
     errorFormatter: function(param, msg, value) {
         var namespace = param.split('.')
@@ -51,22 +56,28 @@ app.use(expressValidator({
         };
     }
 }));
-app.use(flash());
+require('./config/passport')(passport);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 app.use(logger('dev'));
-
-
 
 app.use(function (req, res, next) {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
+    res.locals.user = req.
+    res.locals.user = req.user || null;
     next();
 });
 
 app.use('/', index);
 app.use('/users', users);
 app.use('/search', search);
+app.use('/upload', upload);
+app.use('/listing', listing)
 
 
 // catch 404 and forward to error handler
