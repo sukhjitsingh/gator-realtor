@@ -2,13 +2,12 @@
 module.exports = (sequelize, DataTypes) => {
     const Properties = sequelize.define('Properties', {
         propertyId: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-        agentId: DataTypes.INTEGER,
+        agentId: {type: DataTypes.INTEGER,ForeignKey: true},
         streetAddress: DataTypes.STRING,
         city: DataTypes.STRING,
         state: DataTypes.STRING,
         zipcode: DataTypes.STRING,
         price: DataTypes.INTEGER
-
     }, {
         classMethods: {
             associate: function (models) {

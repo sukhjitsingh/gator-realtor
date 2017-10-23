@@ -14,10 +14,10 @@ router.post('/listing', function (req, res) {
     let zip = req.body.inputZip;
     let price = req.body.price;
 
-    req.checkBody('address', 'Address is required').notEmpty();
-    req.checkBody('city', 'City is required').notEmpty();
-    req.checkBody('state', 'State is required').notEmpty();
-    req.checkBody('zip', 'Zip code is required').notEmpty();
+    req.checkBody('inputAddress', 'Address is required').notEmpty();
+    req.checkBody('inputCity', 'City is required').notEmpty();
+    req.checkBody('inputState', 'State is required').notEmpty();
+    req.checkBody('inputZip', 'Zip code is required').notEmpty();
     req.checkBody('price', 'Price is required').notEmpty();
 
 
@@ -36,6 +36,8 @@ router.post('/listing', function (req, res) {
             zipcode: zip,
             price: price
         });
+        req.flash('success_msg', 'Listing created successfully');
+        res.redirect('listing');//should be agent dashbord
         properties.save((err) => {
             if (err) {
                 return res.send(err);

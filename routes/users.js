@@ -22,6 +22,7 @@ router.post('/register', function (req, res) {
     let email = req.body.email;
     let phoneNumber = req.body.phoneNumber;
     let password = req.body.password;
+    let password2 = req.body.password2;
 
     req.checkBody('firstName', 'first name is required').notEmpty();
     req.checkBody('lastName', ' last Name is required').notEmpty();
@@ -57,6 +58,8 @@ router.post('/register', function (req, res) {
                 agent.save((err) => {
                     if (err) {
                          return res.send(err);
+                    } else{
+
                     }
                 });
             });
