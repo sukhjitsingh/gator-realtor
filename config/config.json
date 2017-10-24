@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "root",
+    "username": "fa17g11",
     "password": null,
-    "database": "dbtest",
+    "database": "fa17g11",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
@@ -15,7 +15,7 @@
   },
   "production": {
     "use_env_variable": "DATABASE_URL",
-    "username": "process.env.DB_USERNAME",
+    "username": "fa17g11",
     "password": "process.env.DB_PASSWORD",
     "database": "process.env.DB_NAME",
     "host": "process.env.DB_HOSTNAME",
