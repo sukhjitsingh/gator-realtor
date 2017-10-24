@@ -14,11 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "use_env_variable": "DATABASE_URL",
-    "username": "fa17g11",
-    "password": "process.env.DB_PASSWORD",
-    "database": "process.env.DB_NAME",
-    "host": "process.env.DB_HOSTNAME",
+    "username": "root",
+    "password": null,
+    "database": "fa17g11t",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   }
 }
