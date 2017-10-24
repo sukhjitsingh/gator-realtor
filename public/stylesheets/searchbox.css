@@ -1,6 +1,7 @@
 .container-4{
     overflow: hidden;
     width: 400px;
+    margin: auto;
     vertical-align: middle;
     white-space: nowrap;
 }

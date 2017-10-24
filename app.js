@@ -9,8 +9,10 @@ var flash = require('connect-flash');
 var session = require('express-session');
 var passport = require('passport');
 var index = require('./routes/index');
-var users = require('./routes/users');
+var agent = require('./routes/agent');
 var listing = require('./routes/listing');
+var dashboard = require('./routes/dashboard');
+var settings = require('./routes/settings');
 var upload = require('./routes/upload');
 var search = require('./routes/search');
 var app = express();
@@ -68,16 +70,24 @@ app.use(function (req, res, next) {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
-    res.locals.user = req.
+    // console.log('TESSTING --------- ',req.agent);
+    // res.locals.user = req.agent || null;
+    next();
+});
+
+
+app.get('*', function(req, res, next){
     res.locals.user = req.user || null;
     next();
 });
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/agent', agent);
 app.use('/search', search);
 app.use('/upload', upload);
 app.use('/listing', listing);
+app.use('/dashboard', dashboard);
+app.use('/settings', settings);
 
 
 // catch 404 and forward to error handler

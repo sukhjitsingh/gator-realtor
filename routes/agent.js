@@ -22,7 +22,6 @@ router.post('/register', function (req, res) {
     let email = req.body.email;
     let phoneNumber = req.body.phoneNumber;
     let password = req.body.password;
-    let password2 = req.body.password2;
 
     req.checkBody('firstName', 'first name is required').notEmpty();
     req.checkBody('lastName', ' last Name is required').notEmpty();
@@ -74,7 +73,7 @@ router.get('/login', function(req, res){
 
 router.post('/login',function(req, res, next){
     passport.authenticate('local', {
-            successRedirect:'/',
+            successRedirect:'dashboard',
             failureRedirect:'login',
             failureFlash: true
     })(req, res, next);

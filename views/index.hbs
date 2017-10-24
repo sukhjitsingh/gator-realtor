@@ -1,16 +1,30 @@
+<!-- Bootstrap core CSS -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">    <!-- Custom styles for this template -->
+<link href="http://getbootstrap.com/docs/4.0/examples/jumbotron/jumbotron.css" rel="stylesheet">
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link href = "/stylesheets/searchbox.css" rel="stylesheet"/>
+
 <div class="container">
     <div class="row">
         <!--Search Bar Start-->
-        <div style="padding: 50px 100px 40px 100px; " class="col-md-12">
-            <div id="custom-search-input">
-                <div class="input-group col-md-12">
-                    <input type="text" class="form-control input-lg" placeholder="Search" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="button">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </button>
-                    </span>
-                </div>
+        <div class="box">
+            <div class="container-4">
+                <form action="/search" method="POST">
+                    <input id="search" type="search" name="searchQuery" placeholder="Search by city or zip"/>
+                    <button class="icon"><i class="fa fa-search"></i></button>
+                </form>
+                <!--<form action="#" method="get" id="searchForm" class="input-group">-->
+
+                <!--<div class="input-group-btn search-panel">-->
+                <!--<select name="search_param" id="search_param" class="btn btn-default dropdown-toggle" data-toggle="dropdown">-->
+                <!--<option value="all">All</option>-->
+                <!--<option value="zipcode">Zip Code</option>-->
+                <!--<option value="city">City</option>-->
+                <!--<option value="state">State</option>-->
+                <!--</select>-->
+                <!--</div>-->
+                <!--</form>-->
             </div>
         </div>
     </div>
