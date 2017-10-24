@@ -8,6 +8,7 @@ var expressValidator = require('express-validator');
 var flash = require('connect-flash');
 var session = require('express-session');
 var passport = require('passport');
+
 var index = require('./routes/index');
 var agent = require('./routes/agent');
 var listing = require('./routes/listing');
@@ -15,6 +16,7 @@ var dashboard = require('./routes/dashboard');
 var settings = require('./routes/settings');
 var upload = require('./routes/upload');
 var search = require('./routes/search');
+
 var app = express();
 
 // view engine setup

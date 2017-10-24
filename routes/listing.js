@@ -2,24 +2,29 @@ const express = require('express');
 const router = express.Router();
 const models = require('../models');
 
-router.get('/listing', function (req, res, next) {
+router.get('/', function (req, res, next) {
     res.render('listing');
 });
 
-router.post('/listing', function (req, res) {
-    let address = req.body.inputAddress;
-    let address2 = req.body.inputAddress2;
-    let city = req.body.inputCity;
-    let state = req.body.inputState;
-    let zip = req.body.inputZip;
+router.post('/', function (req, res) {
+    let address = req.body.streetAddress;
+    let address2 = req.body.streetAddress2;
+    let city = req.body.city;
+    let state = req.body.state;
+    let zip = req.body.zipcode;
     let price = req.body.price;
+    let builtYear = req.body.builtYear;
+    let bath = req.body.bathroomNumber;
+    let bed = req.body.bedroomNumber;
 
-    req.checkBody('inputAddress', 'Address is required').notEmpty();
-    req.checkBody('inputCity', 'City is required').notEmpty();
-    req.checkBody('inputState', 'State is required').notEmpty();
-    req.checkBody('inputZip', 'Zip code is required').notEmpty();
+    req.checkBody('streetAddress', 'Address is required').notEmpty();
+    req.checkBody('city', 'City is required').notEmpty();
+    req.checkBody('state', 'State is required').notEmpty();
+    req.checkBody('zipcode', 'Zip code is required').notEmpty();
+    req.checkBody('builtYear', 'Build year is required').notEmpty();
     req.checkBody('price', 'Price is required').notEmpty();
-
+    req.checkBody('bathroomNumber', 'Number of bathrooms is required').notEmpty();
+    req.checkBody('bedroomNumber', 'Number of bedrooms is required').notEmpty();
 
     let errors = req.validationErrors();
 
@@ -28,13 +33,17 @@ router.post('/listing', function (req, res) {
             errors: errors
         });
     } else {
-        var properties = new models.Properties({
-            streetAddress: address + " " + address2,
+        let properties = new models.Properties({
+            streetAddress: address,
+            streetAddress2: address2,
             agentId: 1, // will need to fix this to grab the id of current agent based on login status
             city: city,
             state: state,
             zipcode: zip,
-            price: price
+            price: price,
+            buildYear: builtYear,
+            bedrooms: bed,
+            bathrooms: bath
         });
         req.flash('success_msg', 'Listing created successfully');
         res.redirect('listing');//should be agent dashbord

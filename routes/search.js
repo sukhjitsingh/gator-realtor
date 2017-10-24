@@ -40,8 +40,9 @@ router.post('/', urlencodedParser, function(request, response) {
   More examples can be found here: http://docs.sequelizejs.com/manual/tutorial/querying.html
   */
   function searchByZipcode(zip) { 
-    models.Agent.findAll({where: {zipcode: {[Op.like]: '%'+zip+'%'}}, limit: 10, raw: true })
-    .then(results => response.send(results))
+    models.Properties.findAll({where: {zipcode: {[Op.like]: '%'+zip+'%'}}, limit: 10, raw: true })
+    .then(results => {response.send(results)
+    })
     .catch((err) => {
       return response.send(err);
     })
@@ -55,7 +56,7 @@ router.post('/', urlencodedParser, function(request, response) {
   More examples can be found here: http://docs.sequelizejs.com/manual/tutorial/raw-queries.html
   */
   function searchByCity(city) {
-    models.Agent.sequelize.query("SELECT * FROM `Properties` WHERE `city` LIKE :search_name", 
+    models.Properties.sequelize.query("SELECT * FROM `Properties` WHERE `city` LIKE :search_name",
     { replacements: { search_name: '%'+city+'%' }, type: sequelize.QueryTypes.SELECT })
     .then(agents => {response.send(agents)
     })

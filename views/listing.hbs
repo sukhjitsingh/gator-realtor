@@ -1,58 +1,63 @@
-{{#if errors}}
-    {{#each errors}}
-        <div class="alert alert-danger">{{msg}}</div>
-    {{/each}}
-{{/if}}
-<form method="post" action="listing">
-    <div class="form-row">
-        <h1> Listing Address</h1>
-    </div>
-    <div class="form-group col-md-6">
-        <label>Address</label>
-        <input type="text" class="form-control" placeholder="1234 Main St" name="inputAddress">
-    </div>
-    <div class="form-group col-md-6">
-        <label>Address 2</label>
-        <input type="text" class="form-control"  placeholder="Apartment, studio, or floor" name="inputAddress2">
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label>City</label>
-            <input type="text" class="form-control" placeholder ="San Francisco" name="inputCity" >
-        </div>
-        <div class="form-group col-md-4">
-            <label>State</label>
-            <input type="text" class="form-control"  placeholder ="California" name="inputState">
-        </div>
-        <div class="form-group col-md-2">
-            <label>Zip</label>
-            <input type="text" class="form-control"  placeholder = "94121" name="inputZip">
-        </div>
-    </div>
-    <h1> Facts and Features</h1>
-    <div class="form-row">
-        <div class="form-group col-md-2">
-            <label>Bedrooms</label>
-            <input type="text" class="form-control" placeholder ="Number of beds" name="bedroomNumber">
-        </div>
-        <div class="form-group col-md-2">
-            <label>Bathrooms</label>
-            <input type="text" class="form-control"  placeholder ="Number od bath" name="bathroomNum">
-        </div>
-        <div class="form-group col-md-2">
-            <label>Flooring</label>
-            <input type="text" class="form-control"  placeholder ="Floor size" name="flooring">
-        </div>
-        <div class="form-group col-md-2">
-            <label>Build date</label>
-            <input type="text" class="form-control" placeholder ="Built in" name="builtDate" >
-        </div>
-        <div class="form-group col-md-2">
-            <label> Price</label>
-            <input type="text" class="form-control"  placeholder ="price" name="price">
-        </div>
-        <br>
-    </div>
+{{#if errors}} {{#each errors}}
+<div class="alert alert-danger">{{msg}}</div>
+{{/each}} {{/if}}
+<div class="container">
+    <div class="row">
+        <form method="POST" action="/listing">
+            <div class="form-group col-md-12">
+                <label for="streetAddress">Address</label>
+                <input type="text" class="form-control" name="streetAddress" placeholder="1234 Main St">
+            </div>
+            <div class="form-group col-md-12">
+                <label for="streetAddress2">Address</label>
+                <input type="text" class="form-control" name="streetAddress2" placeholder="Apartment, studio, or floor">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" name="city" placeholder="San Mateo">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="state">State</label>
+                    <select name="state" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>CA</option>
+                        <option>AZ</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="zipcode">Zip code</label>
+                    <input type="number" class="form-control" name="zipcode" placeholder="95235">
+                </div>
+            </div>
 
-    <button type="submit" class="btn btn-primary">Create</button>
-</form>
+            <h2>Details</h2>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label>Bedrooms</label>
+                    <input type="number" class="form-control" placeholder ="Number of beds" name="bedroomNumber">
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Bathrooms</label>
+                    <input type="number" class="form-control" placeholder ="Number of baths" name="bathroomNumber">
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Build year</label>
+                    <input type="number" class="form-control" placeholder ="Built in" name="builtYear" >
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Property Price</label>
+                    <input type="number" class="form-control" placeholder ="price" name="price">
+                </div>
+                <br>
+            </div>
+            <div class=" col-md-12">
+                <label class="custom-file">
+                <input type="file" id="file2" class="custom-file-input">
+                <span class="custom-file-control"></span>
+            </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Create Listing</button>
+        </form>
+    </div>
+</div>

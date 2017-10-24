@@ -24,10 +24,10 @@
     "passport": "^0.4.0",
     "passport-http": "^0.3.0",
     "passport-local": "^1.0.0",
-    "sequelize": "^4.13.17",
+    "sequelize": "^4.17.2",
     "sequelize-cli": "^3.0.0",
     "serve-favicon": "~2.4.5",
-    "validator": "^9.0.0"
+    "validator": "^9.1.0"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"

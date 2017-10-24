@@ -21,23 +21,21 @@
                       <li role="presentation"><a href="/agent/logout">Logout</a></li>
                       <li role="presentation"><a href="/agent/dashboard">Dashboard</a></li>
                       <li role="presentation"><a href="/upload/upload">Upload</a></li>
-                      <li role="presentation"><a href="/listing/listing">List Property</a></li>
+                      <li role="presentation"><a href="/listing">List Property</a></li>
                   {{else}}
                       <li role="presentation"><a href="/">Main</a></li>
                       <li role="presentation"><a href="/agent/login">Login</a></li>
                       <li role="presentation"><a href="/agent/register">Register</a></li>
 
-
-                      <li role="presentation"><a href="/">Main</a></li>
-                      <li role="presentation"><a href="/dashboard/dashboard">Dashboard</a></li>
+                      <li role="presentation"><a href="/dashboard">Dashboard</a></li>
                       <li role="presentation"><a href="/upload/upload">Upload</a></li>
-                      <li role="presentation"><a href="/listing/listing">List Property</a></li>
+                      <li role="presentation"><a href="/listing">List Property</a></li>
                       <li role="presentation"><a href="/agent/logout">Logout</a></li>
-                      <li role="presentation"><a href="/settings/settings">Account settings</a> </li>
+                      <li role="presentation"><a href="/settings">Account settings</a> </li>
                   {{/if}}
               </ul>
           </nav>
-          <h3 class="text-muted">Demo page</h3>
+          <h3 class="text-muted">Gator Realtor</h3>
       </div>
       <div class="row">
           <div class="col-lg-12">
@@ -48,6 +46,7 @@
               {{#if error_msg}}
                   <div class="alert alert-danger">{{error_msg}}</div>
               {{/if}}
+
               {{#if error}}
                   <div class="alert alert-danger">{{error}}</div>
               {{/if}}

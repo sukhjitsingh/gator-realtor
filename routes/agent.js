@@ -4,12 +4,7 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const models = require('../models');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
-
-// Register
+// Register Page
 router.get('/register', function(req, res){
     res.render('register');
 });
