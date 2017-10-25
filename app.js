@@ -83,13 +83,13 @@ app.get('*', function(req, res, next){
     next();
 });
 
-app.use('/', index);
-app.use('/agent', agent);
-app.use('/search', search);
-app.use('/upload', upload);
-app.use('/listing', listing);
-app.use('/dashboard', dashboard);
-app.use('/settings', settings);
+app.use('/fa17g11/', index);
+app.use('/fa17g11/agent', agent);
+app.use('/fa17g11/search', search);
+app.use('/fa17g11/upload', upload);
+app.use('/fa17g11/listing', listing);
+app.use('/fa17g11/dashboard', dashboard);
+app.use('/fa17g11/settings', settings);
 
 
 // catch 404 and forward to error handler
