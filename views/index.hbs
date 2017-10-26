@@ -1,14 +1,14 @@
 <div class="container">
     <div class="row">
         <!--Search Bar Start-->
-        <div style="padding: 50px 100px 40px 100px; " class="col-md-12">
+        <div style="padding: 40px; " class="col-md-12">
             <form action="/fa17g11/search" method="POST">
                 <div id="custom-search-input">
                 <div class="input-group col-md-12">
-                    <input type="text" class="form-control input-lg" placeholder="Search" name="searchQuery"/>
+                    <input type="text" class="form-control input-lg" placeholder="Search by city or zip" name="searchQuery"/>
                     <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="button">
-                            <i class="glyphicon glyphicon-search"></i>
+                        <button class="btn btn-info btn-lg" type="submit" formaction="/search">
+                            <i class="fa fa-search"></i>
                         </button>
                     </span>
                 </div>
@@ -20,58 +20,19 @@
 </div>
 <!--Featured Listings Start-->
 <div class="container">
-<h1 style="text-align: center">Featured Listings</h1>
+    <h1 style="text-align: center; padding: 50px;">Featured Listings</h1>
     <!--First Left and Right Card Start-->
-    <div style="padding: 50px 50px 50px 50px;">
-        <div class="row">
-            <div class="col-height col-middle col-xs-6 pull-left card">
-                <div class="col-xl-12 text-center">
-                    <h3>Listing One</h3>
-                </div>
+        <div class="d-flex flex-row flex-wrap m-auto justify-content-around">
+            {{#each results}}
+            <div class="p-4">
+                <h3>Property: {{propertyId}}</h3>
+                <h5>{{streetAddress}}</h5>
+                <h5>{{city}}, {{state}} {{zipcode}}</h5>
+                <h5>Built Year: {{buildYear}} </h5>
+                <h5>Bedrooms: {{bedrooms}} Bathrooms: {{bathrooms}}</h5>
             </div>
-            <div class="col-height col-middle col-xs-6 pull-right card">
-                <div class="col-xl-12 text-center">
-                    <h3>Listing Two</h3>
-                </div>
-            </div>
+            {{/each}}
         </div>
-    </div>
     <!--First Left and Right Card End-->
-
-    <!--Second Left and Right Card Start-->
-    <div style="padding: 50px 50px 50px 50px;">
-        <div class="row">
-            <div class="col-height col-middle col-xs-6 pull-left card">
-                <div class="col-xs-12 text-center">
-                    <h3>Listing Three</h3>
-                </div>
-            </div>
-            <div class="col-height col-middle col-xs-6 pull-right card">
-                <div class="col-xs-12 text-center">
-                    <h3>Listing Four</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--Second Left and Right Card End-->
-
-    <!--Third Left and Right Card Start-->
-    <div style="padding: 50px 50px 50px 50px;">
-        <div class="row">
-            <div class="col-height col-middle col-xs-6 pull-left card">
-                <div class="col-xs-12 text-center">
-                    <h3>Listing Five</h3>
-                </div>
-            </div>
-            <div class="col-height col-middle col-xs-6 pull-right card">
-                <div class="col-xs-12 text-center">
-                    <h3>Listing Six</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Third Left and Right Card End-->
-
 </div>
 <!--Featured Listings End-->

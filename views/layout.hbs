@@ -6,37 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">    <!-- Custom styles for this template -->
-    <link href="http://getbootstrap.com/docs/4.0/examples/jumbotron/jumbotron.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   </head>
   <body>
-  <div class="container">
-      <div class="header clearfix">
-          <nav>
-              <ul class="nav nav-pills pull-right">
-                  {{#if user}}
-                      <li role="presentation"><a href="/fa17g11/">Main</a></li>
-                      <li role="presentation"><a href="/fa17g11/agent/logout">Logout</a></li>
-                      <li role="presentation"><a href="/fa17g11/agent/dashboard">Dashboard</a></li>
-                      <li role="presentation"><a href="/fa17g11/upload/upload">Upload</a></li>
-                      <li role="presentation"><a href="/fa17g11/listing">List Property</a></li>
-                  {{else}}
-                      <li role="presentation"><a href="/fa17g11/">Main</a></li>
-                      <li role="presentation"><a href="/fa17g11/agent/login">Login</a></li>
-                      <li role="presentation"><a href="/fa17g11/agent/register">Register</a></li>
+      <nav class="navbar-nav navbar-expand-lg navbar-light bg-light">
+              <a class="navbar-brand" style="margin-left: 20px;" href="#">Gator Realtor</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        {{#if user}}
+                            <li class="nav-item"><a class="nav-link" href="/fa17g11/">Main</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/fa17g11/agent/logout">Logout</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/fa17g11/agent/dashboard">Dashboard</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/fa17g11/upload/upload">Upload</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/fa17g11/listing">List Property</a></li>
+                        {{else}}
+                            <li class="nav-item"><a class="nav-link" href="/fa17g11/">Main</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/fa17g11/agent/login">Login</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/fa17g11/agent/register">Register</a></li>
 
-                      <li role="presentation"><a href="/fa17g11/dashboard">Dashboard</a></li>
-                      <li role="presentation"><a href="/fa17g11/upload/upload">Upload</a></li>
-                      <li role="presentation"><a href="/fa17g11/listing">List Property</a></li>
-                      <li role="presentation"><a href="/fa17g11/agent/logout">Logout</a></li>
-                      <li role="presentation"><a href="/fa17g11/settings">Account settings</a> </li>
-                  {{/if}}
-              </ul>
+                            <li class="nav-item"><a class="nav-link" href="/fa17g11/dashboard">Dashboard</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/fa17g11/upload/upload">Upload</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/fa17g11/listing">List Property</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/fa17g11/agent/logout">Logout</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/fa17g11/settings">Account settings</a> </li>
+                        {{/if}}
+                    </ul>
+                </div>
           </nav>
-          <h3 class="text-muted">Gator Realtor</h3>
-      </div>
+  <div class="jumbotron">
       <div class="row">
           <div class="col-lg-12">
               {{#if success_msg}}
@@ -50,9 +52,9 @@
               {{#if error}}
                   <div class="alert alert-danger">{{error}}</div>
               {{/if}}
-            {{{body}}}
           </div>
       </div>
+    {{{body}}}
   </div> <!-- /container -->
 
   <!-- Optional JavaScript -->
