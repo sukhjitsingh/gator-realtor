@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <!--Search Bar Start-->
+        <div style="padding: 40px; " class="col-md-12">
+            <form action="/fa17g11/search" method="POST">
+                <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control input-lg" placeholder="Search by city or zip" name="searchQuery"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="submit" formaction="/fa17g11/search">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+           </form>
+        </div>
+    </div>
+    <!--Search Bar End-->
+</div>
+<!--Featured Listings Start-->
+<div class="container">
+    <h1 style="text-align: center; padding: 50px;">Featured Listings</h1>
+    <!--First Left and Right Card Start-->
+        <div class="d-flex flex-row flex-wrap m-auto justify-content-around">
+            {{#each results}}
+            <div class="p-4">
+                <h3>Property: {{propertyId}}</h3>
+                <h5>{{streetAddress}}</h5>
+                <h5>{{city}}, {{state}} {{zipcode}}</h5>
+                <h5>Built Year: {{buildYear}} </h5>
+                <h5>Bedrooms: {{bedrooms}} Bathrooms: {{bathrooms}}</h5>
+            </div>
+            {{/each}}
+        </div>
+    <!--First Left and Right Card End-->
+</div>
+<!--Featured Listings End-->
