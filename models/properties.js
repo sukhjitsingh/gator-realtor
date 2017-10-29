@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     buildYear: DataTypes.INTEGER,
     bedrooms: DataTypes.INTEGER,
     bathrooms: DataTypes.INTEGER,
+    imageLink: DataTypes.STRING,
     agentId: {type: DataTypes.INTEGER, foreignKey: true},
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
