@@ -16,6 +16,8 @@ var dashboard = require('./routes/dashboard');
 var settings = require('./routes/settings');
 var upload = require('./routes/upload');
 var search = require('./routes/search');
+var login = require('./routes/login');
+
 
 var app = express();
 
@@ -72,8 +74,6 @@ app.use(function (req, res, next) {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
-    // console.log('TESSTING --------- ',req.agent);
-    // res.locals.user = req.agent || null;
     next();
 });
 
@@ -90,6 +90,8 @@ app.use('/upload', upload);
 app.use('/listing', listing);
 app.use('/dashboard', dashboard);
 app.use('/settings', settings);
+app.use('/login', login);
+
 
 
 // catch 404 and forward to error handler
