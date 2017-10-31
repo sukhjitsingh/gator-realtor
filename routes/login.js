@@ -2,14 +2,21 @@ const express = require('express');
 const router = express.Router();
 const agentController = require('../controller/agentController');
 
-// Register Page
-router.get('/register', function(req, res){
+
+router.get('/', function(request, response, next) {
+    response.render('login')
+});
+
+
+router.post('/register', function(req, res){
     res.render('register');
 });
 
-router.post('/create', agentController.create);
 
-// logout
-router.get ('/logout',agentController.logout);
+router.post('/submit', function(req, res) {
+
+});
 
 module.exports = router;
+
+

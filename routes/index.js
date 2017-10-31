@@ -51,7 +51,7 @@ router.post('/agent',urlencodedParser, upload.single('avatar'), function (req, r
 
       property.save((err) => {
           if (err) {
-              //return res.send(err);
+              return res.send(err);
           }
       });
   }

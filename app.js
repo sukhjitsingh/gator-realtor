@@ -16,6 +16,8 @@ var dashboard = require('./routes/dashboard');
 var settings = require('./routes/settings');
 var upload = require('./routes/upload');
 var search = require('./routes/search');
+var login = require('./routes/login');
+
 
 var app = express();
 
@@ -90,6 +92,8 @@ app.use('/upload', upload);
 app.use('/listing', listing);
 app.use('/dashboard', dashboard);
 app.use('/settings', settings);
+app.use('/login', login);
+
 
 
 // catch 404 and forward to error handler
@@ -103,7 +107,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get('env') === 'test' ? err : {};
 
   // render the error page
   res.status(err.status || 500);

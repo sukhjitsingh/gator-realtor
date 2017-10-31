@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
   }, {
-    timestamps: false,
+    timestamps: true,
     tableName: 'Properties'
   }, {
     classMethods: {
