@@ -17,6 +17,12 @@ router.get('/agent', function(request, response, next) {
   response.render('agent', {title: 'Agent Dashboard'})
 });
 
+router.get('/test', function(request, response, next) {
+    response.render('test', {
+        title: 'Test'
+    })
+});
+
 router.post('/agent',urlencodedParser, upload.single('avatar'), function (req, res, next) {
   if (!req.body) return res.sendStatus(400)
   let streetAddress = req.body.streetAddress;
