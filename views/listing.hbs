@@ -96,6 +96,15 @@
                         <input type="text" pattern="[0-9]{5}" class="form-control" name="zipcode" placeholder="95235">
                     </div>
                 </div>
+
+                <div class="form-row" style="margin-left:0px">
+                            <div class="upload col-md-7" >
+                                <input type="file" id="file2" class="custom-file-input" placeholder="image link">
+                                <span class="custom-file-control"></span>
+                            </div>
+                            <p class="col-md-5">Upload Images</p>
+                </div>
+
             </div>
             <!--Property Information End-->
 
@@ -123,26 +132,63 @@
 
                     <div class="form-group col-md-6">
                         <label for="builtYear">Build year *</label>
-                        <!--<input type="number" class="form-control" placeholder="Built in" name="builtYear">-->
                         <select id="builtYear" class="form-control"> </select>
                     </div>
                 </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Lot size *</label>
+                        <input type="number" min="0" class="form-control" placeholder="Lot size" name="Lot size">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="builtYear">H/AC</label>
+                        <div class="row">
+                            <input class="col-md-3" type="radio" name="HVAC" value="YES">YES <br>
+                            <input class="col-md-3" type="radio" name="HVAC" value="NO"> NO<br>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Type Of Home *</label>
+                        <input type="text" min="0" class="form-control" placeholder="Type Of Home" name="Type Of Home">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="builtYear">Parking *</label>
+                         <select name="state" class="form-control">
+                            <option selected>Choose a number</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label>Others</label>
+                        <input style="height:150px" type="text" min="0" class="form-control" name="Others">
+                    </div>
+                </div>
+
             </div>
-
         </div>
 
-
-        <div class=" form-group">
-            <label class="custom-file">
-                <input type="file" id="file2" class="custom-file-input">
-                <span class="custom-file-control"></span>
-            </label>
-        </div>
         <button type="submit" class="btn btn-success">Create Listing</button>
 
     </form>
-
-
 </div>
 
 <script>
