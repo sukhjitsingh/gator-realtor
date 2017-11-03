@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const settingsController = require('../controller/settingsController');
+const settingsController = require('../controllers/settingsController');
 
 
 /* GET home page. */

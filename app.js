@@ -10,7 +10,7 @@ var session = require('express-session');
 var passport = require('passport');
 
 var index = require('./routes/index');
-var agent = require('./routes/agent');
+var signup = require('./routes/signup');
 var listing = require('./routes/listing');
 var dashboard = require('./routes/dashboard');
 var settings = require('./routes/settings');
@@ -84,7 +84,7 @@ app.get('*', function(req, res, next){
 });
 
 app.use('/', index);
-app.use('/agent', agent);
+app.use('/signup', signup);
 app.use('/search', search);
 app.use('/upload', upload);
 app.use('/listing', listing);

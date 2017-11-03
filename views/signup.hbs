@@ -4,8 +4,8 @@
     {{/each}}
 {{/if}}
 <div class="container">
-    <h2 class="page-header">Registration Form</h2>
-    <form method="post" action="/agent/create">
+    <h2 class="page-header">Sign Up</h2>
+    <form method="post" action="/signup">
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
@@ -41,15 +41,10 @@
                 <div style="padding: 20px 0px 20px 0px;">
                     <label><input type="checkbox" name="termsOfService">Agree with Terms of Service</label>
                 </div>
-                <button type="submit" class="btn btn-danger pull-left">Cancel</button>
-                <button type="submit" class="btn btn-success pull-right">Register</button>
 
-            </div>
+                <button type="submit" class="btn btn-danger pull-left" formaction="/signup">Cancel</button>
+                <button type="submit" class="btn btn-success pull-right" formaction="/signup/create">Create Account</button>
 
-            <div id="loginLink" class="col-md-6">
-                <h5>Already have an account? Click the button below to log in</h5>
-                <br>
-                <button type="submit" class="btn btn-primary" formaction="/login/">Log in</button>
             </div>
 
         </div>

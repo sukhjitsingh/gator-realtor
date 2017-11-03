@@ -20,7 +20,7 @@ module.exports.create = function (req, res) {
     let errors = req.validationErrors();
 
     if (errors) {
-        res.render('register', {
+        res.render('signup', {
             errors: errors
         });
     } else {

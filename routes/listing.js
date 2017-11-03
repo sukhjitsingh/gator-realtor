@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const listingController = require('../controller/listingController');
+const listingController = require('../controllers/listingController');
 
 router.get('/', function (req, res, next) {
     res.render('listing');

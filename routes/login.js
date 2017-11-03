@@ -1,22 +1,31 @@
 const express = require('express');
 const router = express.Router();
-const agentController = require('../controller/agentController');
+const agentController = require('../controllers/agentController');
 
-
+// Render Lognin Page
 router.get('/', function(request, response, next) {
     response.render('login')
 });
 
-
-router.post('/register', function(req, res){
-    res.render('register');
+// Lognin Page
+router.post('/login', function(req, res){
+    res.render('login');
 });
 
-
-router.post('/submit', function(req, res) {
-
+// Redirect to Dashboard Page
+router.post('/signin', function(req, res) {
+    res.redirect('/dashboard')
 });
 
+// Redirect to Dashboard Page
+router.post('/signup', function(req, res) {
+    res.redirect('/signup')
+});
+
+// Redirect to Homepage (Cancel Button )
+router.post('/', function(req, res) {
+    res.redirect('/')
+})
 module.exports = router;
 
 
