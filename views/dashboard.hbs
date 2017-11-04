@@ -1,18 +1,17 @@
 <style>
-
     .card {
         margin: 0 auto;
         float: none;
         margin-bottom: 10px;
         width: 300px;
         height: 300px;
+        max-height: 100%;
+        max-width: 100%;
     }
-
     #cardImage{
         position: relative;
         width: 100%;
     }
-
     #cardListingPrice{
         color: white;
         position: absolute;
@@ -20,8 +19,6 @@
         left: 0;
         width: 100%;
     }
-
-
     /* Style the tab */
     div.tab {
         float: left;
@@ -31,7 +28,6 @@
         height: 600px;
         /*height: 100%;*/
     }
-
     /* Style the buttons inside the tab */
     div.tab button {
         display: block;
@@ -46,12 +42,10 @@
         transition: 0.3s;
         font-size: 17px;
     }
-
     /* Change background color of buttons on hover */
     div.tab button:hover {
         background-color: #ddd;
     }
-
     /* Style the tab content */
     .tabContent {
         float: left;
@@ -62,10 +56,9 @@
         height: 600px;
         /*height:100%;*/
     }
-
 </style>
 
-<div class="container jumbotron-fluid">
+<div class="container">
     <h1>My Profile</h1>
     <div class="tab">
         <button class="tablinks" onclick="changeTab(event, 'Listings')" id="defaultTab">Listings</button>
@@ -76,11 +69,11 @@
     <div id="Listings" class="tabContent">
         <h3>Listings</h3>
         <p>Listings</p>
-        <div class="row" style="margin: 30px 0px 30px 0px;">
+        <div class="row">
 
             <div class="col-sm-6">
                 <div class="card">
-                    <a href="#"><img class="card-img-top" style="width:300px;height:300px;"
+                    <a href="#"><img class="card-img-top" style="width:300px;height:300px; max-height: 100%; max-width: 100%;"
                                      src="https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg"
                                      alt="ListingThree">
                     </a>
@@ -95,7 +88,7 @@
             <div class="col-sm-6">
                 <div class="card">
                     <div id="cardImage">
-                        <a href="#"><img class="card-img-top" style="width:300px;height:300px;"
+                        <a href="#"><img class="card-img-top" style="width:300px;height:300px; max-height: 100%; max-width: 100%;"
                                          src="https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg"
                                          alt="ListingThree">
                         </a>
@@ -138,6 +131,5 @@
         document.getElementById(dashBoardTab).style.display = "block";
         event.currentTarget.className += " active";
     }
-
     document.getElementById("defaultTab").click();
 </script>
