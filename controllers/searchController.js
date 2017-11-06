@@ -35,7 +35,7 @@ module.exports.porcessSearch =function(request, response) {
     */
     function searchByZipcode(zip) {
         models.Properties.findAll({where: {zipcode: {[Op.like]: '%'+zip+'%'}}, limit: 10, raw: true })
-            .then(results => {response.render('index', {results})
+            .then(results => {response.render('results', {results})
             })
             .catch((err) => {
                 return response.send(err);
@@ -52,7 +52,7 @@ module.exports.porcessSearch =function(request, response) {
     function searchByCity(city) {
         models.Properties.sequelize.query("SELECT * FROM `Properties` WHERE `city` LIKE :search_name",
             { replacements: { search_name: '%'+city+'%' }, type: sequelize.QueryTypes.SELECT })
-            .then(results => {response.render('index', {results})
+            .then(results => {response.render('results', {results})
             })
             .catch((err) => {
                 return response.send(err);
