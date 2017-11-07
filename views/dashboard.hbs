@@ -1,10 +1,157 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Dashboard</title>
-</head>
-<body>
-<h1>Dashboard</h1>
+<style>
+    /* Style the tab */
+    div.tab {
+        float: left;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+        width: 10%;
+        height: 600px;
+    }
 
-</body>
-</html>
+    /* Style the buttons inside the tab */
+    div.tab button {
+        display: block;
+        background-color: inherit;
+        color: black;
+        padding: 22px 16px;
+        width: 100%;
+        border: none;
+        outline: none;
+        text-align: left;
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 100%;
+    }
+
+    /* Change background color of buttons on hover */
+    div.tab button:hover {
+        background-color: #ddd;
+    }
+
+    /* Style the tab content */
+    .tabContent {
+        float: left;
+        padding: 0px 12px;
+        border: 1px solid #ccc;
+        width: 90%;
+        border-left: none;
+        height: 600px;
+    }
+
+</style>
+
+<div class="container" style=" height: 100%; width: 100%">
+    <h1>My Profile</h1>
+    <div class="tab">
+        <button class="tablinks" style="word-wrap: break-word" onclick="changeTab(event, 'Listings')" id="defaultTab">Listings</button>
+        <button class="tablinks" style="word-wrap: break-word" onclick="changeTab(event, 'Messages')">Messages</button>
+    </div>
+
+    <div id="Listings" class="tabContent">
+        <h3>Listings</h3>
+        <p>Listings</p>
+
+        <!--table start-->
+        <div style="overflow-x:auto;">
+            <table class="table table-hover">
+                <!--table header start-->
+                <thead>
+                <tr>
+                    <th>Address</th>
+                    <th>ListingNumber</th>
+                </tr>
+                </thead>
+                <!--table header end-->
+
+                <!--table body start-->
+                <tbody>
+                <tr>
+                    <td>221 B Baker St.{{address}}</td>
+                    <td>00000{{listingID}}</td>
+                    <td>
+                        <button type="submit" class="btn btn-success pull-right" formaction="">Go To Listing</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>42 Wallaby Way, Sydney{{address}}</td>
+                    <td>99999{{listingID}}</td>
+                    <td>
+                        <button type="submit" class="btn btn-success pull-right" formaction="">Go To Listing</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>End of Mt. Lee Dr{{address}}</td>
+                    <td>11111{{listingID}}</td>
+                    <td>
+                        <button type="submit" class="btn btn-success pull-right" formaction="">Go To Listing</button>
+                    </td>
+                </tr>
+                </tbody>
+                <!--table body end-->
+            </table>
+            <!--table end-->
+        </div>
+
+
+    </div>
+
+    <div id="Messages" class="tabContent">
+        <h3>Messages</h3>
+        <p>Messages</p>
+        <div style="overflow-x:auto;">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Email</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>john@example.com</td>
+                    <td>
+                        <button type="submit" class="btn btn-success pull-right" formaction="">Send Message</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mary</td>
+                    <td>Moe</td>
+                    <td>mary@example.com</td>
+                    <td>
+                        <button type="submit" class="btn btn-success pull-right" formaction="">Send Message</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>July</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                    <td>
+                        <button type="submit" class="btn btn-success pull-right" formaction="">Send Message</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function changeTab(event, dashBoardTab) {
+        var tabIndex, tabContent, tablinks;
+        tabContent = document.getElementsByClassName("tabContent");
+        for (tabIndex = 0; tabIndex < tabContent.length; tabIndex++) {
+            tabContent[tabIndex].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (tabIndex = 0; tabIndex < tablinks.length; tabIndex++) {
+            tablinks[tabIndex].className = tablinks[tabIndex].className.replace(" active", "");
+        }
+        document.getElementById(dashBoardTab).style.display = "block";
+        event.currentTarget.className += " active";
+    }
+
+    document.getElementById("defaultTab").click();
+</script>

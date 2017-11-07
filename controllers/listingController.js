@@ -7,7 +7,7 @@ module.exports.createListing = function (req, res) {
     let state = req.body.state;
     let zip = req.body.zipcode;
     let price = req.body.price;
-    let builtYear = req.body.builtYear;
+    let buildYear = req.body.buildYear;
     let bath = req.body.bathroomNumber;
     let bed = req.body.bedroomNumber;
 
@@ -15,7 +15,7 @@ module.exports.createListing = function (req, res) {
     req.checkBody('city', 'City is required').notEmpty();
     req.checkBody('state', 'State is required').notEmpty();
     req.checkBody('zipcode', 'Zip code is required').notEmpty();
-    req.checkBody('builtYear', 'Build year is required').notEmpty();
+    req.checkBody('buildYear', 'Build year is required').notEmpty();
     req.checkBody('price', 'Price is required').notEmpty();
     req.checkBody('bathroomNumber', 'Number of bathrooms is required').notEmpty();
     req.checkBody('bedroomNumber', 'Number of bedrooms is required').notEmpty();
@@ -35,12 +35,12 @@ module.exports.createListing = function (req, res) {
             state: state,
             zipcode: zip,
             price: price,
-            buildYear: builtYear,
+            buildYear: buildYear,
             bedrooms: bed,
             bathrooms: bath
         });
         req.flash('success_msg', 'Listing created successfully');
-        res.redirect('listing');//should be agent dashbord
+        res.redirect('/dashboard');
         properties.save((err) => {
             if (err) {
                 return res.send(err);

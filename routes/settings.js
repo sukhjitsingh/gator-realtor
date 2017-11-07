@@ -1,20 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const settingsController = require('../controller/settingsController');
+const settingsController = require('../controllers/settingsController');
 
 
 /* GET home page. */
-router.get('/', function(request, response) {
-    response.render('accountSettings')
-});
+router.get('/', settingsController.loadInfo);
 
-router.post('/cancel', function(request, response) {
-    response.render('accountSettings')
-});
+router.post('/cancel', settingsController.loadInfo);
 
 router.post('/delete', function(request, response) {
     request.flash('success_msg', 'Account was deleted successfully');
-    return response.redirect('/login')
+    response.redirect('/login')
 });
 
 router.post('/save', settingsController.modify);

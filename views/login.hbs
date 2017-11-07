@@ -1,19 +1,24 @@
 <div class="container">
-<h2 class="page-header">Account Login</h2>
-<form method="post" action="/fa17g11/login">
-    <div class="form-group">
-        <label>Email</label>
-        <input type="text" class="form-control" name="email" placeholder="Email">
-    </div>
-    <div class="form-group">
-        <label>Password</label>
-        <input type="password" class="form-control" name="password" placeholder="Password">
-    </div>
-
-
-    <button type="submit" class="btn btn-primary" formaction="/login/submit" >Sign in </button>
-    <button type="submit" class="btn btn-primary" formaction = "/login/register">Sign up</button>
-
-
-</form>
+    <h2 class="page-header text-center">Account Login</h2>
+    <form method="post" action="/login">
+        <div class="row">
+            <div id="loginInformation" class="col-md-6 offset-md-3">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" name="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Password">
+                </div>
+                    <div class="form-row justify-content-between m-0 mb-3">
+                        <button type="submit" class="btn btn-danger col-4" formaction="/login">Cancel</button>
+                        <button type="submit" class="btn btn-success col-4" formaction="/login/signin">Log in</button>
+                    </div>
+                    <div>
+                    <button type="submit" class="btn btn-block btn-primary" formaction="/login/signup">Sign up</button>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>

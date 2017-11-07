@@ -20,11 +20,11 @@ module.exports.create = function (req, res) {
     let errors = req.validationErrors();
 
     if (errors) {
-        res.render('register', {
+        res.render('signup', {
             errors: errors
         });
     } else {
-        let agent = new models.Agent({
+        let user = new models.User({
             firstName: firstName,
             lastName: lastName,
             email: email,
@@ -33,13 +33,13 @@ module.exports.create = function (req, res) {
         });
 
         bcrypt.genSalt(10, function (err, salt) {
-            bcrypt.hash(agent.password, salt, function (err, hash) {
+            bcrypt.hash(user.password, salt, function (err, hash) {
                 if (err) {
                     return res.send(err);
                 }
-                agent.password = hash;
+                user.password = hash;
                 req.flash('success_msg', 'You are registered and now can login');
-                agent.save((err) => {
+                user.save((err) => {
                     if (err) {
                         return res.send(err);
                     } else {

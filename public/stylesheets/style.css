@@ -6,3 +6,10 @@ body {
 a {
   color: #00B7FF;
 }
+
+.card-img-bottom {
+  color: #fff;
+  height: 20rem;
+  background: url(images/img1.jpg) center no-repeat;
+  background-size: cover;
+}
