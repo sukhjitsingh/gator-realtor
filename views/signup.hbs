@@ -4,10 +4,10 @@
     {{/each}}
 {{/if}}
 <div class="container">
-    <h2 class="page-header">Sign Up</h2>
+    <h2 class="page-header text-center">Sign Up</h2>
     <form method="post" action="/signup">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 offset-md-3">
                 <div class="form-group">
                     <label>First Name</label>
                     <input type="text" class="form-control" placeholder="First Name" name="firstName">
@@ -34,9 +34,9 @@
                 </div>
                 <div class="col-xs-6">
                     <h3>Are you an agent?</h3>
-                    <input type="radio" name="answer" value="yes">Yes
+                    <input type="radio" name="agent" value="yes">Yes
                     <br>
-                    <input type="radio" name="answer" value="no">No
+                    <input type="radio" name="user" value="no">No
                 </div>
                 <div style="padding: 20px 0px 20px 0px;">
                     <label><input type="checkbox" name="termsOfService">Agree with Terms of Service</label>

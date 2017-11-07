@@ -1,157 +1,321 @@
+<!--{{#if errors}} {{#each errors}}-->
+    <!--<div class="alert alert-danger">{{msg}}</div>-->
+<!--{{/each}} {{/if}}-->
+
+<!--<h1 style="text-align: center"> Create Listing</h1>-->
+
+<!--<div class="container">-->
+    <!--&lt;!&ndash;Form tag start&ndash;&gt;-->
+    <!--<form method="POST" action="/listing">-->
+        <!--<div class="row">-->
+
+
+            <!--&lt;!&ndash;Property Information start&ndash;&gt;-->
+            <!--<div id="propertyInformation" class="col-md-6">-->
+                <!--<h3>Fill in the property information</h3>-->
+
+                <!--<div class="form-row">-->
+                    <!--<div class="form-group col-md-12">-->
+                        <!--<label for="streetAddress">Address 1 *</label>-->
+                        <!--<input type="text" class="form-control" name="streetAddress" placeholder="1234 Main St">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-row">-->
+                    <!--<div class="form-group col-md-12">-->
+                        <!--<label for="streetAddress2">Address 2</label>-->
+                        <!--<input type="text" class="form-control" name="streetAddress2"-->
+                               <!--placeholder="Apartment, studio, or floor">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-row">-->
+                    <!--<div class="form-group col-md-5">-->
+                        <!--<label for="city">City *</label>-->
+                        <!--<input type="text" class="form-control" name="city" placeholder="San Mateo">-->
+                    <!--</div>-->
+                    <!--<div class="form-group col-md-4">-->
+                        <!--<label for="state">State *</label>-->
+                        <!--<select name="state" class="form-control">-->
+                            <!--<option selected>Choose a state</option>-->
+                            <!--<option value="AL">AL</option>-->
+                            <!--<option value="AK">AK</option>-->
+                            <!--<option value="AZ">AZ</option>-->
+                            <!--<option value="AR">AR</option>-->
+                            <!--<option value="CA">CA</option>-->
+                            <!--<option value="CO">CO</option>-->
+                            <!--<option value="CT">CT</option>-->
+                            <!--<option value="DE">DE</option>-->
+                            <!--<option value="DC">DC</option>-->
+                            <!--<option value="FL">FL</option>-->
+                            <!--<option value="GA">GA</option>-->
+                            <!--<option value="HI">HI</option>-->
+                            <!--<option value="ID">ID</option>-->
+                            <!--<option value="IL">IL</option>-->
+                            <!--<option value="IN">IN</option>-->
+                            <!--<option value="IA">IA</option>-->
+                            <!--<option value="KS">KS</option>-->
+                            <!--<option value="KY">KY</option>-->
+                            <!--<option value="LA">LA</option>-->
+                            <!--<option value="ME">ME</option>-->
+                            <!--<option value="MD">MD</option>-->
+                            <!--<option value="MA">MA</option>-->
+                            <!--<option value="MI">MI</option>-->
+                            <!--<option value="MN">MN</option>-->
+                            <!--<option value="MS">MS</option>-->
+                            <!--<option value="MO">MO</option>-->
+                            <!--<option value="MT">MT</option>-->
+                            <!--<option value="NE">NE</option>-->
+                            <!--<option value="NV">NV</option>-->
+                            <!--<option value="NH">NH</option>-->
+                            <!--<option value="NJ">NJ</option>-->
+                            <!--<option value="NM">NM</option>-->
+                            <!--<option value="NY">NY</option>-->
+                            <!--<option value="NC">NC</option>-->
+                            <!--<option value="ND">ND</option>-->
+                            <!--<option value="OH">OH</option>-->
+                            <!--<option value="OK">OK</option>-->
+                            <!--<option value="OR">OR</option>-->
+                            <!--<option value="PA">PA</option>-->
+                            <!--<option value="RI">RI</option>-->
+                            <!--<option value="SC">SC</option>-->
+                            <!--<option value="SD">SD</option>-->
+                            <!--<option value="TN">TN</option>-->
+                            <!--<option value="TX">TX</option>-->
+                            <!--<option value="UT">UT</option>-->
+                            <!--<option value="VT">VT</option>-->
+                            <!--<option value="VA">VA</option>-->
+                            <!--<option value="WA">WA</option>-->
+                            <!--<option value="WV">WV</option>-->
+                            <!--<option value="WI">WI</option>-->
+                            <!--<option value="WY">WY</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                    <!--<div class="form-group col-md-3">-->
+                        <!--<label for="zipcode">Zip code *</label>-->
+                        <!--&lt;!&ndash;<Label>ZIP Code</Label>-->
+                        <!--<input type="text" pattern="[0-9]{5}" title="Five digit zip code" />&ndash;&gt;-->
+                        <!--<input type="text" pattern="[0-9]{5}" class="form-control" name="zipcode" placeholder="95235">-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;Property Information End&ndash;&gt;-->
+
+
+            <!--<div id="propertyDetails" class="col-md-6">-->
+
+                <!--<h3>Details</h3>-->
+
+                <!--<div class="form-row">-->
+                    <!--<div class="form-group col-md-6">-->
+                        <!--<label>Bedrooms *</label>-->
+                        <!--<input type="number" min="0" class="form-control" placeholder="Number of beds" name="bedroomNumber">-->
+                    <!--</div>-->
+                    <!--<div class="form-group col-md-6">-->
+                        <!--<label>Bathrooms *</label>-->
+                        <!--<input type="number" min="0" class="form-control" placeholder="Number of baths" name="bathroomNumber">-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="form-row">-->
+                    <!--<div class="form-group col-md-6">-->
+                        <!--<label>Property Price *</label>-->
+                        <!--<input type="number" min="0" class="form-control" placeholder="price" name="price">-->
+                    <!--</div>-->
+
+                    <!--<div class="form-group col-md-6">-->
+                        <!--<label for="buildYear">Build year *</label>-->
+                        <!--&lt;!&ndash;<input type="number" class="form-control" placeholder="Built in" name="builtYear">&ndash;&gt;-->
+                        <!--<select id="buildYear" class="form-control" name="buildYear"> </select>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+
+
+        <!--<div class=" form-group">-->
+            <!--<label class="custom-file">-->
+                <!--<input type="file" id="file2" class="custom-file-input">-->
+                <!--<span class="custom-file-control"></span>-->
+            <!--</label>-->
+        <!--</div>-->
+        <!--<button type="submit" class="btn btn-success">Create Listing</button>-->
+
+    <!--</form>-->
+
+
+<!--</div>-->
+
+<!--<script>-->
+    <!--//Year printout-->
+    <!--var startYear = new Date().getFullYear();-->
+    <!--var endYear = 1800;-->
+    <!--var options = "<option> Choose a year built </option>";-->
+    <!--for(var year = startYear ; year >= endYear; year--){-->
+        <!--options += "<option>"+ year +"</option>";-->
+    <!--}-->
+    <!--document.getElementById("buildYear").innerHTML = options;-->
+<!--</script>-->
+<style>
+    .img-thumbnail:hover {
+        box-shadow: 0px 0px 150px #000000 ;
+        z-index: 2;
+        -webkit-transition: all 200ms ease-in;
+        -webkit-transform: scale(1.5);
+        -ms-transition: all 200ms ease-in;
+        -ms-transform: scale(1.5);
+        -moz-transition: all 200ms ease-in;
+        -moz-transform: scale(1.5);
+        transition: all 200ms ease-in;
+        transform: scale(1.5);
+    }
+    .img-thumbnail{
+        border: 1pc solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+    window.onbeforeunload = function () {
+        sessionStorage.setItem("address", $('#inputAddress').val());
+        sessionStorage.setItem("address2", $('#inputAddress2').val());
+        sessionStorage.setItem("city", $('#inputCity').val());
+        sessionStorage.setItem("state", $('#inputState').val());
+        sessionStorage.setItem("zipcode", $('#inputZipcode').val());
+        sessionStorage.setItem("bathrooms", $('#inputBathrooms').val());
+        sessionStorage.setItem("bedrooms", $('#inputBedrooms').val());
+        sessionStorage.setItem("year", $('#inputYear').val());
+        sessionStorage.setItem("price", $('#inputPrice').val());
+    };
+    window.onload = function () {
+        let city = sessionStorage.getItem("city");
+        if(city !== null) {
+            $('#inputCity').val(city);
+        }
+
+        let address = sessionStorage.getItem("address");
+        if(address !== null) {
+            $('#inputAddress').val(address);
+        }
+
+        let address2 = sessionStorage.getItem("address2");
+        if(address2 !== null) {
+            $('#inputAddress2').val(address2);
+        }
+
+        let state = sessionStorage.getItem("state");
+        if(state !== null) {
+            $('#inputState').val(state);
+        }
+
+        let zipcode = sessionStorage.getItem("zipcode");
+        if(zipcode !== null) {
+            $('#inputZipcode').val(zipcode);
+        }
+
+        let bathrooms = sessionStorage.getItem("bathrooms");
+        if(bathrooms !== null) {
+            $('#inputBathrooms').val(bathrooms);
+        }
+
+        let bedrooms = sessionStorage.getItem("bedrooms");
+        if(bedrooms !== null) {
+            $('#inputBedrooms').val(bedrooms);
+        }
+
+        let price = sessionStorage.getItem("price");
+        if(price !== null) {
+            $('#inputPrice').val(price);
+        }
+
+        let year = sessionStorage.getItem("year");
+        if(name !== null) {
+            $('#inputYear').val(year);
+        }
+    }
+</script>
+
 {{#if errors}} {{#each errors}}
     <div class="alert alert-danger">{{msg}}</div>
 {{/each}} {{/if}}
-
-<h1 style="text-align: center"> Create Listing</h1>
-
 <div class="container">
-    <!--Form tag start-->
-    <form method="POST" action="/listing">
-        <div class="row">
-
-
-            <!--Property Information start-->
-            <div id="propertyInformation" class="col-md-6">
-                <h3>Fill in the property information</h3>
-
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <label for="streetAddress">Address 1 *</label>
-                        <input type="text" class="form-control" name="streetAddress" placeholder="1234 Main St">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <label for="streetAddress2">Address 2</label>
-                        <input type="text" class="form-control" name="streetAddress2"
-                               placeholder="Apartment, studio, or floor">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-5">
-                        <label for="city">City *</label>
-                        <input type="text" class="form-control" name="city" placeholder="San Mateo">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="state">State *</label>
-                        <select name="state" class="form-control">
-                            <option selected>Choose a state</option>
-                            <option value="AL">AL</option>
-                            <option value="AK">AK</option>
-                            <option value="AZ">AZ</option>
-                            <option value="AR">AR</option>
-                            <option value="CA">CA</option>
-                            <option value="CO">CO</option>
-                            <option value="CT">CT</option>
-                            <option value="DE">DE</option>
-                            <option value="DC">DC</option>
-                            <option value="FL">FL</option>
-                            <option value="GA">GA</option>
-                            <option value="HI">HI</option>
-                            <option value="ID">ID</option>
-                            <option value="IL">IL</option>
-                            <option value="IN">IN</option>
-                            <option value="IA">IA</option>
-                            <option value="KS">KS</option>
-                            <option value="KY">KY</option>
-                            <option value="LA">LA</option>
-                            <option value="ME">ME</option>
-                            <option value="MD">MD</option>
-                            <option value="MA">MA</option>
-                            <option value="MI">MI</option>
-                            <option value="MN">MN</option>
-                            <option value="MS">MS</option>
-                            <option value="MO">MO</option>
-                            <option value="MT">MT</option>
-                            <option value="NE">NE</option>
-                            <option value="NV">NV</option>
-                            <option value="NH">NH</option>
-                            <option value="NJ">NJ</option>
-                            <option value="NM">NM</option>
-                            <option value="NY">NY</option>
-                            <option value="NC">NC</option>
-                            <option value="ND">ND</option>
-                            <option value="OH">OH</option>
-                            <option value="OK">OK</option>
-                            <option value="OR">OR</option>
-                            <option value="PA">PA</option>
-                            <option value="RI">RI</option>
-                            <option value="SC">SC</option>
-                            <option value="SD">SD</option>
-                            <option value="TN">TN</option>
-                            <option value="TX">TX</option>
-                            <option value="UT">UT</option>
-                            <option value="VT">VT</option>
-                            <option value="VA">VA</option>
-                            <option value="WA">WA</option>
-                            <option value="WV">WV</option>
-                            <option value="WI">WI</option>
-                            <option value="WY">WY</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="zipcode">Zip code *</label>
-                        <!--<Label>ZIP Code</Label>
-                        <input type="text" pattern="[0-9]{5}" title="Five digit zip code" />-->
-                        <input type="text" pattern="[0-9]{5}" class="form-control" name="zipcode" placeholder="95235">
-                    </div>
+    <div class="row">
+        <form method="POST" action="/listing">
+            <div class="form-row">
+                <div class="form-group col-md-12 ">
+                    <label for="streetAddress">Address</label>
+                    <input type="text" id="inputAddress" class="form-control" name="streetAddress" placeholder="1234 Main St">
                 </div>
             </div>
-            <!--Property Information End-->
-
-
-            <div id="propertyDetails" class="col-md-6">
-
-                <h3>Details</h3>
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>Bedrooms *</label>
-                        <input type="number" min="0" class="form-control" placeholder="Number of beds" name="bedroomNumber">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>Bathrooms *</label>
-                        <input type="number" min="0" class="form-control" placeholder="Number of baths" name="bathroomNumber">
-                    </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="streetAddress2">Address</label>
+                    <input type="text" id="inputAddress2" class="form-control" name="streetAddress2" placeholder="Apartment, studio, or floor">
                 </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>Property Price *</label>
-                        <input type="number" min="0" class="form-control" placeholder="price" name="price">
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label for="buildYear">Build year *</label>
-                        <!--<input type="number" class="form-control" placeholder="Built in" name="builtYear">-->
-                        <select id="buildYear" class="form-control" name"buildYear"> </select>
-                    </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="city">City</label>
+                    <input type="text" id="inputCity" class="form-control" name="city" placeholder="San Mateo">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="state">State</label>
+                    <select name="state" class="form-control" id="inputState">
+                        <option selected>Choose...</option>
+                        <option>CA</option>
+                        <option>AZ</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="zipcode">Zip code</label>
+                    <input type="number" id="inputZipcode" class="form-control" name="zipcode" placeholder="95235">
                 </div>
             </div>
 
+            <h2>Details</h2>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label>Bedrooms</label>
+                    <input type="number" id="inputBedrooms" class="form-control" placeholder ="Number of beds" name="bedroomNumber">
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Bathrooms</label>
+                    <input type="number" id="inputBathrooms" class="form-control" placeholder ="Number of baths" name="bathroomNumber">
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Build year</label>
+                    <input type="number"id="inputYear" class="form-control" placeholder ="Built in" name="buildYear" >
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Property Price</label>
+                    <input type="number" id="inputPrice"class="form-control" placeholder ="price" name="price">
+                </div>
+                <br>
+            </div>
+            <button type="submit" class="btn btn-primary pull-right" formaction="/listing/create">Create Listing</button>
+        </form>
+    </div>
+    <form method="POST" action="/listing" enctype="multipart/form-data">
+        <div >
+            <h3>Pictures</h3>
+            {{#if msg }}
+                {{msg}}
+            {{/if}}
+            {{#each results}}
+                <img src="{{imageLink}}" class = "img-thumbnail">
+            {{/each}}
+            <div class="file-field input-field">
+                <div class="btn grey">
+                    <span>File</span>
+                    <input name="photos" type="file">
+                </div>
+            </div>
+            <br>
         </div>
-
-
-        <div class=" form-group">
-            <label class="custom-file">
-                <input type="file" id="file2" class="custom-file-input">
-                <span class="custom-file-control"></span>
-            </label>
-        </div>
-        <button type="submit" class="btn btn-success">Create Listing</button>
-
+        <button type="submit" class="btn pull-left" formaction="/listing">Add pictures</button>
     </form>
-
-
 </div>
 
-<script>
-    //Year printout
-    var startYear = new Date().getFullYear();
-    var endYear = 1800;
-    var options = "<option> Choose a year built </option>";
-    for(var year = startYear ; year >= endYear; year--){
-        options += "<option>"+ year +"</option>";
-    }
-    document.getElementById("buildYear").innerHTML = options;
-</script>
+

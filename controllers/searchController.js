@@ -3,7 +3,7 @@ const sequelize = require('sequelize');
 const Op = sequelize.Op;
 const validator = require('validator');
 
-module.exports.porcessSearch =function(request, response) {
+module.exports.porcessSearch = function(request, response) {
     if (!request.body) return response.sendStatus(400);
     const query = request.body.searchQuery;
 
@@ -58,8 +58,28 @@ module.exports.porcessSearch =function(request, response) {
                 return response.send(err);
             });
     }
+};
 
+module.exports.displayImages = function(request, response) {
 
+    models.Images.sequelize.query( "SELECT imageLink FROM `Images` WHERE `propertyId` = 1",
+        { type: sequelize.QueryTypes.SELECT })
+        .then(results => {response.render('listing', {results})
+        })
+        .catch((err) => {
+            return response.send(err);
+        })
+};
+
+module.exports.loadInfo = function(request, response) {
+
+    models.Agent.sequelize.query( "SELECT * FROM `Agents` WHERE `agentId` = 1",
+        { type: sequelize.QueryTypes.SELECT })
+        .then(results => {response.render('accountSettings', {results})
+        })
+        .catch((err) => {
+            return response.send(err);
+        })
 };
 
 function sortByPrice() {

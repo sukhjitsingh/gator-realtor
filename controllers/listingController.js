@@ -7,7 +7,7 @@ module.exports.createListing = function (req, res) {
     let state = req.body.state;
     let zip = req.body.zipcode;
     let price = req.body.price;
-    let buildYear = req.body.buildYear;
+    let builtYear = req.body.builtYear;
     let bath = req.body.bathroomNumber;
     let bed = req.body.bedroomNumber;
 
@@ -35,12 +35,12 @@ module.exports.createListing = function (req, res) {
             state: state,
             zipcode: zip,
             price: price,
-            buildYear: buildYear,
+            buildYear: builtYear,
             bedrooms: bed,
             bathrooms: bath
         });
         req.flash('success_msg', 'Listing created successfully');
-        res.redirect('listing');//should be agent dashbord
+        res.redirect('/dashboard');
         properties.save((err) => {
             if (err) {
                 return res.send(err);

@@ -5,6 +5,7 @@ const path = require('path');
 
 router.use(express.static('./public'));
 
+
 const storage = multer.diskStorage({
     destination: './public/images/uploads',
     filename: function(req, file, cb){
@@ -36,30 +37,17 @@ function checkFileType(file, cb){
     }
 }
 
-router.get('/upload', function(req, res){
-    res.render('upload');
-});
-
-
 //upload
-router.post('/upload', (req, res) => {
+module.exports.upload = function(req, res) {
     upload(req, res, (err) => {
         if(err){
-            res.render('upload', {
                 msg:err
-            });
         } else {
             if(req.file == undefined){
-                res.render('upload', {
-                   msg: 'Error: No File Selected!'
-                });
-            } else {
-                res.render('upload', {
-                    msg: 'File Uploaded',
-                    file: `images/uploads/${req.file.filename}`
-                });
+                    msg: 'Error: No File Selected!'
+            }  else {
+                    msg: 'File Uploaded'
             }
         }
     });
-});
-module.exports = router;
+};

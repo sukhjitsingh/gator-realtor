@@ -14,9 +14,10 @@ var signup = require('./routes/signup');
 var listing = require('./routes/listing');
 var dashboard = require('./routes/dashboard');
 var settings = require('./routes/settings');
-var upload = require('./routes/upload');
 var search = require('./routes/search');
 var login = require('./routes/login');
+var agent = require('./routes/agent');
+
 
 
 var app = express();
@@ -36,11 +37,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
+//app.set('trust proxy', 1);
 app.use(session({
-    secret: 'secret',
+    secret: 'keyboard cat',
     saveUninitialized: true,
-    resave: true,
-   // cookie: {secure: true }
+    resave: false,
+    //cookie: {secure: true }
 }));
 
 app.use(flash());
@@ -74,11 +76,6 @@ app.use(function (req, res, next) {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
-    next();
-});
-
-
-app.get('*', function(req, res, next){
     res.locals.user = req.user || null;
     next();
 });
@@ -86,11 +83,11 @@ app.get('*', function(req, res, next){
 app.use('/', index);
 app.use('/signup', signup);
 app.use('/search', search);
-app.use('/upload', upload);
 app.use('/listing', listing);
 app.use('/dashboard', dashboard);
 app.use('/settings', settings);
 app.use('/login', login);
+app.use('/agent', agent);
 
 
 

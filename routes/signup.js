@@ -8,7 +8,10 @@ router.get('/', function(req, res){
 });
 
 // Signup Page
+
 router.post('/create', agentController.create);
+// router.post('/create', userController.create);
+
 
 // Redirect Signin Page
 router.post('/', function(req, res){
