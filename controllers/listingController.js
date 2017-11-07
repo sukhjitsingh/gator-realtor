@@ -40,7 +40,7 @@ module.exports.createListing = function (req, res) {
             bathrooms: bath
         });
         req.flash('success_msg', 'Listing created successfully');
-        res.redirect('listing');//should be agent dashbord
+        res.redirect('/dashboard');
         properties.save((err) => {
             if (err) {
                 return res.send(err);

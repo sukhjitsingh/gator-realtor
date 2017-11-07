@@ -2,20 +2,16 @@ const express = require('express');
 const router = express.Router();
 const agentController = require('../controllers/agentController');
 
-// Render Lognin Page
+// Render Login Page
 router.get('/', function(request, response, next) {
     response.render('login')
 });
 
-// Lognin Page
-router.post('/login', function(req, res){
-    res.render('login');
-});
-
 // Redirect to Dashboard Page
-router.post('/signin', function(req, res) {
-    res.redirect('/dashboard')
-});
+// router.post('/signin', function(req, res) {
+//     res.redirect('/dashboard')
+// });
+router.post('/signin', agentController.login);
 
 // Redirect to Dashboard Page
 router.post('/signup', function(req, res) {

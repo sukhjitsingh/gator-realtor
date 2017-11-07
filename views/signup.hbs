@@ -4,10 +4,10 @@
     {{/each}}
 {{/if}}
 <div class="container">
-    <h2 class="page-header">Sign Up</h2>
+    <h2 class="page-header text-center">Sign Up</h2>
     <form method="post" action="/signup">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 offset-md-3">
                 <div class="form-group">
                     <label>First Name</label>
                     <input type="text" class="form-control" placeholder="First Name" name="firstName">
@@ -32,16 +32,27 @@
                     <label>Confirm Password</label>
                     <input type="password" class="form-control" placeholder="Password" name="password2">
                 </div>
+                <div class="form-group col-xs-6">
+                    <label>Are you an agent?</label> <br>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" value="yes"> Yes
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" value="no"> No
+                        </label>
+                    </div>
+                </div>
                 <div class="col-xs-6">
-                    <h3>Are you an agent?</h3>
-                    <input type="radio" name="answer" value="yes">Yes
-                    <br>
-                    <input type="radio" name="answer" value="no">No
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="termsOfService">Agree with Terms of Service
+                        </label>
+                    </div>
                 </div>
-                <div style="padding: 20px 0px 20px 0px;">
-                    <label><input type="checkbox" name="termsOfService">Agree with Terms of Service</label>
-                </div>
-
+            
                 <button type="submit" class="btn btn-danger pull-left" formaction="/signup">Cancel</button>
                 <button type="submit" class="btn btn-success pull-right" formaction="/signup/create">Create Account</button>
 

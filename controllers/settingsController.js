@@ -1,3 +1,5 @@
+const searchController = require('../controllers/searchController');
+
 module.exports.modify = function (req, res) {
     let firstName = req.body.firstName;
     let lastName = req.body.lastName;
@@ -32,12 +34,12 @@ module.exports.modify = function (req, res) {
             agent({firstName: firstName});
         }
         if (lastName) {
-            agent({lastName: 'undefined'});
+            agent({lastName: lastName});
         }
         if (email) {
             agent({email: email});
         }
-        if (newPassword ) {
+        if (newPassword) {
             agent({password: newPassword});
         }
 
@@ -50,11 +52,16 @@ module.exports.modify = function (req, res) {
             });
         });
         req.flash('success_msg', 'Profile was updated successfully');
-        res.redirect('accountSettings');
+        res.redirect('/accountSettings');
         agent.save((err) => {
             if (err) {
                 return res.send(err);
             }
         });
     }
+};
+
+module.exports.loadInfo = function (req, res) {
+    searchController.loadInfo(req, res);
+
 };
