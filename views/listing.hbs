@@ -91,8 +91,6 @@
                     </div>
                     <div class="form-group col-md-3">
                         <label for="zipcode">Zip code *</label>
-                        <!--<Label>ZIP Code</Label>
-                        <input type="text" pattern="[0-9]{5}" title="Five digit zip code" />-->
                         <input type="text" pattern="[0-9]{5}" class="form-control" name="zipcode" placeholder="95235">
                     </div>
                 </div>
@@ -127,18 +125,12 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Property Price *</label>
-                        <input type="number" min="0" class="form-control" placeholder="price" name="price">
+                        <input type="number" min="0"  class="form-control" placeholder="price" name="price">
                     </div>
 
                     <div class="form-group col-md-6">
-
-                        {{!-- <label for="buildYear">Build year *</label>
-                        <!--<input type="number" class="form-control" placeholder="Built in" name="builtYear">-->
-                        <select id="buildYear" class="form-control" name"buildYear"> </select> --}}
-
-                        <label for="builtYear">Build year *</label>
-                        <select id="builtYear" class="form-control"> </select>
-
+                        <label for="builtYear">Built year *</label>
+                        <input type="number" min="0" max="2020" pattern="[0-9]{4}"  class="form-control" placeholder="Built in" name="builtYear">
                     </div>
                 </div>
 
@@ -197,14 +189,3 @@
 
     </form>
 </div>
-
-<script>
-    //Year printout
-    var startYear = new Date().getFullYear();
-    var endYear = 1800;
-    var options = "<option> Choose a year built </option>";
-    for(var year = startYear ; year >= endYear; year--){
-        options += "<option>"+ year +"</option>";
-    }
-    document.getElementById("buildYear").innerHTML = options;
-</script>

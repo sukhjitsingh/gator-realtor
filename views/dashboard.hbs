@@ -1,27 +1,4 @@
 <style>
-
-    .card {
-        margin: 0 auto;
-        float: none;
-        margin-bottom: 10px;
-        width: 300px;
-        height: 300px;
-    }
-
-    #cardImage{
-        position: relative;
-        width: 100%;
-    }
-
-    #cardListingPrice{
-        color: white;
-        position: absolute;
-        top: 250px;
-        left: 0;
-        width: 100%;
-    }
-
-
     /* Style the tab */
     div.tab {
         float: left;
@@ -29,7 +6,6 @@
         background-color: #f1f1f1;
         width: 10%;
         height: 600px;
-        /*height: 100%;*/
     }
 
     /* Style the buttons inside the tab */
@@ -44,7 +20,7 @@
         text-align: left;
         cursor: pointer;
         transition: 0.3s;
-        font-size: 17px;
+        font-size: 100%;
     }
 
     /* Change background color of buttons on hover */
@@ -60,67 +36,105 @@
         width: 90%;
         border-left: none;
         height: 600px;
-        /*height:100%;*/
     }
 
 </style>
 
-<div class="container jumbotron-fluid">
+<div class="container" style=" height: 100%; width: 100%">
     <h1>My Profile</h1>
     <div class="tab">
-        <button class="tablinks" onclick="changeTab(event, 'Listings')" id="defaultTab">Listings</button>
-        <button class="tablinks" onclick="changeTab(event, 'Messages')">Messages</button>
-        <button class="tablinks" onclick="changeTab(event, 'Other')">Other</button>
+        <button class="tablinks" style="word-wrap: break-word" onclick="changeTab(event, 'Listings')" id="defaultTab">Listings</button>
+        <button class="tablinks" style="word-wrap: break-word" onclick="changeTab(event, 'Messages')">Messages</button>
     </div>
 
     <div id="Listings" class="tabContent">
         <h3>Listings</h3>
         <p>Listings</p>
-        <div class="row" style="margin: 30px 0px 30px 0px;">
 
-            <div class="col-sm-6">
-                <div class="card">
-                    <a href="#"><img class="card-img-top" style="width:300px;height:300px;"
-                                     src="https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg"
-                                     alt="ListingThree">
-                    </a>
-                    <div class="card-block">
-                        <h4 class="card-title">Listing Three</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                    </div>
-                </div>
-            </div>
+        <!--table start-->
+        <div style="overflow-x:auto;">
+            <table class="table table-hover">
+                <!--table header start-->
+                <thead>
+                <tr>
+                    <th>Address</th>
+                    <th>ListingNumber</th>
+                </tr>
+                </thead>
+                <!--table header end-->
 
-            <div class="col-sm-6">
-                <div class="card">
-                    <div id="cardImage">
-                        <a href="#"><img class="card-img-top" style="width:300px;height:300px;"
-                                         src="https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg"
-                                         alt="ListingThree">
-                        </a>
-                        <h2 id="cardListingPrice">$ 1000</h2>
-                    </div>
-                    <div class="card-block">
-                        <h4 class="card-title">Listing Four</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                    </div>
-                </div>
-            </div>
-
+                <!--table body start-->
+                <tbody>
+                <tr>
+                    <td>221 B Baker St.{{address}}</td>
+                    <td>00000{{listingID}}</td>
+                    <td>
+                        <button type="submit" class="btn btn-success pull-right" formaction="">Go To Listing</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>42 Wallaby Way, Sydney{{address}}</td>
+                    <td>99999{{listingID}}</td>
+                    <td>
+                        <button type="submit" class="btn btn-success pull-right" formaction="">Go To Listing</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>End of Mt. Lee Dr{{address}}</td>
+                    <td>11111{{listingID}}</td>
+                    <td>
+                        <button type="submit" class="btn btn-success pull-right" formaction="">Go To Listing</button>
+                    </td>
+                </tr>
+                </tbody>
+                <!--table body end-->
+            </table>
+            <!--table end-->
         </div>
+
+
     </div>
 
     <div id="Messages" class="tabContent">
         <h3>Messages</h3>
         <p>Messages</p>
-
-    </div>
-
-    <div id="Other" class="tabContent">
-        <h3>Other</h3>
-        <p>Other stuff</p>
+        <div style="overflow-x:auto;">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Email</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>john@example.com</td>
+                    <td>
+                        <button type="submit" class="btn btn-success pull-right" formaction="">Send Message</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mary</td>
+                    <td>Moe</td>
+                    <td>mary@example.com</td>
+                    <td>
+                        <button type="submit" class="btn btn-success pull-right" formaction="">Send Message</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>July</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                    <td>
+                        <button type="submit" class="btn btn-success pull-right" formaction="">Send Message</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
