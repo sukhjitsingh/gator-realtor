@@ -182,6 +182,26 @@
                         <input type="number" id="inputZipcode" pattern="[0-9]{5}" class="form-control" name="zipcode" placeholder="95235">
                     </div>
                 </div>
+
+                <form method="POST" action="/listing" enctype="multipart/form-data">
+                    <div>
+                        <h3>Pictures</h3>
+                        {{#if msg }}
+                            {{msg}}
+                        {{/if}}
+                        {{#each results}}
+                            <img src="{{imageLink}}" class = "img-thumbnail">
+                        {{/each}}
+                        <label class="custom-file">
+                            <input type="file" id="file2" class="custom-file-input" multiple>
+                            <span class="custom-file-control"></span>
+                        </label>
+
+                         <button type="submit" class="btn btn-light " formaction="/listing" style="margin-left:10px">Add pictures</button>
+                    </div>
+                 
+                       
+                </form>
             </div>
             <!--Property Information End-->
             
@@ -254,8 +274,8 @@
 
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <label>Others</label>
-                        <input style="height:150px" type="text" min="0" class="form-control" name="Others">
+                        <label>Description</label>
+                        <textarea style="height:150px" type="text" min="0" class="form-control" name="Description"></textarea>
                     </div>
                 </div>
 
@@ -265,23 +285,7 @@
             <button type="submit" class="btn btn-primary pull-right" formaction="/listing/create">Create Listing</button>  
     </form>
 
-    <form method="POST" action="/listing" enctype="multipart/form-data">
-        <div>
-            <h3>Pictures</h3>
-            {{#if msg }}
-                {{msg}}
-            {{/if}}
-            {{#each results}}
-                <img src="{{imageLink}}" class = "img-thumbnail">
-            {{/each}}
-            <label class="custom-file">
-                <input type="file" id="file2" class="custom-file-input" multiple>
-                <span class="custom-file-control"></span>
-            </label>
-        </div>
-        <br>
-            <button type="submit" class="btn btn-light pull-left" formaction="/listing">Add pictures</button>
-    </form>
+   
 </div>
 
 

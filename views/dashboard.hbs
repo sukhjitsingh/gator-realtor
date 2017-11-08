@@ -41,6 +41,24 @@
 </style>
 
 <div class="container" style=" height: 100%; width: 100%">
+     <div class="row">
+        <!--Search Bar Start-->
+        <div style="padding: 40px; " class="col-md-12">
+            <form action="/search" method="POST">
+                <div id="custom-search-input">
+                    <div class="input-group col-md-12">
+                        <input type="text" class="form-control input-lg" placeholder="Search by city or zip"
+                               name="searchQuery"/>
+                        <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="submit" formaction="/search">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
     <h1>My Profile</h1>
     <div class="tab">
         <button class="tablinks" style="word-wrap: break-word" onclick="changeTab(event, 'Listings')" id="defaultTab">Listings</button>
