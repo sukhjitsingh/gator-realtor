@@ -21,8 +21,7 @@
     }
 
     .img-center {
-        margin:0
-        auto;
+        margin: 0 auto;
     }
 </style>
 
@@ -33,7 +32,7 @@
     <div class="row">
 
         <div class="col-md-6">
-            <div id="carouselIndicators" class="carousel slide"  data-ride="carousel">
+            <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselIndicators" data-slide-to="1"></li>
@@ -106,7 +105,7 @@
                 <br>
             </ul>
             <br>
-            <h2 style="text-align: center">Features</h2>
+            <h1 style="text-align: center">Features</h1>
             <hr>
             <ul>
                 Type: {{typeOfHouse}} multi-family
@@ -132,7 +131,33 @@
                 Terry Crews
                 <br>
                 {{phoneNumber}} (415) 333 - 4444 </p>
-            <button type="submit" class="btn btn-success pull-right" style="width: 100%;">Send Message</button>
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Name"
+                           value="Chris Rock{{firstName}} {{lastName}}" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Email"
+                           value="chrisrock@gmail.com{{email}}" required>
+                </div>
+                <div class="form-group">
+                    <input type="phone-number" class="form-control" placeholder="Phone Number" name="phoneNumber"
+                           value="(415) 555 - 6666{{phoneNumber}}">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject"
+                           value="Listing Number: 12345{{listingNumber}}"
+                           required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" type="textArea" id="message" placeholder="Message"
+                              rows="7"
+                    >Hello Terry Crews{{agent}}, I am interested in 1001 Potrero Ave San Francisco, California 94110 {{addressNumber}} {{street}} {{city}} {{state}} {{zipCode}}</textarea>
+                </div>
+                <button type="button" id="cancel" name="cancel" class="btn btn-danger pull-left">Cancel</button>
+                <button type="button" id="sendMessage" name="sendMessage" class="btn btn-success pull-right">Send
+                </button>
+            </form>
 
         </div>
     </div>

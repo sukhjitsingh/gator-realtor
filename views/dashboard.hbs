@@ -40,17 +40,18 @@
 
 </style>
 
-<div class="container" style=" height: 100%; width: 100%">
+<div class="container">
     <h1>My Profile</h1>
     <div class="tab">
-        <button class="tablinks" style="word-wrap: break-word" onclick="changeTab(event, 'Listings')" id="defaultTab">Listings</button>
+        <button class="tablinks" style="word-wrap: break-word" onclick="changeTab(event, 'Listings')" id="defaultTab">
+            Listings
+        </button>
         <button class="tablinks" style="word-wrap: break-word" onclick="changeTab(event, 'Messages')">Messages</button>
     </div>
 
     <div id="Listings" class="tabContent">
         <h3>Listings</h3>
-        <p>Listings</p>
-
+        <hr>
         <!--table start-->
         <div style="overflow-x:auto;">
             <table class="table table-hover">
@@ -69,6 +70,12 @@
                     <td>221 B Baker St.{{address}}</td>
                     <td>00000{{listingID}}</td>
                     <td>
+                        <button type="submit" class="btn btn-danger pull-right" formaction="">Delete Listing</button>
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-primary pull-right" formaction="">Edit Listing</button>
+                    </td>
+                    <td>
                         <button type="submit" class="btn btn-success pull-right" formaction="">Go To Listing</button>
                     </td>
                 </tr>
@@ -76,12 +83,24 @@
                     <td>42 Wallaby Way, Sydney{{address}}</td>
                     <td>99999{{listingID}}</td>
                     <td>
+                        <button type="submit" class="btn btn-danger pull-right" formaction="">Delete Listing</button>
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-primary pull-right" formaction="">Edit Listing</button>
+                    </td>
+                    <td>
                         <button type="submit" class="btn btn-success pull-right" formaction="">Go To Listing</button>
                     </td>
                 </tr>
                 <tr>
                     <td>End of Mt. Lee Dr{{address}}</td>
                     <td>11111{{listingID}}</td>
+                    <td>
+                        <button type="submit" class="btn btn-danger pull-right" formaction="">Delete Listing</button>
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-primary pull-right" formaction="">Edit Listing</button>
+                    </td>
                     <td>
                         <button type="submit" class="btn btn-success pull-right" formaction="">Go To Listing</button>
                     </td>
@@ -97,45 +116,103 @@
 
     <div id="Messages" class="tabContent">
         <h3>Messages</h3>
-        <p>Messages</p>
-        <div style="overflow-x:auto;">
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Email</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>john@example.com</td>
-                    <td>
-                        <button type="submit" class="btn btn-success pull-right" formaction="">Send Message</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Mary</td>
-                    <td>Moe</td>
-                    <td>mary@example.com</td>
-                    <td>
-                        <button type="submit" class="btn btn-success pull-right" formaction="">Send Message</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                    <td>
-                        <button type="submit" class="btn btn-success pull-right" formaction="">Send Message</button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+        <hr>
+        <!--card messages start-->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        Rick Sanchez{{firstName}} {{lastName}}
+                    </div>
+
+                    <div class="col-md-4">
+                        12345 {{listingNumber}}
+                    </div>
+                    <div class="col-md-2">
+                        11/9/17{{date}}
+                    </div>
+                </div>
+            </div>
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-info pull-left" data-toggle="collapse" data-target="#messageOne">
+                            View Message
+                        </button>
+                    </div>
+                    <div id="messageOne" class="collapse col-md-10">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </div>
+                </div>
+            </div>
         </div>
+        <!--card messages end-->
+
+
+        <!--card messages start-->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        Batman{{firstName}} {{lastName}}
+                    </div>
+
+                    <div class="col-md-4">
+                        00000 {{listingNumber}}
+                    </div>
+                    <div class="col-md-2">
+                        11/9/17{{date}}
+                    </div>
+                </div>
+            </div>
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-info pull-left" data-toggle="collapse" data-target="#message">
+                            View Message
+                        </button>
+                    </div>
+                    <div id="message" class="collapse col-md-10">
+                        Lorem ipsum dolor sit ametg, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--card messages end-->
+
+        <!--card messages start-->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        Louis CK{{firstName}} {{lastName}}
+                    </div>
+
+                    <div class="col-md-4">
+                        99999 {{listingNumber}}
+                    </div>
+                    <div class="col-md-2">
+                        11/9/17{{date}}
+                    </div>
+                </div>
+            </div>
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-info pull-left" data-toggle="collapse" data-target="#1{{messageNumber}}">
+                            View Message
+                        </button>
+                    </div>
+                    <div id="1{{messageNumber}}" class="collapse col-md-10">
+                        Lorem ipsumf dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--card messages end-->
+
     </div>
+        <p style="color: #eee"> Filler text to get jumbotron to work</p>
 </div>
 
 <script>
