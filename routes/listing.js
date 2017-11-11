@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const listingController = require('../controllers/listingController');
-const uploadController = require('../controllers/uploadController');
-const searchController = require('../controllers/searchController');
+const imageUploadController = require('../controllers/imageUploadController');
+const queriesController = require('../controllers/queriesController');
 
 
 router.get('/', function (req, res, next) {
@@ -12,10 +12,10 @@ router.get('/', function (req, res, next) {
 router.post('/create', listingController.createListing);
 
 router.post('/', function (req, res, next) {
-    uploadController.upload(req, res);
+    imageUploadController.upload(req, res);
     next()
 }, function (req, res, next) {
-    searchController.displayImages(req, res);
+    queriesController.displayImages(req, res);
 });
 
 module.exports = router;

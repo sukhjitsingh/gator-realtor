@@ -1,17 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const agentController = require('../controllers/agentController');
+const loginController = require('../controllers/loginController');
 
 // Render Login Page
 router.get('/', function(request, response, next) {
     response.render('login')
 });
 
-// Redirect to Dashboard Page
-// router.post('/signin', function(req, res) {
-//     res.redirect('/dashboard')
-// });
-router.post('/signin', agentController.login);
+router.post('/signin', loginController.login);
 
 // Redirect to Dashboard Page
 router.post('/signup', function(req, res) {
@@ -21,7 +17,8 @@ router.post('/signup', function(req, res) {
 // Redirect to Homepage (Cancel Button )
 router.post('/', function(req, res) {
     res.redirect('/')
-})
+});
+
 module.exports = router;
 
 

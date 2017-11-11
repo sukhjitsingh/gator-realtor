@@ -1,4 +1,4 @@
-const searchController = require('../controllers/searchController');
+const queriesController = require('../controllers/queriesController');
 
 module.exports.modify = function (req, res) {
     let firstName = req.body.firstName;
@@ -62,6 +62,6 @@ module.exports.modify = function (req, res) {
 };
 
 module.exports.loadInfo = function (req, res) {
-    searchController.loadInfo(req, res);
+    queriesController.loadInfo(req, res);
 
 };

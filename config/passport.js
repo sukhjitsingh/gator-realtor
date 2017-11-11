@@ -1,7 +1,8 @@
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 const models = require('../models');
-
+const queriesController = require('../controllers/queriesController');
+let clientType;
 
 module.exports = function (passport) {
     // Local Strategy
@@ -20,13 +21,15 @@ module.exports = function (passport) {
                 if (err) {
                     return done(null, false);
                 }
-                if (user == null) {
+                if (user === null) {
                     return done(null, false, {message: 'No user found'});
                 }
                 // Match Password
                 bcrypt.compare(password, user.password, function (err, isMatch) {
                     if (err) throw err;
                     if (isMatch) {
+                        queriesController.setClientType("agent"); //for now it's hard coded but it will be changed
+                        queriesController.setClientId(email);
                         return done(null, user);
                     } else {
                         return done(null, false, {message: 'Wrong password'});
