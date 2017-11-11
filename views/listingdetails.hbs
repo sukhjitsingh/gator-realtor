@@ -26,6 +26,7 @@
 </style>
 
 <div class="container">
+    {{#each results}}
     <h4>Listing #{{listingNumber}} 12345</h4>
     <hr>
     <!--house images-->
@@ -97,9 +98,9 @@
                 <br>
                 Price: ${{price}}1000.00
                 <br>
-                Number of Bedrooms: {{bedrooms}} 4
+                Number of Bedrooms: {{bedrooms}}
                 <br>
-                Number of Bathrooms: {{bathrooms}} 2
+                Number of Bathrooms: {{bathrooms}}
                 <br>
                 Square Feet: {{size}} 500 square feet
                 <br>
@@ -160,4 +161,5 @@
 
         </div>
     </div>
+    {{/each}}
 </div>

@@ -21,7 +21,7 @@
 </div>
 <style>
     .img-thumbnail:hover {
-        box-shadow: 0px 0px 150px #000000 ;
+        box-shadow: 0px 0px 150px #000000;
         z-index: 2;
         -webkit-transition: all 200ms ease-in;
         -webkit-transform: scale(1.5);
@@ -38,6 +38,8 @@
 <!--Results Listings Start-->
 <div class="container">
 
+    <h4> Found {{results.length}} results.</h4>
+
     <!--First Left and Right Card End-->
     <div class="d-flex flex-row align-items-stretch flex-wrap">
         {{#each results}}
@@ -47,14 +49,17 @@
                     <img class="img-thumbnail" src="{{imageLink}}" style="height: 250px" alt="No Image">
                     <!--Card Body-->
                     <div class="card-body">
-                        <h4>Property: {{propertyId}}</h4>
+                        <h4>Property: {{id}}</h4>
                         <h6>{{streetAddress}}</h6>
                         <h6>{{city}}, {{state}} {{zipcode}}</h6>
                         <h6>Built Year: {{buildYear}}</h6>
                         <h6>Bedrooms: {{bedrooms}} Bathrooms: {{bathrooms}}</h6>
                         <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                        <form method="post">
+                            <button class="=btn btn-md btn-primary-full" formaction="/listingdetails" name ="listingdetailbutton"  value = "{{id}}">
+                                Check Property
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

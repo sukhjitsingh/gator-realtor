@@ -17,6 +17,7 @@ var settings = require('./routes/settings');
 var search = require('./routes/search');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
+var listingDetails = require('./routes/listingDetails');
 
 
 
@@ -88,6 +89,7 @@ app.use('/dashboard', dashboard);
 app.use('/settings', settings);
 app.use('/login', login);
 app.use('/logout', logout);
+app.use('/listingDetails', listingDetails);
 
 
 

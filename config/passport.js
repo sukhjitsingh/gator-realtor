@@ -13,7 +13,7 @@ module.exports = function (passport) {
         },
         function (req, email, password, done) {
             // Match Username
-            models.Agent.findOne({
+            models.User.findOne({
                 where: {
                     email: email
                 }
@@ -28,7 +28,6 @@ module.exports = function (passport) {
                 bcrypt.compare(password, user.password, function (err, isMatch) {
                     if (err) throw err;
                     if (isMatch) {
-                        queriesController.setClientType("agent"); //for now it's hard coded but it will be changed
                         queriesController.setClientId(email);
                         return done(null, user);
                     } else {

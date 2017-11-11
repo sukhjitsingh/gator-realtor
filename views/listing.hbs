@@ -183,25 +183,6 @@
                     </div>
                 </div>
 
-                <form method="POST" action="/listing" enctype="multipart/form-data">
-                    <div>
-                        <h3>Pictures</h3>
-                        {{#if msg }}
-                            {{msg}}
-                        {{/if}}
-                        {{#each results}}
-                            <img src="{{imageLink}}" class = "img-thumbnail">
-                        {{/each}}
-                        <label class="custom-file">
-                            <input type="file" id="file2" class="custom-file-input" multiple>
-                            <span class="custom-file-control"></span>
-                        </label>
-
-                         <button type="submit" class="btn btn-light " formaction="/listing" style="margin-left:10px">Add pictures</button>
-                    </div>
-                 
-                       
-                </form>
             </div>
             <!--Property Information End-->
             
@@ -257,7 +238,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Type Of Home *</label>
-                        <select name="state" class="form-control">
+                        <select name="typeOfHome" class="form-control">
                             <option selected>Choose a type of home</option>
                             <option value="Apartment">Apartment</option>
                             <option value="Condo">Condo</option>
@@ -289,6 +270,25 @@
             <br>
         </div>
             <button type="submit" class="btn btn-primary pull-right" formaction="/listing/create">Create Listing</button>  
+    </form>
+    <form method="POST" action="/listing" enctype="multipart/form-data">
+        <div>
+            <h3>Pictures</h3>
+            {{#if msg }}
+                {{msg}}
+            {{/if}}
+            {{#each results}}
+                <img src="{{imageLink}}" class = "img-thumbnail">
+            {{/each}}
+            <label class="custom-file">
+                <input type="file" id="file2" class="custom-file-input" multiple>
+                <span class="custom-file-control"></span>
+            </label>
+
+            <button type="submit" class="btn btn-light " formaction="/listing" style="margin-left:10px">Add pictures</button>
+        </div>
+
+
     </form>
 
    

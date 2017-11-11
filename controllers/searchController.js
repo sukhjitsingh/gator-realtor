@@ -61,6 +61,17 @@ module.exports.porcessSearch = function(request, response) {
 };
 
 
+module.exports.famousSearch = function(request, response) {
+    let city = 'San'
+    models.Properties.sequelize.query("SELECT * FROM `Properties` WHERE `city` LIKE :search_name",
+        { replacements: { search_name: '%'+city+'%' }, type: sequelize.QueryTypes.SELECT })
+        .then(results => {response.render('index', {results})
+        })
+        .catch((err) => {
+            return response.send(err);
+        });
+}
+
 
 function sortByPrice() {
     models.Properties.findAll({order: sequelize.col('price')})
