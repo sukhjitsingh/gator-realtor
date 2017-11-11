@@ -16,7 +16,7 @@ var dashboard = require('./routes/dashboard');
 var settings = require('./routes/settings');
 var search = require('./routes/search');
 var login = require('./routes/login');
-var agent = require('./routes/agent');
+var logout = require('./routes/logout');
 
 
 
@@ -87,7 +87,7 @@ app.use('/listing', listing);
 app.use('/dashboard', dashboard);
 app.use('/settings', settings);
 app.use('/login', login);
-app.use('/agent', agent);
+app.use('/logout', logout);
 
 
 

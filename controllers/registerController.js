@@ -1,5 +1,4 @@
 const models = require('../models');
-const passport = require('passport');
 const bcrypt = require('bcryptjs');
 
 module.exports.create = function (req, res) {
@@ -16,6 +15,7 @@ module.exports.create = function (req, res) {
     req.checkBody('password', 'password length must be minimum 8 characters').isLength(8, 20);
     req.checkBody('password', 'password is required').notEmpty();
     req.checkBody('password2', 'Password do not match').equals(req.body.password);
+    req.checkBody('inlineRadioOptions', 'Please select if are agent or user').notEmpty();
 
     let errors = req.validationErrors();
 
@@ -24,22 +24,33 @@ module.exports.create = function (req, res) {
             errors: errors
         });
     } else {
-        let user = new models.User({
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            phoneNumber: phoneNumber,
-            password: password
-        });
+        let client;
+        if(req.body.inlineRadioOptions === 'yes'){
+             client = new models.Agent({
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                phoneNumber: phoneNumber,
+                password: password
+            });
+        } else {
+             client = new models.User({
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                phoneNumber: phoneNumber,
+                password: password
+            });
+        }
 
         bcrypt.genSalt(10, function (err, salt) {
-            bcrypt.hash(user.password, salt, function (err, hash) {
+            bcrypt.hash(client.password, salt, function (err, hash) {
                 if (err) {
                     return res.send(err);
                 }
-                user.password = hash;
+                client.password = hash;
                 req.flash('success_msg', 'You are registered and now can login');
-                user.save((err) => {
+                client.save((err) => {
                     if (err) {
                         return res.send(err);
                     } else {
@@ -52,16 +63,3 @@ module.exports.create = function (req, res) {
     }
 };
 
-module.exports.login = function(req, res, next){
-    passport.authenticate('local', {
-        successRedirect:'dashboard',
-        failureRedirect:'login',
-        failureFlash: true
-    })(req, res, next);
-};
-
-module.exports.logout = function(req, res){
-    req.logout();
-    req.flash('success_msg', ' You are logged out');
-    res.redirect('/login');
-};

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const agentController = require('../controllers/agentController');
+const registerController = require('../controllers/registerController');
 
 // Render Signup Page
 router.get('/', function(req, res){
@@ -9,7 +9,7 @@ router.get('/', function(req, res){
 
 // Signup Page
 
-router.post('/create', agentController.create);
+router.post('/create', registerController.create);
 // router.post('/create', userController.create);
 
 
