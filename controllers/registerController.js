@@ -2,11 +2,20 @@ const models = require('../models');
 const bcrypt = require('bcryptjs');
 
 module.exports.create = function (req, res) {
+    let User;
     let firstName = req.body.firstName;
     let lastName = req.body.lastName;
     let email = req.body.email;
     let phoneNumber = req.body.phoneNumber;
     let password = req.body.password;
+    let agent = 0;
+    let agentId;
+    if (req.body.inlineRadioOptions === 'yes') {
+        agent = 1;
+        agentId = req.body.phoneNumber;
+    } else {
+       // agentId = NULL;
+    }
 
     req.checkBody('firstName', 'first name is required').notEmpty();
     req.checkBody('lastName', ' last Name is required').notEmpty();
@@ -24,42 +33,35 @@ module.exports.create = function (req, res) {
             errors: errors
         });
     } else {
-        let client;
-        if(req.body.inlineRadioOptions === 'yes'){
-             client = new models.Agent({
+        User = new models.User({
                 firstName: firstName,
                 lastName: lastName,
                 email: email,
                 phoneNumber: phoneNumber,
-                password: password
-            });
-        } else {
-             client = new models.User({
-                firstName: firstName,
-                lastName: lastName,
-                email: email,
-                phoneNumber: phoneNumber,
-                password: password
-            });
-        }
+                password: password,
+                agent: agent,
+                agentId: agentId
+            }
+        )
+    }
 
-        bcrypt.genSalt(10, function (err, salt) {
-            bcrypt.hash(client.password, salt, function (err, hash) {
+
+    bcrypt.genSalt(10, function (err, salt) {
+        bcrypt.hash(User.password, salt, function (err, hash) {
+            if (err) {
+                return res.send(err);
+            }
+            User.password = hash;
+            req.flash('success_msg', 'You are registered and now can login');
+            User.save((err) => {
                 if (err) {
                     return res.send(err);
-                }
-                client.password = hash;
-                req.flash('success_msg', 'You are registered and now can login');
-                client.save((err) => {
-                    if (err) {
-                        return res.send(err);
-                    } else {
+                } else {
 
-                    }
-                });
-                return res.redirect('/login');
+                }
             });
+            return res.redirect('/login');
         });
-    }
+    });
 };
 

@@ -1,10 +1,12 @@
 const models = require('../models');
+const queriesController = require('../controllers/queriesController');
 
 module.exports.createListing = function (req, res) {
     let address = req.body.streetAddress;
     let address2 = req.body.streetAddress2;
     let city = req.body.city;
     let state = req.body.state;
+    console.log('AGENT ID TEST: ', queriesController.getAgentId())
     let zip = req.body.zipcode;
     let price = req.body.price;
     let buildYear = req.body.buildYear;
@@ -30,7 +32,7 @@ module.exports.createListing = function (req, res) {
         let properties = new models.Properties({
             streetAddress: address,
             streetAddress2: address2,
-            agentId: 1, // will need to fix this to grab the id of current agent based on login status
+            agentId: queriesController.getAgentId(), // TODO will need to fix this to grab the id of current agent based on login status
             city: city,
             state: state,
             zipcode: zip,

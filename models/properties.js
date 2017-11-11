@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Properties = sequelize.define('Properties', {
-    propertyId: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     streetAddress: DataTypes.STRING,
     streetAddress2: DataTypes.STRING,
     city: DataTypes.STRING,
@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     bedrooms: DataTypes.INTEGER,
     bathrooms: DataTypes.INTEGER,
     imageLink: DataTypes.STRING,
-    agentId: {type: DataTypes.INTEGER, foreignKey: true},
+    agentId: DataTypes.INTEGER,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
   }, {

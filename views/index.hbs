@@ -37,30 +37,41 @@
 <!--Featured Listings Start-->
 <div class="container">
     <h1 style="text-align: center; padding: 50px;">Featured Listings</h1>
-    <!--First Left and Right Card Start-->
-    <div class="d-flex flex-row flex-wrap m-auto justify-content-around">
+
+
+    <!--First Left and Right Card End-->
+    <div class="d-flex flex-row align-items-stretch flex-wrap">
         {{#each results}}
-            <div class="p-4">
-                <h3>Property: {{propertyId}}</h3>
-                <h5>{{streetAddress}}</h5>
-                <h5>{{city}}, {{state}} {{zipcode}}</h5>
-                <h5>Built Year: {{buildYear}} </h5>
-                <h5>Bedrooms: {{bedrooms}} Bathrooms: {{bathrooms}}</h5>
-
-                <img src="{{imageLink}}" class="img-thumbnail" alt="No Image" style = "width:250px; height:250px">
-
-                <div>
-                    <iframe
-                            width="250"
-                            height="250"
-                            frameborder="0" style="border:0"
-                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAeJ-EPgN1ctwzOBO6-jyseWKdl_C-wqxA&q={{city}} {{streetAddress}} {{state}} {{zipcode}}"
-                            allowfullscreen>
-                    </iframe>
+            <div class="col-sm-4" style="padding-bottom: 15px">
+                <div class="card" style="height:100%">
+                    <!--Card Image-->
+                    <img class="img-thumbnail" src="{{imageLink}}" style="height: 250px" alt="No Image">
+                    <!--Card Body-->
+                    <div class="card-body">
+                        <h6>{{streetAddress}}</h6>
+                        <h6>{{city}}, {{state}} {{zipcode}}</h6>
+                        <h6>Built Year: {{buildYear}}</h6>
+                        <h6>Bedrooms: {{bedrooms}} Bathrooms: {{bathrooms}}</h6>
+                        <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+                        <form method="post">
+                            <button class="=btn btn-md btn-primary-full" formaction="/listingdetails" name ="listingdetailbutton"  value = "{{id}}">
+                                Check Property
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
+
+            <!--<div>-->
+            <!--<iframe-->
+                    <!--width="250"-->
+                    <!--height="250"-->
+                    <!--frameborder="0" style="border:0"-->
+                    <!--src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAeJ-EPgN1ctwzOBO6-jyseWKdl_C-wqxA&q={{city}} {{streetAddress}} {{state}} {{zipcode}}"-->
+                    <!--allowfullscreen>-->
+            <!--</iframe>-->
+        <!--</div>-->
         {{/each}}
     </div>
-    <!--First Left and Right Card End-->
 </div>
 <!--Featured Listings End-->
