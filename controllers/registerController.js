@@ -13,8 +13,6 @@ module.exports.create = function (req, res) {
     if (req.body.inlineRadioOptions === 'yes') {
         agent = 1;
         agentId = req.body.phoneNumber;
-    } else {
-       // agentId = NULL;
     }
 
     req.checkBody('firstName', 'first name is required').notEmpty();

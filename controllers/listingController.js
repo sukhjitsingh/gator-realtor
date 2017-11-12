@@ -6,7 +6,6 @@ module.exports.createListing = function (req, res) {
     let address2 = req.body.streetAddress2;
     let city = req.body.city;
     let state = req.body.state;
-    console.log('AGENT ID TEST: ', queriesController.getAgentId())
     let zip = req.body.zipcode;
     let price = req.body.price;
     let buildYear = req.body.buildYear;
@@ -23,30 +22,32 @@ module.exports.createListing = function (req, res) {
     req.checkBody('bedroomNumber', 'Number of bedrooms is required').notEmpty();
 
     let errors = req.validationErrors();
-
+    let id = 0;
     if (errors) {
         res.render('listing', {
             errors: errors
         });
     } else {
-        let properties = new models.Properties({
-            streetAddress: address,
-            streetAddress2: address2,
-            agentId: queriesController.getAgentId(), // TODO will need to fix this to grab the id of current agent based on login status
-            city: city,
-            state: state,
-            zipcode: zip,
-            price: price,
-            buildYear: buildYear,
-            bedrooms: bed,
-            bathrooms: bath
-        });
-        req.flash('success_msg', 'Listing created successfully');
-        res.redirect('/dashboard');
-        properties.save((err) => {
-            if (err) {
-                return res.send(err);
-            }
+        queriesController.getAgentId().then(agentId => {
+            let properties = new models.Properties({
+                streetAddress: address,
+                streetAddress2: address2,
+                city: city,
+                state: state,
+                agentId: agentId,
+                zipcode: zip,
+                price: price,
+                buildYear: buildYear,
+                bedrooms: bed,
+                bathrooms: bath
+            });
+            req.flash('success_msg', 'Listing created successfully');
+            res.redirect('/dashboard');
+            properties.save((err) => {
+                if (err) {
+                    return res.send(err);
+                }
+            });
         });
     }
 };

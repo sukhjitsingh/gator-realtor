@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     bedrooms: DataTypes.INTEGER,
     bathrooms: DataTypes.INTEGER,
     imageLink: DataTypes.STRING,
-    agentId: DataTypes.INTEGER,
+    agentId: DataTypes.BIGINT(20),
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
   }, {

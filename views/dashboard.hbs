@@ -66,45 +66,23 @@
 
                 <!--table body start-->
                 <tbody>
+                {{#each results}}
                 <tr>
-                    <td>221 B Baker St.{{address}}</td>
-                    <td>00000{{listingID}}</td>
+                    <td>{{streetAddress}}</td>
+                    <td>{{id}}</td>
+                    <form method="post" action="/dashboard">
                     <td>
-                        <button type="submit" class="btn btn-danger pull-right" formaction="">Delete Listing</button>
+                        <button type="submit" class="btn btn-danger pull-right" formaction="/dashboard/delete" name="deleteButton" value="{{id}}">Delete Listing</button>
                     </td>
                     <td>
-                        <button type="submit" class="btn btn-primary pull-right" formaction="">Edit Listing</button>
+                        <button type="submit" class="btn btn-primary pull-right" formaction="/edit" name = "editButton" value = "{{id}}">Edit Listing</button>
                     </td>
                     <td>
-                        <button type="submit" class="btn btn-success pull-right" formaction="">Go To Listing</button>
+                        <button type="submit" class="btn btn-success pull-right" formaction="/dashboard/listing/{{id}}" name = "listingdetailbutton" value = "{{id}}">Go To Listing</button>
                     </td>
+                    </form>
                 </tr>
-                <tr>
-                    <td>42 Wallaby Way, Sydney{{address}}</td>
-                    <td>99999{{listingID}}</td>
-                    <td>
-                        <button type="submit" class="btn btn-danger pull-right" formaction="">Delete Listing</button>
-                    </td>
-                    <td>
-                        <button type="submit" class="btn btn-primary pull-right" formaction="">Edit Listing</button>
-                    </td>
-                    <td>
-                        <button type="submit" class="btn btn-success pull-right" formaction="">Go To Listing</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>End of Mt. Lee Dr{{address}}</td>
-                    <td>11111{{listingID}}</td>
-                    <td>
-                        <button type="submit" class="btn btn-danger pull-right" formaction="">Delete Listing</button>
-                    </td>
-                    <td>
-                        <button type="submit" class="btn btn-primary pull-right" formaction="">Edit Listing</button>
-                    </td>
-                    <td>
-                        <button type="submit" class="btn btn-success pull-right" formaction="">Go To Listing</button>
-                    </td>
-                </tr>
+                {{/each}}
                 </tbody>
                 <!--table body end-->
             </table>
