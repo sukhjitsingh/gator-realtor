@@ -38,10 +38,17 @@ module.exports = function (passport) {
         }));
 
     passport.serializeUser(function (user, done) {
-        done(null, user);
+        done(null, user.id);
     });
 
-    passport.deserializeUser(function (user, done) {
-        done(null, user);
+    passport.deserializeUser(function (id, done) {
+        models.User.findById(id).then(function (user) {
+            console.log('deserializing user:', user);
+            done(null, user);
+        }).catch(function (err) {
+            if (err) {
+                throw err;
+            }
+        });
     });
 };
