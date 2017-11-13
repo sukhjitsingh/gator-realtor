@@ -40,7 +40,7 @@
 
 </style>
 
-<div class="container">
+<div class="container" style="overflow: auto;">
     <h1>My Profile</h1>
     <div class="tab">
         <button class="tablinks" style="word-wrap: break-word" onclick="changeTab(event, 'Listings')" id="defaultTab">
@@ -49,11 +49,11 @@
         <button class="tablinks" style="word-wrap: break-word" onclick="changeTab(event, 'Messages')">Messages</button>
     </div>
 
-    <div id="Listings" class="tabContent">
+    <div id="Listings" class="tabContent" style="overflow: auto;">
         <h3>Listings</h3>
         <hr>
         <!--table start-->
-        <div style="overflow-x:auto;">
+        <div>
             <table class="table table-hover">
                 <!--table header start-->
                 <thead>
@@ -114,7 +114,7 @@
 
     </div>
 
-    <div id="Messages" class="tabContent">
+    <div id="Messages" class="tabContent" style="overflow: auto;">
         <h3>Messages</h3>
         <hr>
         <!--card messages start-->
@@ -212,7 +212,7 @@
         <!--card messages end-->
 
     </div>
-        <p style="color: #eee"> Filler text to get jumbotron to work</p>
+        <p class="invisible"> Filler text to get jumbotron to work</p>
 </div>
 
 <script>
