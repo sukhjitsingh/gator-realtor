@@ -1,21 +1,23 @@
 const express = require('express');
 const router = express.Router();
+
+const authController = require('../controllers/authController');
 const listingController = require('../controllers/listingController');
 const imageUploadController = require('../controllers/imageUploadController');
 const queriesController = require('../controllers/queriesController');
 
 
-router.get('/', function (req, res, next) {
-    res.render('listing');
+router.get('/', authController.isAuthenticated, function (request, response, next) {
+    response.render('listing');
 });
 
 router.post('/create', listingController.createListing);
 
-router.post('/', function (req, res, next) {
-    imageUploadController.upload(req, res);
+router.post('/', function (request, response, next) {
+    imageUploadController.upload(request, response);
     next()
-}, function (req, res, next) {
-    queriesController.displayImages(req, res);
+}, function (request, response, next) {
+    queriesController.displayImages(request, response);
 });
 
 module.exports = router;
