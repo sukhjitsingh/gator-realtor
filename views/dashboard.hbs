@@ -1,212 +1,187 @@
-<style>
-    /* Style the tab */
-    div.tab {
-        float: left;
-        border: 1px solid #ccc;
-        background-color: #f1f1f1;
-        width: 10%;
-        height: 600px;
-    }
+<!--container start-->
+<div class="container">
 
-    /* Style the buttons inside the tab */
-    div.tab button {
-        display: block;
-        background-color: inherit;
-        color: black;
-        padding: 22px 16px;
-        width: 100%;
-        border: none;
-        outline: none;
-        text-align: left;
-        cursor: pointer;
-        transition: 0.3s;
-        font-size: 100%;
-    }
+    <h1>Welcome Terry Crews{{agent}}</h1>
 
-    /* Change background color of buttons on hover */
-    div.tab button:hover {
-        background-color: #ddd;
-    }
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#listings" role="tab">Listings</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#messages" role="tab">Messages</a>
+        </li>
+    </ul>
 
-    /* Style the tab content */
-    .tabContent {
-        float: left;
-        padding: 0px 12px;
-        border: 1px solid #ccc;
-        width: 90%;
-        border-left: none;
-        height: 600px;
-    }
+    <!--tab content start-->
+    <div class="tab-content">
 
-</style>
+        <div class="tab-pane active" id="listings" role="tabpanel">
+            <!--listing header start-->
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <h4 class="col-md-4">Address:</h4>
+                        <h4 class="col-md-2">Listing #:</h4>
+                        <h4 class="col-md-6">Listing Options:</h4>
+                    </div>
+                </div>
+            </div>
+            <!--listing header end-->
 
-<div class="container" style="overflow: auto;">
-    <h1>My Profile</h1>
-    <div class="tab">
-        <button class="tablinks" style="word-wrap: break-word" onclick="changeTab(event, 'Listings')" id="defaultTab">
-            Listings
-        </button>
-        <button class="tablinks" style="word-wrap: break-word" onclick="changeTab(event, 'Messages')">Messages</button>
-    </div>
-
-    <div id="Listings" class="tabContent" style="overflow: auto;">
-        <h3>Listings</h3>
-        <hr>
-        <!--table start-->
-        <div>
-            <table class="table table-hover">
-                <!--table header start-->
-                <thead>
-                <tr>
-                    <th>Address</th>
-                    <th>ListingNumber</th>
-                </tr>
-                </thead>
-                <!--table header end-->
-
-                <!--table body start-->
-                <tbody>
-                {{#each results}}
-                <tr>
-                    <td>{{streetAddress}}</td>
-                    <td>{{id}}</td>
-                    <form method="post" action="/dashboard">
-                    <td>
-                        <button type="submit" class="btn btn-danger pull-right" formaction="/dashboard/delete" name="deleteButton" value="{{id}}">Delete Listing</button>
-                    </td>
-                    <td>
-                        <button type="submit" class="btn btn-primary pull-right" formaction="/edit" name = "editButton" value = "{{id}}">Edit Listing</button>
-                    </td>
-                    <td>
-                        <button type="submit" class="btn btn-success pull-right" formaction="/dashboard/listing/{{id}}" name = "listingdetailbutton" value = "{{id}}">Go To Listing</button>
-                    </td>
-                    </form>
-                </tr>
-                {{/each}}
-                </tbody>
-                <!--table body end-->
-            </table>
-            <!--table end-->
+            {{#each results}}
+                <!--card listing start-->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-4">
+                                {{streetAddress}}, {{city}}, {{state}} {{zipCode}}
+                            </div>
+                            <div class="col-md-2">
+                                {{id}}
+                            </div>
+                            <div class="col-md-6">
+                                <form method="post" action="/dashboard">
+                                    <button type="submit" class="btn btn-success" formaction="/dashboard/listing/{{id}}"
+                                            name="listingdetailbutton" value="{{id}}">Go To Listing
+                                    </button>
+                                    <button type="submit" class="btn btn-primary" formaction="/edit" name="editButton"
+                                            value="{{id}}">Edit Listing
+                                    </button>
+                                    <button type="submit" class="btn btn-danger" formaction="/dashboard/delete"
+                                            name="deleteButton" value="{{id}}">Delete Listing
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--card listing end-->
+            {{/each}}
         </div>
 
-
-    </div>
-
-    <div id="Messages" class="tabContent" style="overflow: auto;">
-        <h3>Messages</h3>
-        <hr>
-        <!--card messages start-->
-        <div class="card">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col-md-3">
-                        Rick Sanchez{{firstName}} {{lastName}}
-                    </div>
-
-                    <div class="col-md-3">
-                        12345 {{listingNumber}}
-                    </div>
-                    <div class="col-md-3">
-                        11/9/17{{date}}
-                    </div>
-                    <div class="col-md-3">
-                        <button type="button" class="btn btn-info pull-right" data-toggle="collapse" data-target="#messageOne">
-                            View Message
-                        </button>
+        <!--messages tab pane start-->
+        <div class="tab-pane" id="messages" role="tabpanel">
+            <!--message header start-->
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <h4 class="col-md-3">Name:</h4>
+                        <h4 class="col-md-3">Listing Number:</h4>
+                        <h4 class="col-md-3">Date:</h4>
                     </div>
                 </div>
             </div>
-            <div class="card-block">
-                <div class="row">
-                    <div id="messageOne" class="collapse col-md-12">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            <!--message header end-->
+
+            <!--card messages start-->
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-3">
+                            Rick Sanchez{{firstName}} {{lastName}}
+                        </div>
+
+                        <div class="col-md-3">
+                            12345 {{listingNumber}}
+                        </div>
+                        <div class="col-md-3">
+                            11/9/17{{date}}
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-info pull-right" data-toggle="collapse"
+                                    data-target="#messageOne">
+                                View Message
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="row">
+                        <div id="messageOne" class="collapse col-md-12">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                            ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
                     </div>
                 </div>
             </div>
+            <!--card messages end-->
+
+
+            <!--card messages start-->
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-3">
+                            Batman{{firstName}} {{lastName}}
+                        </div>
+
+                        <div class="col-md-3">
+                            00000 {{listingNumber}}
+                        </div>
+                        <div class="col-md-3">
+                            11/9/17{{date}}
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-info pull-right" data-toggle="collapse"
+                                    data-target="#message">
+                                View Message
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="row">
+                        <div id="message" class="collapse col-md-12">
+                            Lorem ipsum dolor sit ametg, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                            ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--card messages end-->
+
+            <!--card messages start-->
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-3">
+                            Louis CK{{firstName}} {{lastName}}
+                        </div>
+
+                        <div class="col-md-3">
+                            99999 {{listingNumber}}
+                        </div>
+                        <div class="col-md-3">
+                            11/9/17{{date}}
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-info pull-right" data-toggle="collapse"
+                                    data-target="#1{{messageNumber}}">
+                                View Message
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="row">
+                        <div id="1{{messageNumber}}" class="collapse col-md-12">
+                            Lorem ipsumf dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                            ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--card messages end-->
+
         </div>
-        <!--card messages end-->
-
-
-        <!--card messages start-->
-        <div class="card">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col-md-3">
-                        Batman{{firstName}} {{lastName}}
-                    </div>
-
-                    <div class="col-md-3">
-                        00000 {{listingNumber}}
-                    </div>
-                    <div class="col-md-3">
-                        11/9/17{{date}}
-                    </div>
-                    <div class="col-md-3">
-                        <button type="button" class="btn btn-info pull-right" data-toggle="collapse" data-target="#message">
-                            View Message
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="card-block">
-                <div class="row">
-                    <div id="message" class="collapse col-md-12">
-                        Lorem ipsum dolor sit ametg, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--card messages end-->
-
-        <!--card messages start-->
-        <div class="card">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col-md-3">
-                        Louis CK{{firstName}} {{lastName}}
-                    </div>
-
-                    <div class="col-md-3">
-                        99999 {{listingNumber}}
-                    </div>
-                    <div class="col-md-3">
-                        11/9/17{{date}}
-                    </div>
-                    <div class="col-md-3">
-                        <button type="button" class="btn btn-info pull-right" data-toggle="collapse" data-target="#1{{messageNumber}}">
-                            View Message
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="card-block">
-                <div class="row">
-                    <div id="1{{messageNumber}}" class="collapse col-md-12">
-                        Lorem ipsumf dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--card messages end-->
+        <!--messages tab pane end-->
 
     </div>
-        <p class="invisible"> Filler text to get jumbotron to work</p>
+    <!--tab content end-->
+
 </div>
-
-<script>
-    function changeTab(event, dashBoardTab) {
-        var tabIndex, tabContent, tablinks;
-        tabContent = document.getElementsByClassName("tabContent");
-        for (tabIndex = 0; tabIndex < tabContent.length; tabIndex++) {
-            tabContent[tabIndex].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (tabIndex = 0; tabIndex < tablinks.length; tabIndex++) {
-            tablinks[tabIndex].className = tablinks[tabIndex].className.replace(" active", "");
-        }
-        document.getElementById(dashBoardTab).style.display = "block";
-        event.currentTarget.className += " active";
-    }
-
-    document.getElementById("defaultTab").click();
-</script>
+<!--container end-->
