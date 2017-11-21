@@ -1,33 +1,6 @@
-<style>
-    .img-responsive,
-    .thumbnail > img,
-    .thumbnail a > img,
-    .carousel-inner > .item > img,
-    .carousel-inner > .item > a > img {
-        display: block;
-        width: 100%;
-        height: 100%;
-    }
-
-    .iframe-container > * {
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        width: 100%;
-    }
-
-    .img-center {
-        margin: 0 auto;
-    }
-</style>
-
 <div class="container">
     {{#each results}}
-        <h4>Listing #{{id}} </h4>
+        <h1>{{streetAddress}} {{streetAddress2}}, {{city}}, {{state}} {{zipCode}}</h1>
         <hr>
         <!--house images-->
         <div class="row">
@@ -42,22 +15,19 @@
                     <div class="carousel-inner" role="listbox">
                         <!-- Slide One - Set the background image for this slide in the line below -->
                         <div class="carousel-item active">
-                            <img class="img-responsive center-block img-center img-fluid"
-                                 style="height: 400px; width: auto"
+                            <img class="img-responsive img-center fixedHeight"
                                  src="/{{imageLink}}"
                                  alt="First Slide"/>
                         </div>
                         <!-- Slide Two - Set the background image for this slide in the line below -->
                         <div class="carousel-item">
-                            <img class="img-responsive center-block img-center img-fluid"
-                                 style="height: 400px; width: auto"
+                            <img class="img-responsive img-center fixedHeight"
                                  src="https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg"
                                  alt="Second Slide"/>
                         </div>
                         <!-- Slide Three - Set the background image for this slide in the line below -->
                         <div class="carousel-item">
-                            <img class="img-responsive center-block img-center img-fluid"
-                                 style="height: 400px; width: auto"
+                            <img class="img-responsive img-center fixedHeight"
                                  src="https://i.pinimg.com/736x/1e/1e/ca/1e1eca7542a9ab50af82b6fc19594fc4--my-dream-house-future-house.jpg"
                                  alt="Third Slide"/>
                         </div>
@@ -76,9 +46,9 @@
 
 
             <!--map-->
-            <div class="col-md-6" style="width: 100%">
-                <div id="iframe-container" style="width: 100%; height: 100%;">
-                    <iframe style="border:0; width: 100%; height: 100%;"
+            <div class="col-md-6" class="widthOneHundredPercent">
+                <div id="iframe-container" class="widthAndHeightOneHundredPercent">
+                    <iframe class="widthAndHeightOneHundredPercent removeBorder"
                             src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAeJ-EPgN1ctwzOBO6-jyseWKdl_C-wqxA&q={{city}} {{streetAddress}} {{state}} {{zipcode}}"
                             allowfullscreen>
                     </iframe>
@@ -87,15 +57,16 @@
         </div>
 
         <!--house details-->
+        <br>
         <div class="row">
             <div class="col-md-6">
-                <br>
-                <h1 style="text-align: center">Details</h1>
+                <h1 class="text-center">Details</h1>
                 <hr>
-                <ul>
-                    <div>
+                <!--details start-->
+                <div class="card">
+                    <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <b>Address:</b> {{streetAddress}} {{streetAddress2}} {{city}} {{state}} {{zipCode}}
+                            <b>Address:</b> {{streetAddress}} {{streetAddress2}}, {{city}}, {{state}} {{zipCode}}
                         </li>
                         <li class="list-group-item">
                             <b>Price:</b> ${{price}}
@@ -109,13 +80,17 @@
                         <li class="list-group-item">
                             <b>Square Feet:</b> {{size}} 500 square feet
                         </li>
-                    </div>
-                </ul>
+                    </ul>
+                </div>
+                <!--details end-->
+
                 <br>
-                <h1 style="text-align: center">Features</h1>
+                <h1 class="text-center">Features</h1>
                 <hr>
-                <ul>
-                    <div>
+
+                <!--features start-->
+                <div class="card">
+                    <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <b>Type:</b> {{typeOfHouse}} multi-family
                         </li>
@@ -135,46 +110,58 @@
                         <li class="list-group-item">
                             <b>Parking:</b> {{parkingSpace}} 3 spaces
                         </li>
-                    </div>
-                </ul>
+                    </ul>
+                </div>
+                <!--features end-->
             </div>
 
-            <!--contact seller-->
+            <!--contact agent start-->
             <div class="col-md-6">
-                <br>
-                <h1 style="text-align: center">Contact Agent:</h1>
+                <h1 class="text-center">Contact Agent:</h1>
                 <hr>
-                <p style="text-align: center">
-                    Terry Crews
+
+                <!--contact agent card start-->
+                <div class="card">
+                    <h4 class="card-header text-center">{{agentName}}Terry Crews
                     <br>
-                    {{phoneNumber}} (415) 333 - 4444 </p>
-                <form>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Full Name"
-                               value="{{firstName}}{{lastName}}" required>
+                    {{phoneNumber}}(415)324-4234
+                    </h4>
+                    <!--contact form start-->
+                    <div class="card-block">
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Full Name"
+                                       value="{{firstName}}{{lastName}}" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="email" name="email" placeholder="Email"
+                                       value="{{email}}" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="phone-number" class="form-control" placeholder="Phone Number" name="phoneNumber"
+                                       value="{{phoneNumber}}">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject"
+                                       value="Listing Number: {{id}}"
+                                       required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" type="textArea" id="message" placeholder="Message" rows="7">Hello {{agent}}Terry Crews, I am interested in {{streetAddress}}, {{city}}, {{state}} {{zipCode}}</textarea>
+                            </div>
+                            <button type="button" id="sendMessage" name="sendMessage"
+                                    class="btn btn-success widthOneHundredPercent">Submit
+                            </button>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Email"
-                               value="{{email}}" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="phone-number" class="form-control" placeholder="Phone Number" name="phoneNumber"
-                               value="{{phoneNumber}}">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject"
-                               value="Listing Number: {{id}}"
-                               required>
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control" type="textArea" id="message" placeholder="Message" rows="7">Hello Terry Crews,{{agent}}
-                            I am interested in 1001 Potrero Ave San Francisco, California 94110 {{addressNumber}} {{street}} {{city}} {{state}} {{zipCode}}</textarea>
-                    </div>
-                    <button type="button" id="sendMessage" name="sendMessage" class="btn btn-success"
-                            style="width: 100%">Submit
-                    </button>
-                </form>
+                    <!--contact form end-->
+
+                </div>
+                <!--contact agent card end-->
+
             </div>
+            <!--contact agent end-->
+
         </div>
     {{/each}}
 </div>
