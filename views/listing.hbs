@@ -1,31 +1,3 @@
-<style>
-    .img-thumbnail:hover {
-        box-shadow: 0px 0px 150px #000000 ;
-        z-index: 2;
-        -webkit-transition: all 200ms ease-in;
-        -webkit-transform: scale(1.5);
-        -ms-transition: all 200ms ease-in;
-        -ms-transform: scale(1.5);
-        -moz-transition: all 200ms ease-in;
-        -moz-transform: scale(1.5);
-        transition: all 200ms ease-in;
-        transform: scale(1.5);
-    }
-    .img-thumbnail {
-        border: 1pc solid #ddd;
-        border-radius: 4px;
-        padding: 5px;
-        width: 150px;
-        height: 150px;
-    }
-
-    .custom-file-control:before {
-        content: "Browse";
-    }
-    .custom-file-control:after {
-        content: "Choose files...";
-    }
-</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
     window.onbeforeunload = function () {
@@ -94,7 +66,7 @@
     <!--Form tag start-->
     <form method="POST" action="/listing">
         <div class="row">
-            
+
             <!--Property Information start-->
             <div id="propertyInformation" class="col-md-6">
                 <h3>Fill in the property information</h3>
@@ -102,27 +74,27 @@
                 <div class="form-row">
                     <div class="form-group col-md-12 ">
                         <label for="streetAddress">Address *</label>
-                        <input type="text" id="inputAddress" class="form-control" name="streetAddress" placeholder="1234 Main St">
+                        <input type="text" id="inputAddress" class="form-control" name="streetAddress" placeholder="1234 Main St" maxlength="40">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label for="streetAddress2">Address 2</label>
-                        <input type="text" id="inputAddress2" class="form-control" name="streetAddress2" placeholder="Apartment, studio, or floor">
+                        <input type="text" id="inputAddress2" class="form-control" name="streetAddress2" placeholder="Apartment, studio, or floor" maxlength="40">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-5">
                         <label for="city">City *</label>
-                        <input type="text" id="inputCity" class="form-control" name="city" placeholder="San Mateo">
+                        <input type="text" id="inputCity" class="form-control" name="city" placeholder="San Mateo" pattern="[a-zA-Z ]+" maxlength="40">
                     </div>
 
                     <div class="form-group col-md-4">
                         <label for="state">State *</label>
                         <select name="state" class="form-control">
-                            <option selected>Choose a state</option>
+                            <option selected disabled>Choose a state</option>
                             <option value="AL">AL</option>
                             <option value="AK">AK</option>
                             <option value="AZ">AZ</option>
@@ -179,25 +151,35 @@
 
                     <div class="form-group col-md-3">
                         <label for="zipcode">Zip code *</label>
-                        <input type="number" id="inputZipcode" pattern="[0-9]{5}" class="form-control" name="zipcode" placeholder="95235">
+                        <input type="number" id="inputZipcode" min="0" max="99999" pattern="[0-9]{5}" class="form-control" name="zipcode" placeholder="95235">
                     </div>
                 </div>
 
             </div>
             <!--Property Information End-->
-            
+
             <div id="propertyDetails" class="col-md-6">
                 <h2>Details</h2>
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Bedrooms *</label>
-                        <input type="number" id="inputBedrooms" class="form-control" placeholder ="Number of beds" name="bedroomNumber">
+                        <select class="form-control">
+                            <option selected disabled>Choose the # of bedrooms</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
                     </div>
 
                     <div class="form-group col-md-6">
                         <label>Bathrooms *</label>
-                        <input type="number" id="inputBathrooms" min="0" class="form-control" placeholder="Number of baths" name="bathroomNumber">
+                        <select class="form-control">
+                            <option selected disabled>Choose the # of bathrooms</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
                     </div>
                 </div>
 
@@ -208,15 +190,20 @@
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label for="buildYear">Built year *</label>
-                        <input type="number" id="inputYear" min="0" max="2020" pattern="[0-9]{4}"  class="form-control" placeholder="Built in" name="buildYear">
+                        <label for="builtYear">Build year *</label>
+                        <select id="builtYear" class="form-control"></select>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Lot size *</label>
-                        <input type="number" min="0" class="form-control" placeholder="Lot size" name="Lot size">
+                        <select class="form-control">
+                            <option selected disabled>Choose the size of lot</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
                     </div>
 
                     <div class="form-group col-md-6">
@@ -232,14 +219,14 @@
                             </label>
                         </div>
                     </div>
-                    
+
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Type Of Home *</label>
                         <select name="typeOfHome" class="form-control">
-                            <option selected>Choose a type of home</option>
+                            <option selected disabled>Choose the type of home</option>
                             <option value="Apartment">Apartment</option>
                             <option value="Condo">Condo</option>
                             <option value="House">House</option>
@@ -250,7 +237,7 @@
                     <div class="form-group col-md-6">
                         <label>Parking *</label>
                         <select class="form-control">
-                            <option selected>Choose a number</option>
+                            <option selected disabled>Choose the # of parking</option>
                             <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -269,7 +256,7 @@
             </div>
             <br>
         </div>
-            <button type="submit" class="btn btn-primary pull-right" formaction="/listing/create">Create Listing</button>  
+        <button type="submit" class="btn btn-primary pull-right" formaction="/listing/create">Create Listing</button>
     </form>
     <form method="POST" action="/listing" enctype="multipart/form-data">
         <div>
@@ -278,7 +265,7 @@
                 {{msg}}
             {{/if}}
             {{#each results}}
-                <img src="{{imageLink}}" class = "img-thumbnail">
+                <img src="{{imageLink}}" class = "imgThumbnail">
             {{/each}}
             <label class="custom-file">
                 <input type="file" id="file2" class="custom-file-input" multiple>
@@ -290,8 +277,15 @@
 
 
     </form>
-
-   
 </div>
 
-
+<script>
+    //Year printout
+    var startYear = new Date().getFullYear();
+    var endYear = 1800;
+    var options = "<option selected disabled> Choose a year built </option>";
+    for(var year = startYear ; year >= endYear; year--){
+        options += "<option>"+ year +"</option>";
+    }
+    document.getElementById("builtYear").innerHTML = options;
+</script>

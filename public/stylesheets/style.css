@@ -123,3 +123,34 @@ a {
 .removeBorder{
   border: 0;
 }
+
+.imgThumbnail:hover {
+  box-shadow: 0px 0px 150px #000000 ;
+  z-index: 2;
+  -webkit-transition: all 200ms ease-in;
+  -webkit-transform: scale(1.5);
+  -ms-transition: all 200ms ease-in;
+  -ms-transform: scale(1.5);
+  -moz-transition: all 200ms ease-in;
+  -moz-transform: scale(1.5);
+  transition: all 200ms ease-in;
+  transform: scale(1.5);
+}
+.imgThumbnail {
+  border: 1pc solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+  height: 150px;
+}
+
+.custom-file-control:before {
+  content: "Browse";
+}
+.custom-file-control:after {
+  content: "Choose files...";
+}
+
+.textBoxHeight {
+  height: 150px;
+}
