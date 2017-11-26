@@ -65,6 +65,16 @@ module.exports.modify = (req, res) => {
                         .catch((err) => {
                             return res.send(err);
                         });
+                } else {
+                    queriesController.updateUserInfo(user[0].id, defaultFName, defaultLName, defaultEmail,
+                        defaultPhoneNumber, defaultPsswd)
+                        .then(results => {
+                            req.flash('success_msg', 'Profile was updated successfully');
+                            res.redirect('/settings');
+                        })
+                        .catch((err) => {
+                            return res.send(err);
+                        });
                 }
             });
     }
