@@ -1,6 +1,5 @@
 <div class="container">
-    {{#each results}}
-        <h1>{{streetAddress}} {{streetAddress2}}, {{city}}, {{state}} {{zipCode}}</h1>
+        <h1>{{property.streetAddress}} {{property.streetAddress2}}, {{property.city}}, {{property.state}} {{property.zipCode}}</h1>
         <hr>
         <!--house images-->
         <div class="row">
@@ -15,8 +14,8 @@
                     <div class="carousel-inner" role="listbox">
                         <!-- Slide One - Set the background image for this slide in the line below -->
                         <div class="carousel-item active">
-                            <img class="img-responsive img-center fixedHeight"
-                                 src="/{{imageLink}}"
+                            <img class="img-responsive img-center" style="height: 400px;"
+                                 src="/{{property.imageLink}}"
                                  alt="First Slide"/>
                         </div>
                         <!-- Slide Two - Set the background image for this slide in the line below -->
@@ -43,13 +42,11 @@
                 </div>
 
             </div>
-
-
             <!--map-->
             <div class="col-md-6" class="widthOneHundredPercent">
                 <div id="iframe-container" class="widthAndHeightOneHundredPercent">
                     <iframe class="widthAndHeightOneHundredPercent removeBorder"
-                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAeJ-EPgN1ctwzOBO6-jyseWKdl_C-wqxA&q={{city}} {{streetAddress}} {{state}} {{zipcode}}"
+                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAeJ-EPgN1ctwzOBO6-jyseWKdl_C-wqxA&q={{property.city}} {{property.streetAddress}} {{property.state}} {{property.zipcode}}"
                             allowfullscreen>
                     </iframe>
                 </div>
@@ -66,19 +63,19 @@
                 <div class="card">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <b>Address:</b> {{streetAddress}} {{streetAddress2}}, {{city}}, {{state}} {{zipCode}}
+                            <b>Address:</b> {{property.streetAddress}} {{property.streetAddress2}}, {{property.city}}, {{property.state}} {{property.zipCode}}
                         </li>
                         <li class="list-group-item">
-                            <b>Price:</b> ${{price}}
+                            <b>Price:</b> ${{property.price}}
                         </li>
                         <li class="list-group-item">
-                            <b>Number of Bedrooms:</b> {{bedrooms}}
+                            <b>Number of Bedrooms:</b> {{property.bedrooms}}
                         </li>
                         <li class="list-group-item">
-                            <b>Number of Bathrooms:</b> {{bathrooms}}
+                            <b>Number of Bathrooms:</b> {{property.bathrooms}}
                         </li>
                         <li class="list-group-item">
-                            <b>Square Feet:</b> {{size}} 500 square feet
+                            <b>Square Feet:</b> {{property.size}} 500 square feet
                         </li>
                     </ul>
                 </div>
@@ -92,23 +89,23 @@
                 <div class="card">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <b>Type:</b> {{typeOfHouse}} multi-family
+                            <b>Type:</b> {{property.typeOfHouse}} multi-family
                         </li>
 
                         <li class="list-group-item">
-                            <b>Year Built:</b> {{buildYear}}
+                            <b>Year Built:</b> {{property.buildYear}}
                         </li>
 
                         <li class="list-group-item">
-                            <b>Heating:</b> {{heating}} yes
+                            <b>Heating:</b> {{property.heating}} yes
                         </li>
 
                         <li class="list-group-item">
-                            <b>Cooling:</b> {{cooling}} yes
+                            <b>Cooling:</b> {{property.cooling}} yes
                         </li>
 
                         <li class="list-group-item">
-                            <b>Parking:</b> {{parkingSpace}} 3 spaces
+                            <b>Parking:</b> {{property.parkingSpace}} 3 spaces
                         </li>
                     </ul>
                 </div>
@@ -122,35 +119,35 @@
 
                 <!--contact agent card start-->
                 <div class="card">
-                    <h4 class="card-header text-center">{{agentName}}Terry Crews
+                    <h4 class="card-header text-center">{{agent.firstName}} {{agent.lastName}}
                     <br>
-                    {{phoneNumber}}(415)324-4234
+                    {{agent.phoneNumber}}
                     </h4>
                     <!--contact form start-->
                     <div class="card-block">
-                        <form>
+                        <form method="post" action="/listingDetails">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Full Name"
-                                       value="{{firstName}}{{lastName}}" required>
+                                       value="" required>
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control" id="email" name="email" placeholder="Email"
-                                       value="{{email}}" required>
+                                       value="" required>
                             </div>
                             <div class="form-group">
                                 <input type="phone-number" class="form-control" placeholder="Phone Number" name="phoneNumber"
-                                       value="{{phoneNumber}}">
+                                       value="">
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject"
-                                       value="Listing Number: {{id}}"
+                                       value="Listing Number: {{property.id}}"
                                        required>
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" type="textArea" id="message" placeholder="Message" rows="7">Hello {{agent}}Terry Crews, I am interested in {{streetAddress}}, {{city}}, {{state}} {{zipCode}}</textarea>
+                                <textarea class="form-control" type="textArea" name="message" id="message" placeholder="Message" rows="7">Hello {{agent.firstName}} {{agent.LastName}}, I am interested in your property: {{property.streetAddress}}, {{property.city}}, {{property.state}} {{property.zipCode}}</textarea>
                             </div>
-                            <button type="button" id="sendMessage" name="sendMessage"
-                                    class="btn btn-success widthOneHundredPercent">Submit
+                            <button type="submit" id="sendMessage" name="sendMessage"
+                                    class="btn btn-success btn-block" formaction="/listingDetails/contact"  value = "{{property.id}}">Submit
                             </button>
                         </form>
                     </div>
@@ -163,5 +160,4 @@
             <!--contact agent end-->
 
         </div>
-    {{/each}}
 </div>

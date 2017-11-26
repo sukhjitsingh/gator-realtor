@@ -50,11 +50,17 @@
                     <img class="img-thumbnail" src="{{imageLink}}" style="height: 250px" alt="No Image">
                     <!--Card Body-->
                     <div class="card-body">
+                        <li class="list-group-item">
+                            <h4 style="display: inline">Price: ${{price}}</h4>
+                            <button class ="heart fa fa-heart-o pull-right" id="heart" style="font-size: 25px; color: red;"></button>
+                        </li>
+                        <li class="list-group-item">
                         <h6>{{streetAddress}}</h6>
                         <h6>{{city}}, {{state}} {{zipcode}}</h6>
                         <h6>Built Year: {{buildYear}}</h6>
                         <h6>Bedrooms: {{bedrooms}} Bathrooms: {{bathrooms}}</h6>
-                        <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+                        </li>
+                        <br>
                         <form method="post">
                             <button class="=btn btn-md btn-primary-full" formaction="/listingdetails" name ="listingdetailbutton"  value = "{{id}}">
                                 Check Property

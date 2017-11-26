@@ -5,5 +5,6 @@ const listingDetailsController = require('../controllers/listingDetailsControlle
 
 router.post('/', listingDetailsController.displayListing);
 
+router.post('/contact', listingDetailsController.saveMessage );
 
 module.exports = router;

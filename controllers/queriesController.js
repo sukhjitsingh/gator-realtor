@@ -1,85 +1,76 @@
 const models = require('../models');
 const sequelize = require('sequelize');
-let clientId;
 
-let displayImages = function (request, response) {
-
-    models.Images.sequelize.query("SELECT imageLink FROM `Images` WHERE `propertyId` = 1",
-        {type: sequelize.QueryTypes.SELECT})
-        .then(results => {
-            response.render('listing', {results})
-        })
-        .catch((err) => {
-            return response.send(err);
-        })
+let loadInfo = (userId) => {
+    return models.User.sequelize.query("SELECT * FROM `Users` WHERE `id` = :id",
+        {replacements: {id: userId}, type: sequelize.QueryTypes.SELECT})
 };
 
-let loadInfo = function (request, response) {
-
-    models.User.sequelize.query("SELECT * FROM `Users` WHERE `id` = :clientId",
-        {replacements: {clientId: clientId}, type: sequelize.QueryTypes.SELECT})
-        .then(results => {
-            response.render('accountSettings', {results})
-        })
-        .catch((err) => {
-            return response.send(err);
-        })
-};
-
-let setClientId = function (email) {
-     models.User.sequelize.query("SELECT id FROM `Users` WHERE `email` = :email",
-            {replacements: {email: email}, type: sequelize.QueryTypes.SELECT})
-            .then(results => {
-                clientId = results[0].id;
-            });
-};
-
-let getAgentId = function() {
+let getAgentId = (userId) => {
     return models.User.sequelize.query("SELECT agentId FROM `Users` WHERE `id` = :id",
-        {replacements: {id: clientId}, type: sequelize.QueryTypes.SELECT})
-        .then(results => results[0].agentId);
+        {replacements: {id: userId}, type: sequelize.QueryTypes.SELECT})
 };
 
 
-let getProperty = function (request, response) {
-     models.Properties.sequelize.query("SELECT * FROM `Properties` WHERE `id` = :id",
-        {replacements: {id: request.body.listingdetailbutton}, type: sequelize.QueryTypes.SELECT})
-        .then(results => {
-            response.render('listingdetails', {results})
-        }).catch((err) => {
-        return response.send(err);
-    });
+let getProperty = (propertyId) => {
+    return models.Properties.sequelize.query("SELECT * FROM `Properties` WHERE `id` = :id",
+        {replacements: {id: propertyId}, type: sequelize.QueryTypes.SELECT})
 };
 
-
-let dashboardProperties = function (request, response) {
-    getAgentId().then(agentId => {
-            models.Properties.sequelize.query("SELECT * FROM `Properties` WHERE `agentId` = :agentId",
-                {replacements: {agentId: agentId}, type: sequelize.QueryTypes.SELECT})
-                .then(results => {
-                    response.render('dashboard', {results})
-                }).catch((err) => {
-                return response.send(err);
-            });
-        })
+let dashboardProperties = (userId) => {
+    return models.Properties.sequelize.query("SELECT * FROM `Properties` WHERE `agentId` IN ( SELECT `agentId` FROM `Users` WHERE  `id` = :agentId)",
+        {replacements: {agentId: userId}, type: sequelize.QueryTypes.SELECT})
 };
 
-let deleteProperty = function (request, response) {
+let getUser = (userId) => {
+    return models.User.sequelize.query("SELECT * FROM `Users` WHERE `id` = :id",
+        {replacements: {id: userId}, type: sequelize.QueryTypes.SELECT})
+};
+
+let getAgent = (propertyId) => {
+    return models.User.sequelize.query("SELECT * FROM `Users` WHERE `agentId` IN ( SELECT `agentId` FROM `Properties` WHERE  `id` = :id)",
+        {replacements: {id: propertyId}, type: sequelize.QueryTypes.SELECT})
+};
+
+let dashboardMessages = (userId) => {
+    return models.Properties.sequelize.query("SELECT * FROM `buyerMessages` WHERE `agentId` IN ( SELECT `agentId` FROM `Users` WHERE  `id` = :id)",
+        {replacements: {id: userId}, type: sequelize.QueryTypes.SELECT})
+};
+
+let deleteProperty = (buttonValue) => {
     return models.Properties.sequelize.query("DELETE FROM `Properties` WHERE `id` = :id",
-        {replacements: {id: request.body.deleteButton}, type: sequelize.QueryTypes.DELETE})
-        .then(results => {
-            response.redirect('/dashboard');
-        }).catch((err) => {
-        return response.send(err);
-    });
+        {replacements: {id: buttonValue}, type: sequelize.QueryTypes.DELETE})
+};
+
+let isRegistered = (email) => {
+    return models.User.sequelize.query("SELECT * FROM `Users` WHERE `email` = :email",
+        {replacements: {email: email}, type: sequelize.QueryTypes.SELECT})
+};
+
+let deleteAccount = (userId) => {
+    return models.User.sequelize.query("DELETE FROM `Users` WHERE `id` = :id",
+        {replacements: {id: userId}, type: sequelize.QueryTypes.DELETE})
+};
+
+let updateUserInfo = (id, fName, lName, email, phoneNum, psswd) => {
+    return models.User.sequelize.query("UPDATE `Users` SET `firstName` = :fName, `lastName` = :lName, " +
+        "`email` = :email, `phoneNumber` = :phoneNum, `password` =:psswd  WHERE `id` = :id",
+        {
+            replacements: {id: id, fName: fName, lName: lName, email: email, phoneNum: phoneNum, psswd: psswd},
+            type: sequelize.QueryTypes.UPDATE
+        })
 };
 
 module.exports = {
-    displayImages: displayImages,
-    loadInfo:loadInfo,
-    setClientId:setClientId,
-    getAgentId:getAgentId,
-    getProperty:getProperty,
-    dashboardProperties:dashboardProperties,
-    deleteProperty:deleteProperty
-}
+    loadInfo,
+    getAgentId,
+    getProperty,
+    dashboardProperties,
+    deleteProperty,
+    getUser,
+    getAgent,
+    dashboardMessages,
+    isRegistered,
+    deleteAccount,
+    updateUserInfo
+};
