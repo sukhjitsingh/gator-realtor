@@ -12,6 +12,9 @@
         sessionStorage.setItem("price", $('#inputPrice').val());
     };
     window.onload = function () {
+        let currentPage = document.getElementById("createListing");
+        currentPage.className += " active";
+
         let city = sessionStorage.getItem("city");
         if(city !== null) {
             $('#inputCity').val(city);
