@@ -172,7 +172,13 @@ section{
   text-align: center;
 }
 
-
 button:hover {
   background: #3fff19;
+}
+
+.custom-file-control:before {
+  content: "Browse";
+}
+.custom-file-control:after {
+  content: "Choose files...";
 }
