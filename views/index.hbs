@@ -7,10 +7,15 @@
     }
 </script>
 
-<div class="container">
-    <div class="row">
+<div class="banner d-flex align-items-center">
+
+    <div class="container">
+        <!--<div class="row">-->
         <!--Search Bar Start-->
         <div style="padding: 40px; " class="col-md-12">
+            <h1>GATOR REALTOR</h1>
+            <h3>Find Your Dream Home Today!</h3>
+
             <form action="/search" method="POST">
                 <div id="custom-search-input">
                     <div class="input-group col-md-12">
@@ -24,23 +29,16 @@
                     </div>
                 </div>
             </form>
+            <h5>We are Team 11 of CSC648-01</h5>
         </div>
+        <!--</div>-->
+        <!--Search Bar End-->
     </div>
-    <!--Search Bar End-->
 </div>
 
 <style>
     .img-thumbnail:hover {
         box-shadow: 0px 0px 150px #000000 ;
-        z-index: 2;
-        -webkit-transition: all 200ms ease-in;
-        -webkit-transform: scale(1.5);
-        -ms-transition: all 200ms ease-in;
-        -ms-transform: scale(1.5);
-        -moz-transition: all 200ms ease-in;
-        -moz-transform: scale(1.5);
-        transition: all 200ms ease-in;
-        transform: scale(1.5);
     }
 
 </style>
@@ -59,6 +57,7 @@
                     <img class="img-thumbnail" src="{{imageLink}}" style="height: 250px" alt="No Image">
                     <!--Card Body-->
                     <div class="card-body">
+                        <h4>${{price}}</h4>
                         <h6>{{streetAddress}}</h6>
                         <h6>{{city}}, {{state}} {{zipcode}}</h6>
                         <h6>Built Year: {{buildYear}}</h6>

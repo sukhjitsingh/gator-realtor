@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -122,4 +122,63 @@ a {
 
 .removeBorder{
   border: 0;
+}
+
+/*main banner*/
+.banner,
+.banner2 {
+  height: 550px;
+  /* margin-top: -19px; */
+  margin-bottom: 20px;
+  overflow: hidden;
+  width: 100%;
+  color: #fff;
+  z-index: -9999;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
+  background: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.5) 0%), url("/images/jgarden.jpg") no-repeat center;
+  background-size: cover;
+}
+
+section{
+  margin-top: 100px;
+}
+
+.col-md-12.info {
+  top: 150px;
+  bottom: 35%;
+  text-align: center;
+}
+
+.banner h1 {
+  font-size: 4em;
+  text-align: center;
+}
+
+.banner h3 {
+  font-size: 1.4em;
+  margin-bottom: 20px;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.banner h5 {
+  color: #e2e222;
+  font-size: 1.2em;
+  margin-bottom: 3%;
+  text-shadow: 1px 1px 2px rgba(0,0,0, 1);
+  text-transform: capitalize;
+  padding-top: 10px;
+  text-align: center;
+}
+
+button:hover {
+  background: #3fff19;
+}
+
+.custom-file-control:before {
+  content: "Browse";
+}
+.custom-file-control:after {
+  content: "Choose files...";
 }
