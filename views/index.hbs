@@ -1,9 +1,11 @@
-<script>
+<script>        
     window.onbeforeunload = function () {
         sessionStorage.setItem("searchResult", $('#searchResult').val());
     };
     window.onload = function () {
         sessionStorage.removeItem("searchResult");
+        let currentPage = document.getElementById("home");
+        currentPage.className += " active";
     }
 </script>
 
