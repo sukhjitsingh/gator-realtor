@@ -1,3 +1,15 @@
+<script>
+    window.onbeforeunload = function () {
+        sessionStorage.setItem("searchResult", $('#searchResult').val());
+    };
+    window.onload = function () {
+        let searchResult = sessionStorage.getItem("searchResult");
+        if (searchResult !== null) {
+            $('#searchResult').val(searchResult);
+        }
+    }
+</script>
+
 <div class="container">
     <div class="row">
         <!--Search Bar Start-->
@@ -5,7 +17,8 @@
             <form action="/search" method="POST">
                 <div id="custom-search-input">
                     <div class="input-group col-md-12">
-                        <input type="text" class="form-control input-lg" placeholder="Search by city or zip"
+                        <input id="searchResult" type="text" class="form-control input-lg"
+                               placeholder="Search by city or zip"
                                name="searchQuery"/>
                         <span class="input-group-btn">
                         <button class="btn btn-info btn-lg" type="submit" formaction="/search">
@@ -34,15 +47,15 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">Search Filter</h3>
                 </div>
-                <div class="panel-body" >
-                    <div class="panel-heading " >
+                <div class="panel-body">
+                    <div class="panel-heading ">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" href="#collapse0" style="color:black">
                                 <i class="indicator fa fa-caret-down" aria-hidden="true"></i> Price
                             </a>
                         </h4>
                     </div>
-                    <div id="collapse0" class="panel-collapse collapse in" >
+                    <div id="collapse0" class="panel-collapse collapse in">
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <div class="checkbox">
@@ -53,7 +66,7 @@
                                 </div>
                             </li>
                             <li class="list-group-item">
-                                <div class="checkbox" >
+                                <div class="checkbox">
                                     <label>
                                         <input type="checkbox" value="">
                                         1000$ - 2000$
@@ -61,7 +74,7 @@
                                 </div>
                             </li>
                             <li class="list-group-item">
-                                <div class="checkbox"  >
+                                <div class="checkbox">
                                     <label>
                                         <input type="checkbox" value="">
                                         2000$ - 6000$
@@ -69,7 +82,7 @@
                                 </div>
                             </li>
                             <li class="list-group-item">
-                                <div class="checkbox"  >
+                                <div class="checkbox">
                                     <label>
                                         <input type="checkbox" value="">
                                         More Than 6000$
@@ -79,14 +92,14 @@
                         </ul>
                     </div>
 
-                    <div class="panel-heading " >
+                    <div class="panel-heading ">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" href="#collapse1" style="color:black">
                                 <i class="indicator fa fa-caret-down" aria-hidden="true"></i> Bedrooms
                             </a>
                         </h4>
                     </div>
-                    <div id="collapse1" class="panel-collapse collapse in" >
+                    <div id="collapse1" class="panel-collapse collapse in">
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <div class="checkbox">
@@ -97,7 +110,7 @@
                                 </div>
                             </li>
                             <li class="list-group-item">
-                                <div class="checkbox" >
+                                <div class="checkbox">
                                     <label>
                                         <input type="checkbox" value="">
                                         4-6
@@ -105,7 +118,7 @@
                                 </div>
                             </li>
                             <li class="list-group-item">
-                                <div class="checkbox"  >
+                                <div class="checkbox">
                                     <label>
                                         <input type="checkbox" value="">
                                         > 6
@@ -114,7 +127,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="panel-heading" >
+                    <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" href="#collapse3" style="color:black">
                                 <i class="indicator fa fa-caret-down" aria-hidden="true"></i> Bathrooms</a>
@@ -131,7 +144,7 @@
                                 </div>
                             </li>
                             <li class="list-group-item">
-                                <div class="checkbox" >
+                                <div class="checkbox">
                                     <label>
                                         <input type="checkbox" value="">
                                         4-6
@@ -139,7 +152,7 @@
                                 </div>
                             </li>
                             <li class="list-group-item">
-                                <div class="checkbox"  >
+                                <div class="checkbox">
                                     <label>
                                         <input type="checkbox" value="">
                                         > 6
@@ -148,7 +161,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="panel-heading" >
+                    <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" href="#collapse2" style="color:black">
                                 <i class="indicator fa fa-caret-down" aria-hidden="true"></i> Lorem Ipsum</a>
@@ -165,7 +178,7 @@
                                 </div>
                             </li>
                             <li class="list-group-item">
-                                <div class="checkbox" >
+                                <div class="checkbox">
                                     <label>
                                         <input type="checkbox" value="">
                                         Lorem Ipsum
@@ -208,12 +221,10 @@
                                 </button>
                             </form>
                         </div>
-                    </div>
+                    {{/each}}
                 </div>
-            {{/each}}
+            </div>
         </div>
-        </div>
-    </div>
         <!--Results Listings End-->
     </div>
 </div>
