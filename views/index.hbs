@@ -31,7 +31,6 @@
                     </div>
                 </div>
             </form>
-            <h5>We are Team 11 of CSC648-01</h5>
         </div>
         <!--</div>-->
         <!--Search Bar End-->
@@ -46,7 +45,7 @@
 </style>
 <!--Featured Listings Start-->
 <div class="container">
-    <h1 style="text-align: center; padding: 50px;">Featured Listings</h1>
+    <h1 style="text-align: center; padding: 20px;">Featured Listings</h1>
 
 
     <!--First Left and Right Card End-->
@@ -66,23 +65,13 @@
                         <h6>Bedrooms: {{bedrooms}} Bathrooms: {{bathrooms}}</h6>
                         <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
                         <form method="post">
-                            <button class="=btn btn-md btn-primary-full" formaction="/listingdetails" name ="listingdetailbutton"  value = "{{id}}">
-                                Check Property
+                            <button class="=btn btn-md btn-outline-secondary" formaction="/listingdetails" name ="listingdetailbutton"  value = "{{id}}">
+                                View Details
                             </button>
                         </form>
                     </div>
                 </div>
             </div>
-
-            <!--<div>-->
-            <!--<iframe-->
-                    <!--width="250"-->
-                    <!--height="250"-->
-                    <!--frameborder="0" style="border:0"-->
-                    <!--src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAeJ-EPgN1ctwzOBO6-jyseWKdl_C-wqxA&q={{city}} {{streetAddress}} {{state}} {{zipcode}}"-->
-                    <!--allowfullscreen>-->
-            <!--</iframe>-->
-        <!--</div>-->
         {{/each}}
     </div>
 </div>
