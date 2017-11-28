@@ -1,38 +1,44 @@
+<script>
+    window.onbeforeunload = function () {
+        sessionStorage.setItem("searchResult", $('#searchResult').val());
+    };
+    window.onload = function () {
+        let searchResult = sessionStorage.getItem("searchResult");
+        if (searchResult !== null) {
+            $('#searchResult').val(searchResult);
+        }
+    }
+</script>
+
 <style>
     .img-thumbnail:hover {
         box-shadow: 0px 0px 150px #000000;
-        z-index: 2;
-        -webkit-transition: all 200ms ease-in;
-        -webkit-transform: scale(1.5);
-        -ms-transition: all 200ms ease-in;
-        -ms-transform: scale(1.5);
-        -moz-transition: all 200ms ease-in;
-        -moz-transform: scale(1.5);
-        transition: all 200ms ease-in;
-        transform: scale(1.5);
     }
 </style>
 
 <form method="POST">
-    <div class="container">
-        <div class="row">
-            <!--Search Bar Start-->
-            <div style="padding: 40px;" class="col-md-12">
+    
+<div class="container pt-5">
+    <div class="row pt-4">
+        <!--Search Bar Start-->
+        <div style="padding: 40px; " class="col-md-12">
+            <form action="/search" method="POST">
                 <div id="custom-search-input">
                     <div class="input-group col-md-12">
-                        <input type="text" class="form-control input-lg" placeholder="Search by city or zip"
-                               name="searchQuery"/>
+                        <input id="searchResult" type="text" class="form-control input-lg" placeholder="Search by city or zip" name="searchQuery"
+                        />
                         <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="submit" formaction="/search">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </span>
+                            <button class="btn btn-info btn-lg" type="submit" formaction="/search">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
         <!--Search Bar End-->
     </div>
+</div>
     <!--Filter Panel Start-->
     <div class="container-fluid">
         <div class="row">
@@ -155,7 +161,6 @@
                                 </li>
                             </ul>
                         </div>
-
                     </div>
                     <br>
                     <div>
@@ -202,7 +207,6 @@
                                 </div>
                             </div>
                         {{/each}}
-                    </div>
                 </div>
             </div>
             <!--Results Listings End-->
@@ -222,11 +226,4 @@
         for (var i = 0; i < ele.length; i++)
             ele[i].checked = false;
     }
-</script>
-
-<!--it doesn't work yet, needs to be fixed-->
-<script>
-    $('#heart').click(function () {
-        $(this).find('button').toggleClass('fa-heart-o').toggleClass('fa-heart');
-    });
 </script>

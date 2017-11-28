@@ -1,3 +1,10 @@
+<script>
+    window.onload = function () {
+        let currentPage = document.getElementById("accountSettings");
+        currentPage.className += " active";
+    }
+</script>
+
 {{#if errors}}
     {{#each errors}}
         <div class="alert alert-danger" xmlns="http://www.w3.org/1999/html">{{msg}}</div>

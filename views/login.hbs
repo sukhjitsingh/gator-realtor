@@ -1,4 +1,11 @@
-<div class="container">
+<script>
+    window.onload = function () {
+        let currentPage = document.getElementById("login");
+        currentPage.className += " active";
+    }
+</script>
+
+<div class="container pt-5 mt-5">
     <h2 class="page-header text-center">Account Login</h2>
     <form method="post" action="/login">
         <div class="row">

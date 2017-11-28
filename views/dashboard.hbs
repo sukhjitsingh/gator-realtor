@@ -1,5 +1,12 @@
+<script>
+    window.onload = function () {
+        let currentPage = document.getElementById("dashboard");
+        currentPage.className += " active";
+    }
+</script>
+
 <!--container start-->
-<div class="container">
+<div class="container mt-5 pt-5">
 
     <h1>Welcome <u>{{user.firstName}} {{user.lastName}}</u></h1>
     <!-- Nav tabs -->

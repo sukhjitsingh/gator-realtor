@@ -1,11 +1,27 @@
-<div class="container">
-    <div class="row">
+<script>        
+    window.onbeforeunload = function () {
+        sessionStorage.setItem("searchResult", $('#searchResult').val());
+    };
+    window.onload = function () {
+        sessionStorage.removeItem("searchResult");
+        let currentPage = document.getElementById("home");
+        currentPage.className += " active";
+    }
+</script>
+
+<div class="banner d-flex align-items-center">
+
+    <div class="container">
+        <!--<div class="row">-->
         <!--Search Bar Start-->
         <div style="padding: 40px; " class="col-md-12">
+            <h1>GATOR REALTOR</h1>
+            <h3>Find Your Dream Home Today!</h3>
+
             <form action="/search" method="POST">
                 <div id="custom-search-input">
                     <div class="input-group col-md-12">
-                        <input type="text" class="form-control input-lg" placeholder="Search by city or zip"
+                        <input id="searchResult" type="text" class="form-control input-lg" placeholder="Search by city or zip"
                                name="searchQuery"/>
                         <span class="input-group-btn">
                         <button class="btn btn-info btn-lg" type="submit" formaction="/search">
@@ -16,28 +32,20 @@
                 </div>
             </form>
         </div>
+        <!--</div>-->
+        <!--Search Bar End-->
     </div>
-    <!--Search Bar End-->
 </div>
 
 <style>
     .img-thumbnail:hover {
         box-shadow: 0px 0px 150px #000000 ;
-        z-index: 2;
-        -webkit-transition: all 200ms ease-in;
-        -webkit-transform: scale(1.5);
-        -ms-transition: all 200ms ease-in;
-        -ms-transform: scale(1.5);
-        -moz-transition: all 200ms ease-in;
-        -moz-transform: scale(1.5);
-        transition: all 200ms ease-in;
-        transform: scale(1.5);
     }
 
 </style>
 <!--Featured Listings Start-->
 <div class="container">
-    <h1 style="text-align: center; padding: 50px;">Featured Listings</h1>
+    <h1 style="text-align: center; padding: 20px;">Featured Listings</h1>
 
 
     <!--First Left and Right Card End-->
@@ -50,11 +58,8 @@
                     <img class="img-thumbnail" src="{{imageLink}}" style="height: 250px" alt="No Image">
                     <!--Card Body-->
                     <div class="card-body">
-                        <li class="list-group-item">
-                            <h4 style="display: inline">Price: ${{price}}</h4>
-                            <button class ="heart fa fa-heart-o pull-right" id="heart" style="font-size: 25px; color: red;"></button>
-                        </li>
-                        <li class="list-group-item">
+
+                        <h4>${{price}}</h4>
                         <h6>{{streetAddress}}</h6>
                         <h6>{{city}}, {{state}} {{zipcode}}</h6>
                         <h6>Built Year: {{buildYear}}</h6>
@@ -62,23 +67,13 @@
                         </li>
                         <br>
                         <form method="post">
-                            <button class="=btn btn-md btn-primary-full" formaction="/listingdetails" name ="listingdetailbutton"  value = "{{id}}">
-                                Check Property
+                            <button class="=btn btn-md btn-outline-secondary" formaction="/listingdetails" name ="listingdetailbutton"  value = "{{id}}">
+                                View Details
                             </button>
                         </form>
                     </div>
                 </div>
             </div>
-
-            <!--<div>-->
-            <!--<iframe-->
-                    <!--width="250"-->
-                    <!--height="250"-->
-                    <!--frameborder="0" style="border:0"-->
-                    <!--src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAeJ-EPgN1ctwzOBO6-jyseWKdl_C-wqxA&q={{city}} {{streetAddress}} {{state}} {{zipcode}}"-->
-                    <!--allowfullscreen>-->
-            <!--</iframe>-->
-        <!--</div>-->
         {{/each}}
     </div>
 </div>
