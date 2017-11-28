@@ -172,7 +172,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Bedrooms *</label>
-                        <select class="form-control">
+                        <select class="form-control" name="bedroomNumber">
                             <option selected disabled>Choose the # of bedrooms</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -182,7 +182,7 @@
 
                     <div class="form-group col-md-6">
                         <label>Bathrooms *</label>
-                        <select class="form-control">
+                        <select class="form-control" name="bathroomNumber">
                             <option selected disabled>Choose the # of bathrooms</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -199,14 +199,14 @@
 
                     <div class="form-group col-md-6">
                         <label for="builtYear">Build year *</label>
-                        <select id="builtYear" class="form-control"></select>
+                        <select id="builtYear" class="form-control" name="buildYear"></select>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Lot size *</label>
-                        <select class="form-control">
+                        <select class="form-control" name="lotSize">
                             <option selected disabled>Choose the size of lot</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -265,7 +265,7 @@
             <br>
         </div>
         <button type="submit" class="btn btn-danger pull-left" formaction="/listing/cancel">Cancel</button>
-        <button type="submit" class="btn btn-primary pull-right" formaction="/listing/photos">Create Listing</button>
+        <button type="submit" class="btn btn-primary pull-right" formaction="/listing/photos">Continue</button>
     </form>
 </div>
 

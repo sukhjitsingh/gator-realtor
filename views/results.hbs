@@ -22,7 +22,6 @@
     <div class="row pt-4">
         <!--Search Bar Start-->
         <div style="padding: 40px; " class="col-md-12">
-            <form action="/search" method="POST">
                 <div id="custom-search-input">
                     <div class="input-group col-md-12">
                         <input id="searchResult" type="text" class="form-control input-lg" placeholder="Search by city or zip" name="searchQuery"
@@ -34,7 +33,6 @@
                         </span>
                     </div>
                 </div>
-            </form>
         </div>
         <!--Search Bar End-->
     </div>
@@ -165,8 +163,8 @@
                     <br>
                     <div>
 
-                        <button type="button" class="btn btn-primary pull-left" onclick="Clear();">Clear Filter</button>
-                        <button type="submit" class="btn btn-success pull-right" formaction="/search/filter">Apply
+                        <button type="button" class="btn btn-md btn-outline-primary pull-left" onclick="Clear();">Clear Filter</button>
+                        <button type="submit" class="btn btn-md btn-outline-success pull-right" formaction="/search/filter">Apply
                             filter
                         </button>
                     </div>
@@ -187,19 +185,15 @@
                                     <!--Card Body-->
                                     <div class="card-body">
                                         <li class="list-group-item">
-                                            <h4 style="display: inline">Price: ${{price}}</h4>
-                                            <button class="heart fa fa-heart-o pull-right" id="heart"
-                                                    style="font-size: 25px; color: red;"></button>
-                                        </li>
-                                        <li class="list-group-item">
-
+                                            <h4>Price: ${{price}}</h4>
+                                            <hr>
                                             <h6>{{streetAddress}}</h6>
                                             <h6>{{city}}, {{state}} {{zipcode}}</h6>
                                             <h6>Built Year: {{buildYear}}</h6>
                                             <h6>Bedrooms: {{bedrooms}} Bathrooms: {{bathrooms}}</h6>
                                         </li>
                                         <br>
-                                        <button class="=btn btn-md btn-primary-full" formaction="/listingdetails"
+                                        <button class="=btn btn-md btn-outline-secondary" formaction="/listingdetails"
                                                 name="listingdetailbutton" value="{{id}}">
                                             Check Property
                                         </button>
