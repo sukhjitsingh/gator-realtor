@@ -12,30 +12,51 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar-nav fixed-top navbar-expand-lg navbar-light bg-light pad" style="padding:30px;">
-    <h4 style="text-align:center; font-size:2vh; position:absolute; top:0; height:30px; width:100%;">Disclaimer: This is a school project for SFSU Software Engineer for Fall 2017</h4>
-    <a class="pull-left" href="/"><img src="/images/sfsu-gators.png" width="50" height="50"></a>
-    <a class="navbar-brand" style="margin-left: 60px; position:fixed;" href="/">Gator Realtor</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-            {{#if user}}
-                <li id="home" class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                <li id="dashboard" class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
-                <li id="createListing" class="nav-item"><a class="nav-link" href="/listing">Create Listing</a></li>
-                <li id="accountSettings" class="nav-item"><a class="nav-link" href="/settings">Account settings</a></li>
-                <li id="logout" class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
-            {{else}}
-                <li id="home" class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                <li id="login" class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-
-            {{/if}}
-        </ul>
+    <div class="alert alert-secondary fixed-top text-center">
+        <h6>This is a school project for SFSU Software Engineering for Fall 2017</h6>
     </div>
-</nav>
+    <div class="row fixed-top pt-5">
+        <nav class="navbar navbar-expand-md navbar-light bg-light col-lg-12 p-4">
+            <a class="pull-left" href="/">
+                <img src="/images/sfsu-gators.png" width="50" height="50">
+            </a>
+            <a class="navbar-brand" style="margin-left: 1rem" href="/">Gator Realtor</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto text-center">
+                    {{#if user}}
+                    <li id="home" class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li id="dashboard" class="nav-item">
+                        <a class="nav-link" href="/dashboard">Dashboard</a>
+                    </li>
+                    <li id="createListing" class="nav-item">
+                        <a class="nav-link" href="/listing">Create Listing</a>
+                    </li>
+                    <li id="accountSettings" class="nav-item">
+                        <a class="nav-link" href="/settings">Account settings</a>
+                    </li>
+                    <li id="logout" class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                    {{else}}
+                    <li id="home" class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li id="login" class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+        
+                    {{/if}}
+                </ul>
+            </div>
+        </nav>
+    </div>
+
 <div class="jumbotron jumbotron-fluid">
     <div class="row">
         <div class="col-lg-12">
