@@ -1,67 +1,106 @@
 const queriesController = require('../controllers/queriesController');
+const bcrypt = require('bcryptjs');
 
-module.exports.modify = function (req, res) {
+module.exports.modify = (req, res) => {
     let firstName = req.body.firstName;
     let lastName = req.body.lastName;
-    let email = req.body.email;
     let phoneNumber = req.body.phoneNumber;
     let newPassword = req.body.newPassword;
+    let email = req.body.email;
 
-    req.checkBody('firstName', 'First name is required').notEmpty();
-    req.checkBody('lastName', ' Last Name is required').notEmpty();
-    req.checkBody('email', 'email is required').notEmpty();
-    req.checkBody('email', 'email is not valid').isEmail();
-    req.checkBody('phoneNumber', 'phone number is required').notEmpty();
     if (newPassword) {
         req.checkBody('newPassword', 'password is required(must be minimum 8 characters)').notEmpty().isLength(8, 20);
         req.checkBody('newPassword2', 'Password do not match').equals(req.body.newPassword);
     }
     let errors = req.validationErrors();
 
-    if(errors){
+    if (errors) {
         res.render('accountSettings', {
-            errors:errors
+            errors: errors
         });
-    }else {
-        agent({
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            phoneNumber: phoneNumber,
-        });
+    } else {
 
-        if (firstName) {
-            agent({firstName: firstName});
-        }
-        if (lastName) {
-            agent({lastName: lastName});
-        }
-        if (email) {
-            agent({email: email});
-        }
-        if (newPassword) {
-            agent({password: newPassword});
-        }
+        queriesController.getUser(req.user.id)
+            .then(user => {
+                let defaultFName = user[0].firstName;
+                let defaultLName = user[0].lastName;
+                let defaultEmail = user[0].email;
+                let defaultPhoneNumber = user[0].phoneNumber;
+                let defaultPsswd = user[0].password;
 
-        bcrypt.genSalt(10, function (err, salt) {
-            bcrypt.hash(agent.password, salt, function (err, hash) {
-                if (err) {
-                    return res.send(err);
+                if (firstName) {
+                    defaultFName = firstName;
                 }
-                agent.password = hash;
+                if (lastName) {
+                    defaultLName = lastName;
+                }
+                if (phoneNumber) {
+                    defaultPhoneNumber = phoneNumber;
+                }
+                if (newPassword) {
+                    const salt = bcrypt.genSaltSync();
+                    defaultPsswd = bcrypt.hashSync(newPassword, salt);
+                }
+
+
+                if (email) {
+                    queriesController.isRegistered(email)
+                        .then(userArr => {
+                            if (userArr.length !== 0) {
+                                req.flash('error', 'Account with such Email already exist, please choose different one');
+                                res.redirect('/settings');
+                            } else {
+                                defaultEmail = email;
+                                queriesController.updateUserInfo(user[0].id, defaultFName, defaultLName, defaultEmail,
+                                    defaultPhoneNumber, defaultPsswd)
+                                    .then(results => {
+                                        req.flash('success_msg', 'Profile was updated successfully');
+                                        res.redirect('/settings');
+                                    })
+                                    .catch((err) => {
+                                        return res.send(err);
+                                    });
+                            }
+                        })
+                        .catch((err) => {
+                            return res.send(err);
+                        });
+                } else {
+                    queriesController.updateUserInfo(user[0].id, defaultFName, defaultLName, defaultEmail,
+                        defaultPhoneNumber, defaultPsswd)
+                        .then(results => {
+                            req.flash('success_msg', 'Profile was updated successfully');
+                            res.redirect('/settings');
+                        })
+                        .catch((err) => {
+                            return res.send(err);
+                        });
+                }
             });
-        });
-        req.flash('success_msg', 'Profile was updated successfully');
-        res.redirect('/accountSettings');
-        agent.save((err) => {
-            if (err) {
-                return res.send(err);
-            }
-        });
     }
 };
 
-module.exports.loadInfo = function (req, res) {
-    queriesController.loadInfo(req, res);
+module.exports.loadInfo = (request, response) => {
+    queriesController.loadInfo(request.user.id)
+        .then(results => {
+            response.render('accountSettings', {results})
+        })
+        .catch((err) => {
+            return response.send(err);
+        });
+};
 
+module.exports.deleteAccount = (request, response) => {
+
+    queriesController.deleteAccount(request.user.id)
+        .then((user) => {
+            response.redirect('/login');
+            request.logout();
+            request.session.destroy();
+        })
+        .catch((err) => {
+            console.log(err);
+            request.flash('error', 'Account was not deleted');
+            response.render('accountSettings');
+        });
 };

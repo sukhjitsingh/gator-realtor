@@ -58,12 +58,14 @@
                     <img class="img-thumbnail" src="{{imageLink}}" style="height: 250px" alt="No Image">
                     <!--Card Body-->
                     <div class="card-body">
+
                         <h4>${{price}}</h4>
                         <h6>{{streetAddress}}</h6>
                         <h6>{{city}}, {{state}} {{zipcode}}</h6>
                         <h6>Built Year: {{buildYear}}</h6>
                         <h6>Bedrooms: {{bedrooms}} Bathrooms: {{bathrooms}}</h6>
-                        <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+                        </li>
+                        <br>
                         <form method="post">
                             <button class="=btn btn-md btn-outline-secondary" formaction="/listingdetails" name ="listingdetailbutton"  value = "{{id}}">
                                 View Details

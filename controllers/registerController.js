@@ -1,7 +1,8 @@
 const models = require('../models');
 const bcrypt = require('bcryptjs');
+const queriesController = require('../controllers/queriesController');
 
-module.exports.create = function (req, res) {
+module.exports.create = (req, res) => {
     let User;
     let firstName = req.body.firstName;
     let lastName = req.body.lastName;
@@ -19,47 +20,44 @@ module.exports.create = function (req, res) {
     req.checkBody('lastName', ' last Name is required').notEmpty();
     req.checkBody('email', 'email is required').notEmpty();
     req.checkBody('email', 'email is not valid').isEmail();
+    req.checkBody('phoneNumber', 'phone number is not valid').notEmpty();
     req.checkBody('password', 'password length must be minimum 8 characters').isLength(8, 20);
     req.checkBody('password', 'password is required').notEmpty();
     req.checkBody('password2', 'Password do not match').equals(req.body.password);
     req.checkBody('inlineRadioOptions', 'Please select if are agent or user').notEmpty();
 
-    let errors = req.validationErrors();
+    const errors = req.validationErrors();
 
     if (errors) {
-        res.render('signup', {
-            errors: errors
-        });
+        res.render('signup', {errors});
     } else {
-        User = new models.User({
-                firstName: firstName,
-                lastName: lastName,
-                email: email,
-                phoneNumber: phoneNumber,
-                password: password,
-                agent: agent,
-                agentId: agentId
+        queriesController.isRegistered(email).then(user => {
+            if (user.length !== 0) {
+                req.flash('error', 'Account with such Email already exist, please choose different one');
+                res.redirect('/signup');
+            } else {
+                const salt = bcrypt.genSaltSync();
+                const hash = bcrypt.hashSync(password, salt);
+
+                User = new models.User({
+                        firstName: firstName,
+                        lastName: lastName,
+                        email: email,
+                        phoneNumber: phoneNumber,
+                        password: hash,
+                        agent: agent,
+                        agentId: agentId
+                    }
+                );
+                User.save((err) => {
+                    if (err) {
+                        return res.send(err);
+                    }
+                });
+                req.flash('success_msg', 'You are registered and now can login');
+                return res.redirect('/login');
             }
-        )
+        })
     }
-
-
-    bcrypt.genSalt(10, function (err, salt) {
-        bcrypt.hash(User.password, salt, function (err, hash) {
-            if (err) {
-                return res.send(err);
-            }
-            User.password = hash;
-            req.flash('success_msg', 'You are registered and now can login');
-            User.save((err) => {
-                if (err) {
-                    return res.send(err);
-                } else {
-
-                }
-            });
-            return res.redirect('/login');
-        });
-    });
 };
 

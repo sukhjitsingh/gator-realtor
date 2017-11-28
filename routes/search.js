@@ -9,4 +9,6 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 /* GET search listing. */
 router.post('/', urlencodedParser, searchController.porcessSearch);
 
+router.post('/filter', urlencodedParser, searchController.applyFilters);
+
 module.exports = router;
