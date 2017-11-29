@@ -66,18 +66,27 @@
     <div class="alert alert-danger">{{msg}}</div>
 {{/each}} {{/if}}
 
-<h1>Create Listing</h1>
-<hr>
-<br>
 <div class="container">
+
+    <h1>Create Listing</h1>
+    <hr>
+
+    <!--breadcrumb start-->
+    <nav class="breadcrumb">
+        <a class="breadcrumb-item" href="/listing">Create Listing</a>
+        <span class="breadcrumb-item active">Upload Images</span>
+    </nav>
+    <!--breadcrumb end-->
+
     <!--Form tag start-->
     <form method="POST" action="/listing">
-
+        <h5>* Required Fields</h5>
+        <br>
         <div class="row">
 
             <!--Property Information start-->
             <div id="propertyInformation" class="col-md-6">
-                <h3>Fill in the property information</h3>
+                <h2>Fill in the property information</h2>
 
                 <div class="form-row">
                     <div class="form-group col-md-12 ">
@@ -254,13 +263,6 @@
                     </div>
                 </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <label>Description</label>
-                        <textarea style="height:150px" type="text" min="0" class="form-control" name="Description"></textarea>
-                    </div>
-                </div>
-
             </div>
             <br>
         </div>
@@ -273,7 +275,7 @@
     //Year printout
     var startYear = new Date().getFullYear();
     var endYear = 1800;
-    var options = "<option selected disabled> Choose a year built </option>";
+    var options = "<option selected disabled> Choose the year built </option>";
     for(var year = startYear ; year >= endYear; year--){
         options += "<option>"+ year +"</option>";
     }

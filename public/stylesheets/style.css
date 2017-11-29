@@ -182,3 +182,7 @@ button:hover {
 .custom-file-control:after {
   content: "Choose files...";
 }
+
+.underNavBarPadding{
+  padding-top: 150px;
+}

@@ -18,7 +18,7 @@ const search = require('./routes/search');
 const login = require('./routes/login');
 const logout = require('./routes/logout');
 const listingDetails = require('./routes/listingDetails');
-
+const aboutUs = require('./routes/aboutUs');
 
 const app = express();
 
@@ -91,6 +91,7 @@ app.use('/settings', settings);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/listingDetails', listingDetails);
+app.use('/aboutUs',aboutUs);
 
 
 
