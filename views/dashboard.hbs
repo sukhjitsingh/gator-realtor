@@ -7,8 +7,18 @@
 
 <!--container start-->
 <div class="container mt-5 pt-5">
+    <div class="row">
+        <h1 class="col-md-6">Welcome <u>{{user.firstName}} {{user.lastName}}</u></h1>
+        <div class="col-md-6">
+            <form method="post" action="#">
+                <button type="submit" class="btn btn-success pull-right" formaction="#"
+                        name="createListingButton">Add Listing
+                </button>
+            </form>
+        </div>
+    </div>
+    <hr>
 
-    <h1>Welcome <u>{{user.firstName}} {{user.lastName}}</u></h1>
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
@@ -31,8 +41,7 @@
                     </div>
                     <hr>
                     <div class="row">
-                        <h4 class="col-md-4">Address:</h4>
-                        <h4 class="col-md-2">Listing #:</h4>
+                        <h4 class="col-md-6">Address:</h4>
                         <h4 class="col-md-6">Listing Options:</h4>
                     </div>
                 </div>
@@ -44,11 +53,8 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 {{streetAddress}}, {{city}}, {{state}} {{zipCode}}
-                            </div>
-                            <div class="col-md-2">
-                                {{id}}
                             </div>
                             <div class="col-md-6">
                                 <form method="post" action="/dashboard">
@@ -81,7 +87,7 @@
                     <hr>
                     <div class="row">
                         <h4 class="col-md-3">Name:</h4>
-                        <h4 class="col-md-3">Listing Number:</h4>
+                        <h4 class="col-md-3">Address:</h4>
                         <h4 class="col-md-3">Date:</h4>
                     </div>
                 </div>
@@ -97,12 +103,12 @@
                                 {{buyerFullName}}
                             </div>
                             <div class="col-md-3">
-                                {{listingNumber}}
+                                {{streetAddress}}, {{city}}, {{state}} {{zipCode}}
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 {{createdAt}}
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <button type="button" class="btn btn-info pull-right" data-toggle="collapse"
                                         data-target="#message">
                                     View Message
