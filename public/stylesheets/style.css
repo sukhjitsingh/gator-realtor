@@ -172,10 +172,6 @@ section{
   text-align: center;
 }
 
-button:hover {
-  background: #3fff19;
-}
-
 .custom-file-control:before {
   content: "Browse";
 }
@@ -184,5 +180,5 @@ button:hover {
 }
 
 .underNavBarPadding{
-  padding-top: 150px;
+  padding-top: 108px;
 }
