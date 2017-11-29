@@ -57,11 +57,20 @@
                     <div class="card-header" style="font-size: larger; font-weight: bold">Featured</div>
                     <!--Card Image-->
                     <!--<img class="img-thumbnail" src="{{imageLink}}" style="height: 250px" alt="No Image">-->
+
+                    <!--<form method="post">-->
+                    <!--<input class="img-thumbnail submit" formaction="/listingdetails" name="listingdetailbutton"-->
+                    <!--value="{{id}}" type="image" src="{{imageLink}}" style="height: 250px" alt="No Image"-->
+                    <!--border="0" alt="Submit">-->
+                    <!--</form>-->
+
                     <form method="post">
-                        <input class="img-thumbnail" formaction="/listingdetails" name="listingDetailImage"
-                               value="{{id}}" type="image" src="{{imageLink}}" style="height: 250px" alt="No Image"
-                               border="0" alt="Submit">
+                        <button class="=btn btn-outline-secondary removeBorder" formaction="/listingdetails"
+                                name="listingdetailbutton" value="{{id}}"><img class="img-thumbnail" src="{{imageLink}}"
+                                                                               style="height: 250px" alt="No Image">
+                        </button>
                     </form>
+
                     <!--Card Body-->
                     <div class="card-body">
 
