@@ -10,54 +10,60 @@
         sessionStorage.setItem("bedrooms", $('#inputBedrooms').val());
         sessionStorage.setItem("year", $('#inputYear').val());
         sessionStorage.setItem("price", $('#inputPrice').val());
+        sessionStorage.setItem("lotSize", $('#inputLotSize').val());
     };
     window.onload = function () {
         let currentPage = document.getElementById("createListing");
         currentPage.className += " active";
 
         let city = sessionStorage.getItem("city");
-        if(city !== null) {
+        if (city !== null) {
             $('#inputCity').val(city);
         }
 
         let address = sessionStorage.getItem("address");
-        if(address !== null) {
+        if (address !== null) {
             $('#inputAddress').val(address);
         }
 
         let address2 = sessionStorage.getItem("address2");
-        if(address2 !== null) {
+        if (address2 !== null) {
             $('#inputAddress2').val(address2);
         }
 
         let state = sessionStorage.getItem("state");
-        if(state !== null) {
+        if (state !== null) {
             $('#inputState').val(state);
         }
 
         let zipcode = sessionStorage.getItem("zipcode");
-        if(zipcode !== null) {
+        if (zipcode !== null) {
             $('#inputZipcode').val(zipcode);
         }
 
         let bathrooms = sessionStorage.getItem("bathrooms");
-        if(bathrooms !== null) {
+        if (bathrooms !== null) {
             $('#inputBathrooms').val(bathrooms);
         }
 
         let bedrooms = sessionStorage.getItem("bedrooms");
-        if(bedrooms !== null) {
+        if (bedrooms !== null) {
             $('#inputBedrooms').val(bedrooms);
         }
 
         let price = sessionStorage.getItem("price");
-        if(price !== null) {
+        if (price !== null) {
             $('#inputPrice').val(price);
         }
 
         let year = sessionStorage.getItem("year");
-        if(year !== null) {
+        if (year !== null) {
             $('#inputYear').val(year);
+        }
+
+        let lotSize = sessionStorage.getItem("lotSize");
+        if (lotSize !== null) {
+            $('#inputLotSize').val(lotSize);
         }
     }
 </script>
@@ -91,26 +97,29 @@
                 <div class="form-row">
                     <div class="form-group col-md-12 ">
                         <label for="streetAddress">Address *</label>
-                        <input type="text" id="inputAddress" class="form-control" name="streetAddress" placeholder="1234 Main St" maxlength="40">
+                        <input type="text" id="inputAddress" class="form-control" name="streetAddress"
+                               placeholder="1234 Main St" maxlength="40">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label for="streetAddress2">Address 2</label>
-                        <input type="text" id="inputAddress2" class="form-control" name="streetAddress2" placeholder="Apartment, studio, or floor" maxlength="40">
+                        <input type="text" id="inputAddress2" class="form-control" name="streetAddress2"
+                               placeholder="Apartment, studio, or floor" maxlength="40">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-5">
                         <label for="city">City *</label>
-                        <input type="text" id="inputCity" class="form-control" name="city" placeholder="San Mateo" pattern="[a-zA-Z ]+" maxlength="40">
+                        <input type="text" id="inputCity" class="form-control" name="city" placeholder="San Mateo"
+                               pattern="[a-zA-Z ]+" maxlength="40">
                     </div>
 
                     <div class="form-group col-md-4">
                         <label for="state">State *</label>
-                        <select name="state" class="form-control">
+                        <select id="state" name="state" class="form-control">
                             <option selected disabled>Choose a state</option>
                             <option value="AL">AL</option>
                             <option value="AK">AK</option>
@@ -168,7 +177,8 @@
 
                     <div class="form-group col-md-3">
                         <label for="zipcode">Zip code *</label>
-                        <input type="number" id="inputZipcode" min="0" max="99999" pattern="[0-9]{5}" class="form-control" name="zipcode" placeholder="95235">
+                        <input type="number" id="inputZipcode" min="0" max="99999" pattern="[0-9]{5}"
+                               class="form-control" name="zipcode" placeholder="95235">
                     </div>
                 </div>
 
@@ -203,7 +213,8 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Property Price *</label>
-                        <input type="number" id="inputPrice" min="0"  class="form-control" placeholder="price" name="price">
+                        <input type="number" id="inputPrice" min="0" class="form-control" placeholder="price"
+                               name="price">
                     </div>
 
                     <div class="form-group col-md-6">
@@ -214,25 +225,23 @@
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label>Lot size *</label>
-                        <select class="form-control" name="lotSize">
-                            <option selected disabled>Choose the size of lot</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
+                        <label>Lot Size *</label>
+                        <input type="number" id="inputLotSize" min="0" class="form-control" placeholder="SqFt"
+                               name="lotSize">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label>HVAC</label> <br>
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Yes
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                       value="option1"> Yes
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> No
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                       value="option2"> No
                             </label>
                         </div>
                     </div>
@@ -247,7 +256,6 @@
                             <option value="Apartment">Apartment</option>
                             <option value="Condo">Condo</option>
                             <option value="House">House</option>
-                            <option value="Manufactured">Manufactured</option>
                         </select>
                     </div>
 
@@ -276,8 +284,8 @@
     var startYear = new Date().getFullYear();
     var endYear = 1800;
     var options = "<option selected disabled> Choose the year built </option>";
-    for(var year = startYear ; year >= endYear; year--){
-        options += "<option>"+ year +"</option>";
+    for (var year = startYear; year >= endYear; year--) {
+        options += "<option>" + year + "</option>";
     }
     document.getElementById("builtYear").innerHTML = options;
 </script>
