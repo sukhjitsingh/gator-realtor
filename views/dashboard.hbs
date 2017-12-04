@@ -10,27 +10,36 @@
 
     <div class="row">
         <h1 class="col-md-6">Welcome <u>{{user.firstName}} {{user.lastName}}</u></h1>
-        <div class="col-md-6">
-            <form method="post" action="/listing">
-                <button type="submit" class="btn btn-success pull-right" formaction="#"
-                        name="createListingButton">Add Listing
-                </button>
-            </form>
-        </div>
+        {{#if user.agent}}
+            <div class="col-md-6">
+                <form action="/listing">
+                    <button type="submit" class="btn btn-outline-success pull-right">Add Listing
+                    </button>
+                </form>
+            </div>
+        {{/if}}
     </div>
     <hr>
 
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#listings" role="tab">Listings</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#messages" role="tab">Messages</a>
-        </li>
+        {{#if user.agent}}
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#listings" role="tab">Listings</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#messages" role="tab">Messages</a>
+            </li>
+        {{else}}
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#messages" role="tab">Messages</a>
+            </li>
+        {{/if}}
+
     </ul>
 
-    <!--tab content start-->
+    {{#if user.agent}}
+        <!--tab content start-->
     <div class="tab-content">
 
         <div class="tab-pane active" id="listings" role="tabpanel">
@@ -59,13 +68,11 @@
                             </div>
                             <div class="col-md-6">
                                 <form method="post" action="/dashboard">
-                                    <button type="submit" class="btn btn-success" formaction="/dashboard/listing/{{id}}"
+                                    <button type="submit" class="btn btn-outline-success"
+                                            formaction="/dashboard/listing/{{id}}"
                                             name="listingdetailbutton" value="{{id}}">Go To Listing
                                     </button>
-                                    <button type="submit" class="btn btn-primary" formaction="/edit" name="editButton"
-                                            value="{{id}}">Edit Listing
-                                    </button>
-                                    <button type="submit" class="btn btn-danger" formaction="/dashboard/delete"
+                                    <button type="submit" class="btn btn-outline-danger" formaction="/dashboard/delete"
                                             name="deleteButton" value="{{id}}">Delete Listing
                                     </button>
                                 </form>
@@ -77,55 +84,57 @@
             {{/each}}
         </div>
 
-        <!--messages tab pane start-->
-        <div class="tab-pane" id="messages" role="tabpanel">
-            <!--message header start-->
+    {{/if}}
+
+    <!--messages tab pane start-->
+    <div class="tab-pane" id="messages" role="tabpanel">
+        <!--message header start-->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <h3>Total number of messages: {{messages.length}}</h3>
+                </div>
+                <hr>
+                <div class="row">
+                    <h4 class="col-md-3">Name:</h4>
+                    <h4 class="col-md-3">Address:</h4>
+                    <h4 class="col-md-3">Date:</h4>
+                </div>
+            </div>
+        </div>
+        <!--message header end-->
+
+        {{#each messages}}
+            <!--card messages start-->
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <h3>Total number of messages: {{messages.length}}</h3>
+                        <div class="col-md-3">
+                            {{buyerFullName}}
+                        </div>
+                        <div class="col-md-3">
+                            {{streetAddress}}, {{city}}, {{state}} {{zipCode}}
+                        </div>
+                        <div class="col-md-4">
+                            {{createdAt}}
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-outline-info pull-right" data-toggle="collapse"
+                                    data-target="#message{{id}}">
+                                View Message
+                            </button>
+                        </div>
                     </div>
-                    <hr>
+                </div>
+                <div class="card-block">
                     <div class="row">
-                        <h4 class="col-md-3">Name:</h4>
-                        <h4 class="col-md-3">Address:</h4>
-                        <h4 class="col-md-3">Date:</h4>
+                        <div id="message{{id}}" class="collapse col-md-12">
+                            {{message}}
+                        </div>
                     </div>
                 </div>
             </div>
-            <!--message header end-->
-
-            {{#each messages}}
-                <!--card messages start-->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="row">
-                            <div class="col-md-3">
-                                {{buyerFullName}}
-                            </div>
-                            <div class="col-md-3">
-                                {{streetAddress}}, {{city}}, {{state}} {{zipCode}}
-                            </div>
-                            <div class="col-md-4">
-                                {{createdAt}}
-                            </div>
-                            <div class="col-md-2">
-                                <button type="button" class="btn btn-info pull-right" data-toggle="collapse"
-                                        data-target="#message{{id}}">
-                                    View Message
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-block">
-                        <div class="row">
-                            <div id="message{{id}}" class="collapse col-md-12">
-                                {{message}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {{/each}}
-        </div>
+        {{/each}}
     </div>
+</div>
 </div>
