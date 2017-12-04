@@ -1,3 +1,5 @@
+const queriesController = require('../controllers/queriesController');
+
 // npm packages
 const express = require('express');
 const router = express.Router();
@@ -9,7 +11,17 @@ const listingDetailsController = require('../controllers/listingDetailsControlle
 
 
 /* GET home page. */
-router.get('/', authController.isAuthenticated, dashboardController.displayDashboardProperties);
+router.get('/', authController.isAuthenticated, (req, res, next) => {
+
+    queriesController.getUser(req.user.id)
+        .then(user => {
+            if (user[0].agent === 1) {
+                dashboardController.displayDashboardProperties(req, res)
+            } else {
+                res.redirect('/')
+            }
+        })
+});
 
 router.post('/delete', dashboardController.deleteProperty);
 router.post('/edit', dashboardController.displayDashboardProperties);
