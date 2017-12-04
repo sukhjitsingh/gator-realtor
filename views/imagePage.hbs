@@ -1,28 +1,38 @@
 <!--<div class="container">-->
 
-    <!--<form method="POST" action="/listing" enctype="multipart/form-data">-->
-        <!--<div>-->
-            <!--<h3>Pictures</h3>-->
-            <!--{{#if msg }}-->
-                <!--{{msg}}-->
-            <!--{{/if}}-->
-            <!--{{#each results}}-->
-                <!--<img src="{{imageLink}}" class="img-thumbnail">-->
-            <!--{{/each}}-->
-            <!--<label class="custom-file">-->
-                <!--<input type="file" name="pics" id="file2" class="custom-file-input">-->
-                <!--<span class="custom-file-control"></span>-->
-            <!--</label>-->
+<!--<form method="POST" action="/listing" enctype="multipart/form-data">-->
+<!--<div>-->
+<!--<h3>Pictures</h3>-->
+        <!--{{#if msg }}-->
+<!--{{msg}}-->
+        <!--{{/if}}-->
+        <!--{{#each results}}-->
+<!--<img src="{{imageLink}}" class="img-thumbnail">-->
+        <!--{{/each}}-->
+<!--<label class="custom-file">-->
+<!--<input type="file" name="pics" id="file2" class="custom-file-input">-->
+<!--<span class="custom-file-control"></span>-->
+<!--</label>-->
 
-            <!--<button type="submit" class="btn btn-light " formaction="/listing/pictures" style="margin-left:10px">Add pictures-->
-            <!--</button>-->
-        <!--</div>-->
+<!--<button type="submit" class="btn btn-light " formaction="/listing/pictures" style="margin-left:10px">Add pictures-->
+<!--</button>-->
+<!--</div>-->
 
-    <!--</form>-->
+<!--</form>-->
 <!--</div>-->
 
 
 <div class="container">
+    <h1>Upload Images</h1>
+    <hr>
+
+    <!--breadcrumb start-->
+    <nav class="breadcrumb">
+        <span class="breadcrumb-item">Create Listing</span>
+        <a class="breadcrumb-item" href="#">Upload Images</a>
+    </nav>
+    <!--breadcrumb end-->
+
     <h1>Photos of property</h1>
     <h6>Note: only up 10 photos allowed to upload.</h6>
 
@@ -35,49 +45,55 @@
                 <span>File</span>
                 <input name="pics" type="file">
             </div>
-            <button type="submit" class="btn" formaction="/listing/upload">Submit</button>
+            <button type="submit" class="btn btn-outline-secondary" formaction="/listing/upload">UploadPhoto</button>
 
         </div>
     </form>
     <br>
-    <div class="tab-content">
 
-        <div class="tab-pane active" id="listings" role="tabpanel">
-            <!--listing header start-->
-            <div class="card">
-                <div class="card-header">
-                    <div class="row">
-                        <h3>Total uploaded photos: {{photos.length}}</h3>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <h4 class="col-md-4">Photos:</h4>
-                        <h4 class="col-md-4">Options:</h4>
-                    </div>
-                </div>
-            </div>
+    <!--<div class="tab-content">-->
 
-            {{#each property}}
-                <div class="card">
-                    <div class="card-header">
-                        <div class="row">
-                            <div class="col-md-4">
-                                {{streetAddress}}, {{city}}, {{state}} {{zipCode}}
-                            </div>
+    <!--<div class="tab-pane active" id="listings" role="tabpanel">-->
+    <!--&lt;!&ndash;listing header start&ndash;&gt;-->
+    <!--<div class="card">-->
+    <!--<div class="card-header">-->
+    <!--<div class="row">-->
+    <!--<h3>Total uploaded photos: {{photos.length}}</h3>-->
+    <!--</div>-->
+    <!--<hr>-->
+    <!--<div class="row">-->
+    <!--<h4 class="col-md-4">Photos:</h4>-->
+    <!--<h4 class="col-md-4">Options:</h4>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
 
-                            <div class="col-md-4">
-                                <form method="post" action="/listing">
-                                    <button type="submit" class="btn btn-danger" formaction="/listing/delete"
-                                            name="deleteButton" value="{{id}}">Delete Listing
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--card listing end-->
-            {{/each}}
-        </div>
+        <!--{{#each property}}-->
+    <!--<div class="card">-->
+    <!--<div class="card-header">-->
+    <!--<div class="row">-->
+    <!--<div class="col-md-4">-->
+    <!--{{streetAddress}}, {{city}}, {{state}} {{zipCode}}-->
+    <!--</div>-->
+
+    <!--<div class="col-md-4">-->
+    <!--<form method="post" action="/listing">-->
+    <!--<button type="submit" class="btn btn-danger" formaction="/listing/delete"-->
+    <!--name="deleteButton" value="{{id}}">Delete Listing-->
+    <!--</button>-->
+    <!--</form>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;card listing end&ndash;&gt;-->
+        <!--{{/each}}-->
+    <!--</div>-->
+    <!--</div>-->
+    <form method="POST" action="/listing">
+        <button type="submit" class="btn btn-danger pull-left" formaction="/listing/cancel">Cancel</button>
+        <button type="submit" class="btn btn-primary pull-right" formaction="/listing/create">Create Listing</button>
+    </form>
 </div>
 
 
