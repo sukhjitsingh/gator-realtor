@@ -77,17 +77,6 @@
                         <li class="list-group-item">
                             <b>Square Feet:</b> {{property.size}} 500 square feet
                         </li>
-                    </ul>
-                </div>
-                <!--details end-->
-
-                <br>
-                <h1 class="text-center">Features</h1>
-                <hr>
-
-                <!--features start-->
-                <div class="card">
-                    <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <b>Type:</b> {{property.typeOfHouse}} multi-family
                         </li>
@@ -109,7 +98,7 @@
                         </li>
                     </ul>
                 </div>
-                <!--features end-->
+                <!--details end-->
             </div>
 
             <!--contact agent start-->
@@ -128,15 +117,15 @@
                         <form method="post" action="/listingDetails">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Full Name"
-                                       value="" required>
+                                       value="" maxlength="40" pattern="[a-zA-Z ]+" required>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="email" name="email" placeholder="Email"
-                                       value="" required>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email"
+                                       value="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" maxlength="40" required>
                             </div>
                             <div class="form-group">
                                 <input type="phone-number" class="form-control" placeholder="Phone Number" name="phoneNumber"
-                                       value="">
+                                       value="" maxlength="11" required>
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject"
