@@ -11,12 +11,12 @@
     <div class="row">
         <h1 class="col-md-6">Welcome <u>{{user.firstName}} {{user.lastName}}</u></h1>
         {{#if user.agent}}
-        <div class="col-md-6">
-            <form action="/listing">
-                <button type="submit" class="btn btn-success pull-right">Add Listing
-                </button>
-            </form>
-        </div>
+            <div class="col-md-6">
+                <form action="/listing">
+                    <button type="submit" class="btn btn-outline-success pull-right">Add Listing
+                    </button>
+                </form>
+            </div>
         {{/if}}
     </div>
     <hr>
@@ -68,13 +68,11 @@
                             </div>
                             <div class="col-md-6">
                                 <form method="post" action="/dashboard">
-                                    <button type="submit" class="btn btn-success" formaction="/dashboard/listing/{{id}}"
+                                    <button type="submit" class="btn btn-outline-success"
+                                            formaction="/dashboard/listing/{{id}}"
                                             name="listingdetailbutton" value="{{id}}">Go To Listing
                                     </button>
-                                    <button type="submit" class="btn btn-primary" formaction="/edit" name="editButton"
-                                            value="{{id}}">Edit Listing
-                                    </button>
-                                    <button type="submit" class="btn btn-danger" formaction="/dashboard/delete"
+                                    <button type="submit" class="btn btn-outline-danger" formaction="/dashboard/delete"
                                             name="deleteButton" value="{{id}}">Delete Listing
                                     </button>
                                 </form>
@@ -121,7 +119,7 @@
                             {{createdAt}}
                         </div>
                         <div class="col-md-2">
-                            <button type="button" class="btn btn-info pull-right" data-toggle="collapse"
+                            <button type="button" class="btn btn-outline-info pull-right" data-toggle="collapse"
                                     data-target="#message{{id}}">
                                 View Message
                             </button>
