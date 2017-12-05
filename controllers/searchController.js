@@ -42,7 +42,7 @@ module.exports.porcessSearch = (request, response) => {
 
 module.exports.applyFilters = (request, response) => {
     let minPrice = 0;
-    let maxPrice = 10000000;
+    let maxPrice = 1000000000;
     let minNumBedrooms = 1;
     let maxNumBedrooms = 100;
     let minNumBathrooms = 1;
