@@ -19,6 +19,10 @@ router.get('/', authController.isAuthenticated, authController.isAuthenticated, 
 
 router.post('/photos', listingController.createListing);
 
+router.post('/finish', (request, response) => {
+    response.redirect('/dashboard');
+});
+
 router.post('/cancel', (request, response) => {
     response.redirect('/dashboard');
 });
