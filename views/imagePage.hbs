@@ -51,48 +51,9 @@
     </form>
     <br>
 
-    <!--<div class="tab-content">-->
-
-    <!--<div class="tab-pane active" id="listings" role="tabpanel">-->
-    <!--&lt;!&ndash;listing header start&ndash;&gt;-->
-    <!--<div class="card">-->
-    <!--<div class="card-header">-->
-    <!--<div class="row">-->
-    <!--<h3>Total uploaded photos: {{photos.length}}</h3>-->
-    <!--</div>-->
-    <!--<hr>-->
-    <!--<div class="row">-->
-    <!--<h4 class="col-md-4">Photos:</h4>-->
-    <!--<h4 class="col-md-4">Options:</h4>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-
-        <!--{{#each property}}-->
-    <!--<div class="card">-->
-    <!--<div class="card-header">-->
-    <!--<div class="row">-->
-    <!--<div class="col-md-4">-->
-    <!--{{streetAddress}}, {{city}}, {{state}} {{zipCode}}-->
-    <!--</div>-->
-
-    <!--<div class="col-md-4">-->
-    <!--<form method="post" action="/listing">-->
-    <!--<button type="submit" class="btn btn-danger" formaction="/listing/delete"-->
-    <!--name="deleteButton" value="{{id}}">Delete Listing-->
-    <!--</button>-->
-    <!--</form>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--&lt;!&ndash;card listing end&ndash;&gt;-->
-        <!--{{/each}}-->
-    <!--</div>-->
-    <!--</div>-->
     <form method="POST" action="/listing">
         <button type="submit" class="btn btn-danger pull-left" formaction="/listing/cancel">Cancel</button>
-        <button type="submit" class="btn btn-primary pull-right" formaction="/listing/create">Create Listing</button>
+        <button type="submit" class="btn btn-primary pull-right" formaction="/listing/finish">Create Listing</button>
     </form>
 </div>
 
