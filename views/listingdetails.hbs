@@ -112,7 +112,7 @@
                 <hr>
 
                 <!--contact agent card start-->
-                <div class="card">
+                <div class="container-fluid card pb-3 pt-3">
                     <h4 class="card-header text-center">{{agent.firstName}} {{agent.lastName}}
                     <br>
                     {{agent.phoneNumber}}
@@ -120,19 +120,13 @@
                     <!--contact form start-->
                     <div class="card-block">
                         <form method="post" action="/listingDetails">
-                            <div class="form-group">
+                            <div class="form-group pt-2">
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Full Name"
                                        value="" maxlength="40" pattern="[a-zA-Z ]+" required>
-                            </div>
-                            <div class="form-group">
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Email"
                                        value="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" maxlength="40" required>
-                            </div>
-                            <div class="form-group">
                                 <input type="phone-number" class="form-control" placeholder="Phone Number" name="phoneNumber"
                                        value="" maxlength="11" required>
-                            </div>
-                            <div class="form-group">
                                 <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject"
                                        value="Listing Number: {{property.id}}"
                                        required>

@@ -10,12 +10,6 @@
     }
 </script>
 
-<style>
-    .img-thumbnail:hover {
-        box-shadow: 0px 0px 150px #000000;
-    }
-</style>
-
 <form method="POST">
     
 <div class="container pt-5">
@@ -43,15 +37,15 @@
             <div class="col-sm-3">
                 <div id="accordion" class="panel panel-primary behclick-panel">
                     <div class="panel-heading">
-                        <h2 class="panel-title">Search Filter</h2>
+                        <h4 class="panel-title">Search Filter</h4>
                     </div>
                     <div class="panel-body">
                         <div class="panel-heading ">
-                            <h4 class="panel-title">
+                            <h6 class="panel-title">
                                 <a data-toggle="collapse" href="#collapse0" style="color:black">
                                     <i class="indicator fa fa-caret-down" aria-hidden="true"></i> Price
                                 </a>
-                            </h4>
+                            </h6>
                         </div>
                         <div id="collapse0" class="panel-collapse collapse in">
                             <ul class="list-group">
@@ -91,11 +85,11 @@
                         </div>
 
                         <div class="panel-heading ">
-                            <h4 class="panel-title">
+                            <h6 class="panel-title">
                                 <a data-toggle="collapse" href="#collapse1" style="color:black">
                                     <i class="indicator fa fa-caret-down" aria-hidden="true"></i> Bedrooms
                                 </a>
-                            </h4>
+                            </h6>
                         </div>
                         <div id="collapse1" class="panel-collapse collapse in">
                             <ul class="list-group">
@@ -126,10 +120,10 @@
                             </ul>
                         </div>
                         <div class="panel-heading">
-                            <h4 class="panel-title">
+                            <h6 class="panel-title">
                                 <a data-toggle="collapse" href="#collapse3" style="color:black">
                                     <i class="indicator fa fa-caret-down" aria-hidden="true"></i> Bathrooms</a>
-                            </h4>
+                            </h6>
                         </div>
                         <div id="collapse3" class="panel-collapse collapse in">
                             <ul class="list-group">
@@ -163,8 +157,8 @@
                     <br>
                     <div>
 
-                        <button type="button" class="btn btn-md btn-outline-primary pull-left" onclick="Clear();">Clear Filter</button>
-                        <button type="submit" class="btn btn-md btn-outline-success pull-right" formaction="/search/filter">Apply
+                        <button type="button" class="btn btn-sm btn-outline-primary pull-left" onclick="Clear();">Clear Filter</button>
+                        <button type="submit" class="btn btn-sm btn-outline-success pull-right" formaction="/search/filter">Apply
                             filter
                         </button>
                     </div>
@@ -192,7 +186,7 @@
                                          <!--alt="No Image">-->
 
                                     <form method="post">
-                                        <button class="=btn btn-outline-secondary removeBorder" formaction="/listingdetails/{{id}}"
+                                        <button class="=btn btn-sm btn-outline-secondary" formaction="/listingdetails/{{id}}"
                                                 name="listingdetailbutton" value="{{id}}"><img class="img-thumbnail" src="/{{imageLink}}"
                                                                                                style="height: 250px" alt="No Image">
                                         </button>
@@ -211,7 +205,7 @@
                                         <br>
                                         <button class="=btn btn-md btn-outline-secondary" formaction="/listingdetails/{{id}}"
                                                 name="listingdetailbutton" value="{{id}}">
-                                            Check Property
+                                            View Details
                                         </button>
                                     </div>
                                 </div>
