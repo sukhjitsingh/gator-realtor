@@ -25,13 +25,13 @@
                             <div class="carousel-item active fixedHeight">
                                 <img class="img-responsive img-center"
                                      src="{{imageLink}}"
-                                     alt="First Slide"/>
+                                     alt="House Slide"/>
                             </div>
                         {{else}}
                             <div class="carousel-item fixedHeight">
                                 <img class="img-responsive img-center"
                                      src="{{imageLink}}"
-                                     alt="First Slide"/>
+                                     alt="House Slide"/>
                             </div>
                         {{/if}}
                         {{/each}}
@@ -144,8 +144,7 @@
                         </div>
                         <div class="form-group">
                             <textarea class="form-control" type="textArea" name="message" id="message"
-                                      placeholder="Message" rows="7">Hello {{agent.firstName}} {{agent.LastName}}, I am interested in your property: {{property.streetAddress}}
-                                , {{property.city}}, {{property.state}} {{property.zipCode}}</textarea>
+                                      placeholder="Message" rows="7">Hello {{agent.firstName}} {{agent.LastName}}, I am interested in your property: {{property.streetAddress}}, {{property.city}}, {{property.state}} {{property.zipCode}}</textarea>
                         </div>
                         <button type="submit" id="sendMessage" name="sendMessage"
                                 class="btn btn-success btn-block" formaction="/listingDetails/contact"
