@@ -123,7 +123,7 @@
                     </h4>
                     <!--contact form start-->
                     <div class="card-block">
-                        <form method="post" action="/listingDetails">
+                        <form method="post" action="/listingDetails/contact">
                             <div class="form-group pt-2">
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Full Name"
                                        value="" maxlength="40" pattern="[a-zA-Z ]+" required>
@@ -139,7 +139,7 @@
                                 <textarea class="form-control" type="textArea" name="message" id="message" placeholder="Message" rows="7">Hello {{agent.firstName}} {{agent.LastName}}, I am interested in your property: {{property.streetAddress}}, {{property.city}}, {{property.state}} {{property.zipCode}}</textarea>
                             </div>
                             <button type="submit" id="sendMessage" name="sendMessage"
-                                    class="btn btn-success btn-block" formaction="/listingDetails/contact"  value = "{{property.id}}">Contact Agent
+                                    class="btn btn-success btn-block" formaction="/listingDetails/contact/{{property.id}}"  value = "{{property.id}}">Contact Agent
                             </button>
                         </form>
                     </div>

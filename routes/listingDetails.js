@@ -6,6 +6,6 @@ router.get('/:id', listingDetailsController.displayListing);
 
 router.post('/:id', listingDetailsController.displayListing);
 
-router.post('/contact', listingDetailsController.saveMessage );
+router.post('/contact/:id', listingDetailsController.saveMessage );
 
 module.exports = router;
