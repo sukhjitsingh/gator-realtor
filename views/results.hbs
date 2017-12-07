@@ -10,12 +10,6 @@
     }
 </script>
 
-<style>
-    .img-thumbnail:hover {
-        box-shadow: 0px 0px 150px #000000;
-    }
-</style>
-
 <form method="POST">
     
 <div class="container pt-5">
@@ -163,8 +157,8 @@
                     <br>
                     <div>
 
-                        <button type="button" class="btn btn-md btn-outline-primary pull-left" onclick="Clear();">Clear Filter</button>
-                        <button type="submit" class="btn btn-md btn-outline-success pull-right" formaction="/search/filter">Apply
+                        <button type="button" class="btn btn-sm btn-outline-primary pull-left" onclick="Clear();">Clear Filter</button>
+                        <button type="submit" class="btn btn-sm btn-outline-success pull-right" formaction="/search/filter">Apply
                             filter
                         </button>
                     </div>
@@ -192,7 +186,7 @@
                                          <!--alt="No Image">-->
 
                                     <form method="post">
-                                        <button class="=btn btn-outline-secondary removeBorder" formaction="/listingdetails/{{id}}"
+                                        <button class="=btn btn-sm btn-outline-secondary" formaction="/listingdetails/{{id}}"
                                                 name="listingdetailbutton" value="{{id}}"><img class="img-thumbnail" src="/{{imageLink}}"
                                                                                                style="height: 250px" alt="No Image">
                                         </button>
@@ -211,7 +205,7 @@
                                         <br>
                                         <button class="=btn btn-md btn-outline-secondary" formaction="/listingdetails/{{id}}"
                                                 name="listingdetailbutton" value="{{id}}">
-                                            Check Property
+                                            View Details
                                         </button>
                                     </div>
                                 </div>
