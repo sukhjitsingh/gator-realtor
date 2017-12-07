@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
+const queriesController = require('../controllers/queriesController');
 const models = require('../models');
-
 
 router.use(express.static('./public'));
 
@@ -46,10 +46,33 @@ module.exports.upload = (req, res) => {
                     msg: 'Error: No File Selected!'
                 });
             } else {
-                //saveLinks(`/images/uploads/${req.file.filename}`);
-                res.render('imagePage', {
-                    msg: 'File Uploaded!'
-                });
+                queriesController.getUnsetPropertyId()
+                    .then(result => {
+
+                        let image = new models.Images({
+                            propertyId: result[0].id,
+                            imageLink: `/images/uploads/${req.file.filename}`
+                        });
+
+
+                        image.save((err) => {
+                            if (err) {
+                                return res.send(err);
+                            }
+                        })
+                            .then(() => {
+                                queriesController.getImages(result[0].id)
+                                    .then(images => {
+                                        res.render('imagePage', {
+                                            msg: 'File Uploaded!',
+                                            images: images
+                                        });
+                                    })
+                            })
+                    })
+                    .catch((err) => {
+                        return res.send(err);
+                    });
             }
         }
     });

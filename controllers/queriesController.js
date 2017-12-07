@@ -37,9 +37,9 @@ let dashboardMessages = (userId) => {
         {replacements: {id: userId}, type: sequelize.QueryTypes.SELECT})
 };
 
-let deleteProperty = (buttonValue) => {
+let deleteProperty = (id) => {
     return models.Properties.sequelize.query("DELETE FROM `Properties` WHERE `id` = :id",
-        {replacements: {id: buttonValue}, type: sequelize.QueryTypes.DELETE})
+        {replacements: {id: id}, type: sequelize.QueryTypes.DELETE})
 };
 
 let isRegistered = (email) => {
@@ -61,6 +61,23 @@ let updateUserInfo = (id, fName, lName, email, phoneNum, psswd) => {
         })
 };
 
+let getUnsetPropertyId = () => {
+    return models.Properties.sequelize.query("SELECT * FROM `Properties` WHERE `isSet` = :isSet",
+        {replacements: {isSet: '0'}, type: sequelize.QueryTypes.SELECT})
+};
+
+let getImages = (propertyid) => {
+    return models.Images.sequelize.query("SELECT * FROM `Images` WHERE `propertyId` = :propertyId",
+        {replacements: {propertyId: propertyid}, type: sequelize.QueryTypes.SELECT})
+};
+
+let updatePropertyValue = () => {
+    return models.Properties.sequelize.query("UPDATE `Properties` SET `isSet` = :isSet WHERE `isSet` = :value",
+        {
+            replacements: {isSet: '1', value: '0'}, type: sequelize.QueryTypes.UPDATE
+        })
+};
+
 module.exports = {
     loadInfo,
     getAgentId,
@@ -72,5 +89,8 @@ module.exports = {
     dashboardMessages,
     isRegistered,
     deleteAccount,
-    updateUserInfo
+    updateUserInfo,
+    getUnsetPropertyId,
+    getImages,
+    updatePropertyValue
 };

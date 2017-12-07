@@ -15,7 +15,17 @@ module.exports.porcessSearch = (request, response) => {
     if (!validator.isNumeric(query)) {
         searchQueryController.searchByCity(query)
             .then(results => {
-                response.render('results', {results})
+                if(results.length === 0){
+                    searchQueryController.famousSearch()
+                        .then(results => {
+                            response.render('results', {results, found: 0})
+                        })
+                        .catch((err) => {
+                            return response.send(err);
+                        });
+                } else {
+                    response.render('results', {results, found: results.length})
+                }
             })
             .catch((err) => {
                 return response.send(err);
@@ -30,7 +40,17 @@ module.exports.porcessSearch = (request, response) => {
         else {
             searchQueryController.searchByZipcode(query)
                 .then(results => {
-                    response.render('results', {results})
+                    if(results.length === 0){
+                        searchQueryController.famousSearch()
+                            .then(results => {
+                                response.render('results', {results, found: 0})
+                            })
+                            .catch((err) => {
+                                return response.send(err);
+                            });
+                    } else {
+                        response.render('results', {results, found: results.length})
+                    }
                 })
                 .catch((err) => {
                     return response.send(err);
@@ -101,7 +121,17 @@ module.exports.applyFilters = (request, response) => {
     const byCity = (query, minPrice, maxPrice, minNumBedrooms, maxNumBedrooms, minNumBathrooms, maxNumBathrooms) => {
         searchQueryController.filterSearchByCity(query, minPrice, maxPrice, minNumBedrooms, maxNumBedrooms, minNumBathrooms, maxNumBathrooms)
             .then(results => {
-                response.render('results', {results})
+                if(results.length === 0){
+                    searchQueryController.famousSearch()
+                        .then(results => {
+                            response.render('results', {results, found: 0})
+                        })
+                        .catch((err) => {
+                            return response.send(err);
+                        });
+                } else {
+                    response.render('results', {results, found: results.length})
+                }
             })
             .catch((err) => {
                 return response.send(err);
@@ -111,7 +141,17 @@ module.exports.applyFilters = (request, response) => {
     const byZipcode = (query, minPrice, maxPrice, minNumBedrooms, maxNumBedrooms, minNumBathrooms, maxNumBathrooms) => {
         searchQueryController.filterSearchByZipCode(query, minPrice, maxPrice, minNumBedrooms, maxNumBedrooms, minNumBathrooms, maxNumBathrooms)
             .then(results => {
-                response.render('results', {results})
+                if(results.length === 0){
+                    searchQueryController.famousSearch()
+                        .then(results => {
+                            response.render('results', {results, found: 0})
+                        })
+                        .catch((err) => {
+                            return response.send(err);
+                        });
+                } else {
+                    response.render('results', {results, found: results.length})
+                }
             })
             .catch((err) => {
                 return response.send(err);
