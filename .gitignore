@@ -7,6 +7,6 @@ package-lock.json
 .DS_Store
 
 /config/config.json
-config.config.json
+config/config.json
 
 .vscode/
