@@ -1,6 +1,7 @@
 body {
   padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #e9ecef;
 }
 
 a {
@@ -127,8 +128,8 @@ a {
 /*main banner*/
 .banner,
 .banner2 {
-  height: 500px;
-  /* margin-top: -19px; */
+  height: 650px;
+  margin-top: 0px;
   margin-bottom: 20px;
   overflow: hidden;
   width: 100%;
@@ -180,5 +181,11 @@ section{
 }
 
 .underNavBarPadding{
-  padding-top: 108px;
+  /*padding-top: 108px;*/
+}
+
+.filter{
+  margin-top: 100px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
