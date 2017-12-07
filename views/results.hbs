@@ -174,7 +174,14 @@
             <!--Results Listings Start-->
             <div class="col-sm-9">
                 <div class="container-fluid">
-                    <h1 style="text-align: center; padding: 20px;">Found Listings: {{results.length}}</h1>
+
+                    {{#if found}}
+                        <h1 style="text-align: center; padding: 20px;">Found Listings: {{found}}</h1>
+                    {{else}}
+                        <h1 style="text-align: center; padding: 20px;">No matching results... </h1>
+                        <h2 style="text-align: left; padding: 20px;">Recommended for you:</h2>
+
+                    {{/if}}
                     <div class="d-flex flex-row align-items-stretch flex-wrap">
                         {{#each results}}
                             <div class="col-sm-4" style="padding-bottom: 15px">
@@ -185,7 +192,7 @@
                                          <!--alt="No Image">-->
 
                                     <form method="post">
-                                        <button class="=btn btn-outline-secondary removeBorder" formaction="/listingdetails"
+                                        <button class="=btn btn-outline-secondary removeBorder" formaction="/listingdetails/{{id}}"
                                                 name="listingdetailbutton" value="{{id}}"><img class="img-thumbnail" src="/{{imageLink}}"
                                                                                                style="height: 250px" alt="No Image">
                                         </button>
@@ -202,7 +209,7 @@
                                             <h6>Bedrooms: {{bedrooms}} Bathrooms: {{bathrooms}}</h6>
                                         </li>
                                         <br>
-                                        <button class="=btn btn-md btn-outline-secondary" formaction="/listingdetails"
+                                        <button class="=btn btn-md btn-outline-secondary" formaction="/listingdetails/{{id}}"
                                                 name="listingdetailbutton" value="{{id}}">
                                             Check Property
                                         </button>
@@ -215,7 +222,9 @@
             <!--Results Listings End-->
         </div>
     </div>
+    </div>
 </form>
+
 
 <script>
     function Clear() {
@@ -225,8 +234,8 @@
     }
 
     function clearRadioGroup(GroupName) {
-        var ele = document.getElementsByName(GroupName);
-        for (var i = 0; i < ele.length; i++)
+        let ele = document.getElementsByName(GroupName);
+        for (let i = 0; i < ele.length; i++)
             ele[i].checked = false;
     }
 </script>

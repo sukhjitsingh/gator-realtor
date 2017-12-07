@@ -4,15 +4,25 @@ const models = require('../models');
 
 const displayListing = (request, response, next) => {
 
-    Promise.all([
-        queriesController.getAgent(request.body.listingdetailbutton),
-        queriesController.getProperty(request.body.listingdetailbutton)
-    ])
-        .then(([agent, property]) => {
-            response.render('listingdetails', {agent: agent[0], property: property[0]})
-        }).catch((err) => {
-        return response.send(err);
-    });
+    const {id} = request.params;
+    queriesController.getProperty(id)
+        .then(foundProperty => {
+
+            if (foundProperty.length !== 0) {
+                Promise.all([
+                    queriesController.getAgent(id),
+                    queriesController.getProperty(id),
+                    queriesController.getImages(id)
+                ])
+                    .then(([agent, property, images]) => {
+                        response.render('listingdetails', {agent: agent[0], property: property[0], images: images})
+                    }).catch((err) => {
+                    return response.send(err);
+                });
+            } else {
+                response.redirect('/');
+            }
+        });
 };
 
 const saveMessage = (request, response, next) => {
@@ -26,12 +36,13 @@ const saveMessage = (request, response, next) => {
             agentId: agentId[0].agentId,
             listingNumber: request.body.sendMessage
         });
-        request.flash('success_msg', 'Listing created successfully');
         message.save((err) => {
             if (err) {
                 return response.send(err);
             }
         });
+        response.sendStatus(304);
+
     }).catch((err) => {
         return response.send(err);
     });

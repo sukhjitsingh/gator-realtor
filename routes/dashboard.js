@@ -22,10 +22,8 @@ router.get('/', authController.isAuthenticated, (req, res, next) => {
             }
         })
 });
-
+router.post('/sort', dashboardController.displayDashboardProperties);
 router.post('/delete', dashboardController.deleteProperty);
-router.post('/edit', dashboardController.displayDashboardProperties);
 router.post('/listing/:id', listingDetailsController.displayListing);
-
 
 module.exports = router;

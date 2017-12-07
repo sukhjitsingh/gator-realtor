@@ -11,6 +11,9 @@ module.exports.createListing = (req, res) => {
     let buildYear = req.body.buildYear;
     let bath = req.body.bathroomNumber;
     let bed = req.body.bedroomNumber;
+    let type = req.body.typeOfHome;
+    let size = req.body.lotSize;
+
 
     req.checkBody('streetAddress', 'Address is required').notEmpty();
     req.checkBody('city', 'City is required').notEmpty();
@@ -20,6 +23,9 @@ module.exports.createListing = (req, res) => {
     req.checkBody('price', 'Price is required').notEmpty();
     req.checkBody('bathroomNumber', 'Number of bathrooms is required').notEmpty();
     req.checkBody('bedroomNumber', 'Number of bedrooms is required').notEmpty();
+    req.checkBody('typeOfHome', 'Property type is required').notEmpty();
+    req.checkBody('lotSize', 'Lot Size is required').notEmpty();
+
 
     let errors = req.validationErrors();
     if (errors) {
@@ -27,27 +33,65 @@ module.exports.createListing = (req, res) => {
             errors: errors
         });
     } else {
-        queriesController.getAgentId(req.user.id).then(agentId => {
-            let properties = new models.Properties({
-                streetAddress: address,
-                streetAddress2: address2,
-                city: city,
-                state: state,
-                agentId: agentId[0].agentId,
-                zipcode: zip,
-                price: price,
-                buildYear: buildYear,
-                bedrooms: bed,
-                bathrooms: bath
-            });
-            res.render('imagePage');
-            properties.save((err) => {
-                if (err) {
+        queriesController.updatePropertyValue()
+            .then(() => {
+                queriesController.getAgentId(req.user.id).then(agentId => {
+                    let properties = new models.Properties({
+                        streetAddress: address,
+                        streetAddress2: address2,
+                        city: city,
+                        state: state,
+                        agentId: agentId[0].agentId,
+                        zipcode: zip,
+                        price: price,
+                        buildYear: buildYear,
+                        bedrooms: bed,
+                        bathrooms: bath,
+                        lotSize: size,
+                        type: type,
+                        isSet: 0
+                    });
+                    res.render('imagePage');
+                    properties.save((err) => {
+                        if (err) {
+                            return res.send(err);
+                        }
+                    });
+                }).catch((err) => {
                     return res.send(err);
-                }
+                });
+            })
+            .catch((err) => {
+                return res.send(err);
             });
-        }).catch((err) => {
-            return response.send(err);
-        });
     }
+};
+
+module.exports.cancelCreation = (req, res) => {
+    queriesController.getUnsetPropertyId()
+        .then(result => {
+                console.log(result[0].id);
+                queriesController.deleteProperty(result[0].id)
+                    .then(() => {
+                        res.redirect('/dashboard')
+                    })
+                    .catch((err) => {
+                        return res.send(err);
+                    });
+            }
+        )
+        .catch((err) => {
+            return res.send(err);
+        });
+};
+
+module.exports.finishCreate = (req, res) => {
+    queriesController.updatePropertyValue()
+        .then(() => {
+            req.flash('success_msg', 'Listing was created successfully');
+            res.redirect('/dashboard');
+        })
+        .catch((err) => {
+            return res.send(err);
+        });
 };

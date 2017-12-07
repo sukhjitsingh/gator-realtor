@@ -47,29 +47,46 @@
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <h3>Total number of active listings: {{property.length}}</h3>
+                        <h3 class="col-md-8">Total number of active listings: {{properties.length}}</h3>
+                        <form class="col-md-4" method="post" action="/dashboard">
+                            <p style="display: inline">Sort By:</p>
+                            <input type="radio" id="pdate"
+                                   name="pdate" value="pdate">
+                            <label>created date</label>
+                            <button type="submit" class="btn btn-xs" formaction="/dashboard/sort">Apply</button>
+                        </form>
                     </div>
                     <hr>
                     <div class="row">
-                        <h4 class="col-md-6">Address:</h4>
-                        <h4 class="col-md-6">Listing Options:</h4>
+                        <h4 class="col-md-5">Address:</h4>
+                        <h4 class="col-md-4">Created At:</h4>
+                        <h4 class="col-md-3">Listing Options:</h4>
                     </div>
                 </div>
             </div>
             <!--listing header end-->
 
-            {{#each property}}
+            {{#each properties}}
                 <!--card listing start-->
                 <div class="card">
                     <div class="card-header">
                         <div class="row">
-                            <div class="col-md-6">
-                                {{streetAddress}}, {{city}}, {{state}} {{zipCode}}
+                            <div class="col-md-5">
+                                <form method="post">
+                                    <button style="border: none; padding:0; background: none;"
+                                            formaction="/listingdetails/{{id}}"
+                                            name="listingdetailbutton" value="{{id}}">
+                                        <u> {{streetAddress}}, {{city}}, {{state}} {{zipCode}}</u>
+                                    </button>
+                                </form>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
+                                {{createdAt}}
+                            </div>
+                            <div class="col-md-3">
                                 <form method="post" action="/dashboard">
                                     <button type="submit" class="btn btn-outline-success"
-                                            formaction="/dashboard/listing/{{id}}"
+                                            formaction="/listingdetails/{{id}}"
                                             name="listingdetailbutton" value="{{id}}">Go To Listing
                                     </button>
                                     <button type="submit" class="btn btn-outline-danger" formaction="/dashboard/delete"
@@ -92,7 +109,14 @@
         <div class="card">
             <div class="card-header">
                 <div class="row">
-                    <h3>Total number of messages: {{messages.length}}</h3>
+                    <h3 class="col-md-8">Total number of messages: {{result.length}}</h3>
+                    <form class="col-md-4" method="post" action="/dashboard">
+                        <p style="display: inline">Sort By:</p>
+                        <input type="radio" id="mdate"
+                               name="mdate" value="mdate">
+                        <label>created date</label>
+                        <button type="submit" class="btn btn-xs" formaction="/dashboard/sort">Apply</button>
+                    </form>
                 </div>
                 <hr>
                 <div class="row">
@@ -104,7 +128,7 @@
         </div>
         <!--message header end-->
 
-        {{#each messages}}
+        {{#each result}}
             <!--card messages start-->
             <div class="card">
                 <div class="card-header">
@@ -113,7 +137,14 @@
                             {{buyerFullName}}
                         </div>
                         <div class="col-md-3">
-                            {{streetAddress}}, {{city}}, {{state}} {{zipCode}}
+                            <form method="post">
+                                <button style="border: none; padding:0; background: none;"
+                                        formaction="/listingdetails/{{property.id}}"
+                                        name="listingdetailbutton" value="{{property.id}}">
+                                    <u> {{property.streetAddress}}, {{property.city}}
+                                        , {{property.state}} {{property.zipCode}}</u>
+                                </button>
+                            </form>
                         </div>
                         <div class="col-md-4">
                             {{createdAt}}

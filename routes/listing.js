@@ -6,7 +6,7 @@ const listingController = require('../controllers/listingController');
 const imageUploadController = require('../controllers/imageUploadController');
 const queriesController = require('../controllers/queriesController');
 
-router.get('/', authController.isAuthenticated, authController.isAuthenticated, (req, res) => {
+router.get('/', authController.isAuthenticated, (req, res) => {
     queriesController.getUser(req.user.id)
         .then(user => {
             if (user[0].agent === 1) {
@@ -19,9 +19,9 @@ router.get('/', authController.isAuthenticated, authController.isAuthenticated, 
 
 router.post('/photos', listingController.createListing);
 
-router.post('/finish', (request, response) => {
-    response.redirect('/dashboard');
-});
+router.post('/finish', listingController.finishCreate);
+
+router.post('/interrupt', listingController.cancelCreation);
 
 router.post('/cancel', (request, response) => {
     response.redirect('/dashboard');
