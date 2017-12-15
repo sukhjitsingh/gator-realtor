@@ -19,6 +19,7 @@ const login = require('./routes/login');
 const logout = require('./routes/logout');
 const listingDetails = require('./routes/listingDetails');
 const aboutUs = require('./routes/aboutUs');
+const favorites = require('./routes/favorites');
 
 const app = express();
 
@@ -92,6 +93,7 @@ app.use('/login', login);
 app.use('/logout', logout);
 app.use('/listingDetails', listingDetails);
 app.use('/aboutUs',aboutUs);
+app.use('/favorites',favorites);
 
 
 

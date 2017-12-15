@@ -48,7 +48,35 @@ const saveMessage = (request, response, next) => {
     });
 };
 
+
+const addToFavorites = (request, response) => {
+    let userid = request.user.id;
+    let propertyid = request.body.favorites;
+
+    queriesController.findFavorites(userid, propertyid)
+        .then(result => {
+            if (result.length == 0) {
+                let favorites = new models.favorites({
+                    userid: userid,
+                    propertyid: propertyid
+                });
+                favorites.save((err) => {
+                    if (err) {
+                        return response.send(err);
+                    }
+                });
+            }
+            response.sendStatus(304);
+
+        })
+        .catch((err) => {
+            return response.send(err);
+        });
+
+};
+
 module.exports = {
     displayListing,
-    saveMessage
+    saveMessage,
+    addToFavorites
 };

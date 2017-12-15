@@ -1,30 +1,38 @@
 const validator = require('validator');
 
 const searchQueryController = require('../controllers/searchQueryController');
+const queriesController = require('../controllers/queriesController');
 
 module.exports.porcessSearch = (request, response) => {
     if (!request.body) return response.sendStatus(400);
     const query = request.body.searchQuery;
 
     /*
-    The following if else statements is using a vailidator library to first check if the string
-    is digits olny, if its not then search by city else valid the zipcode and then search by zip.
+    The following if else statements is using a validator library to first check if the string
+    is digits only, if its not then search by city else valid the zipcode and then search by zip.
 
     Link to the library https://github.com/chriso/validator.js
     */
     if (!validator.isNumeric(query)) {
         searchQueryController.searchByCity(query)
             .then(results => {
-                if(results.length === 0){
+                if (results.length === 0) {
                     searchQueryController.famousSearch()
-                        .then(results => {
-                            response.render('results', {results, found: 0})
+                        .then(res => {
+                            queriesController.getAllImages()
+                                .then(images => {
+                                    const imageMap = images.reduce((memo, image) =>
+                                        Object.assign({}, memo, {[image.propertyId]: image}), {});
+                                    const results = res.map(property =>
+                                        Object.assign({}, property, {image: imageMap[property.id]}));
+                                    response.render('results', {results, found: 0})
+                                });
                         })
                         .catch((err) => {
                             return response.send(err);
                         });
                 } else {
-                    response.render('results', {results, found: results.length})
+                    helperFunc(results, response);
                 }
             })
             .catch((err) => {
@@ -40,16 +48,24 @@ module.exports.porcessSearch = (request, response) => {
         else {
             searchQueryController.searchByZipcode(query)
                 .then(results => {
-                    if(results.length === 0){
+                    if (results.length === 0) {
                         searchQueryController.famousSearch()
-                            .then(results => {
-                                response.render('results', {results, found: 0})
+                            .then(res => {
+                                queriesController.getAllImages()
+                                    .then(images => {
+
+                                        const imageMap = images.reduce((memo, image) =>
+                                            Object.assign({}, memo, {[image.propertyId]: image}), {});
+                                        const results = res.map(property =>
+                                            Object.assign({}, property, {image: imageMap[property.id]}));
+                                        response.render('results', {results, found: 0})
+                                    });
                             })
                             .catch((err) => {
                                 return response.send(err);
                             });
                     } else {
-                        response.render('results', {results, found: results.length})
+                        helperFunc(results, response);
                     }
                 })
                 .catch((err) => {
@@ -59,6 +75,18 @@ module.exports.porcessSearch = (request, response) => {
     }
 };
 
+
+const helperFunc = (res, response) => {
+    queriesController.getAllImages()
+        .then(images => {
+            const imageMap = images.reduce((memo, image) =>
+                Object.assign({}, memo, {[image.propertyId]: image}), {});
+            const results = res.map(property =>
+                Object.assign({}, property, {image: imageMap[property.id]}));
+
+            response.render('results', {results, found: results.length})
+        });
+};
 
 module.exports.applyFilters = (request, response) => {
     let minPrice = 0;
@@ -121,7 +149,7 @@ module.exports.applyFilters = (request, response) => {
     const byCity = (query, minPrice, maxPrice, minNumBedrooms, maxNumBedrooms, minNumBathrooms, maxNumBathrooms) => {
         searchQueryController.filterSearchByCity(query, minPrice, maxPrice, minNumBedrooms, maxNumBedrooms, minNumBathrooms, maxNumBathrooms)
             .then(results => {
-                if(results.length === 0){
+                if (results.length === 0) {
                     searchQueryController.famousSearch()
                         .then(results => {
                             response.render('results', {results, found: 0})
@@ -130,7 +158,7 @@ module.exports.applyFilters = (request, response) => {
                             return response.send(err);
                         });
                 } else {
-                    response.render('results', {results, found: results.length})
+                    helperFunc(results, response);
                 }
             })
             .catch((err) => {
@@ -141,7 +169,7 @@ module.exports.applyFilters = (request, response) => {
     const byZipcode = (query, minPrice, maxPrice, minNumBedrooms, maxNumBedrooms, minNumBathrooms, maxNumBathrooms) => {
         searchQueryController.filterSearchByZipCode(query, minPrice, maxPrice, minNumBedrooms, maxNumBedrooms, minNumBathrooms, maxNumBathrooms)
             .then(results => {
-                if(results.length === 0){
+                if (results.length === 0) {
                     searchQueryController.famousSearch()
                         .then(results => {
                             response.render('results', {results, found: 0})
@@ -150,7 +178,7 @@ module.exports.applyFilters = (request, response) => {
                             return response.send(err);
                         });
                 } else {
-                    response.render('results', {results, found: results.length})
+                    helperFunc(results, response);
                 }
             })
             .catch((err) => {
@@ -177,8 +205,15 @@ module.exports.applyFilters = (request, response) => {
 
 module.exports.famousSearch = (request, response) => {
     searchQueryController.famousSearch()
-        .then(results => {
-            response.render('index', {results})
+        .then(res => {
+            queriesController.getAllImages()
+                .then(images => {
+                    const imageMap = images.reduce((memo, image) =>
+                        Object.assign({}, memo, {[image.propertyId]: image}), {});
+                    const results = res.map(property =>
+                        Object.assign({}, property, {image: imageMap[property.id]}));
+                    response.render('index', {results})
+                })
         })
         .catch((err) => {
             return response.send(err);

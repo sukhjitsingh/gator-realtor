@@ -8,4 +8,7 @@ router.post('/:id', listingDetailsController.displayListing);
 
 router.post('/contact/:id', listingDetailsController.saveMessage );
 
+router.post('/favorites/:id', listingDetailsController.addToFavorites);
+
+
 module.exports = router;

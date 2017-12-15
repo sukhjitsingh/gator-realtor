@@ -3,7 +3,8 @@ const sequelize = require('sequelize');
 const Op = sequelize.Op;
 
 const searchByZipcode = (zip) => {
-    return models.Properties.findAll({where: {zipcode: {[Op.like]: '%' + zip + '%'}}, limit: 10, raw: true})
+    return models.Properties.sequelize.query("SELECT * FROM `Properties` WHERE `zipcode` LIKE :zip",
+        {replacements: {zip: zip}, type: sequelize.QueryTypes.SELECT})
 };
 
 const searchByCity = (city) => {
