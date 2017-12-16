@@ -2,7 +2,7 @@
 
 <div class="container">
     <h1 style="display: inline">{{property.streetAddress}} {{property.streetAddress2}}, {{property.city}}
-        , {{property.state}} {{property.zipCode}}</h1>
+        , {{property.state}} {{property.zipcode}}</h1>
     {{#if user}}
         {{#if user.agent}}
             <button type="submit" id="favorites" name="addtofavorites"
@@ -39,17 +39,17 @@
                         {{/if}}
                     {{/each}}
                 </ol>
-                <div class="carousel-inner" role="listbox">
+                <div class="carousel-inner" style="height: 300px" role="listbox">
                     <!-- Slide One - Set the background image for this slide in the line below -->
                     {{#each images}}
                         {{#if @first}}
-                            <div class="carousel-item active fixedHeight">
+                            <div class="carousel-item active">
                                 <img class="img-responsive img-center"
                                      src="{{imageLink}}"
                                      alt="House Slide"/>
                             </div>
                         {{else}}
-                            <div class="carousel-item fixedHeight">
+                            <div class="carousel-item">
                                 <img class="img-responsive img-center"
                                      src="{{imageLink}}"
                                      alt="House Slide"/>
@@ -93,7 +93,7 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <b>Address:</b> {{property.streetAddress}} {{property.streetAddress2}}, {{property.city}}
-                        , {{property.state}} {{property.zipCode}}
+                        , {{property.state}} {{property.zipcode}}
                     </li>
                     <li class="list-group-item">
                         <b>Price:</b> ${{property.price}}
