@@ -153,15 +153,12 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
-                    <br>
-                    <div>
-
+                        <br>                        
+                        <div>
                         <button type="button" class="btn btn-sm btn-outline-primary pull-left" onclick="Clear();">Clear Filter</button>
-                        <button type="submit" class="btn btn-sm btn-outline-success pull-right" formaction="/search/filter">Apply
-                            filter
-                        </button>
+                        <button type="submit" class="btn btn-sm btn-outline-success pull-right" formaction="/search/filter">Apply filter</button>
                     </div>
+                    </div>    
                 </div>
             </div>
             <!--Filter Panel End-->
@@ -186,8 +183,8 @@
                                          <!--alt="No Image">-->
 
                                     <form method="post">
-                                        <button class="=btn btn-sm btn-outline-secondary" formaction="/listingdetails/{{id}}"
-                                                name="listingdetailbutton" value="{{id}}"><img class="img-thumbnail" src="{{image.imageLink}}"
+                                        <button class="btn btn-sm btn-outline-secondary" formaction="/listingdetails/{{id}}"
+                                                name="listingdetailbutton" value="{{id}}"><img class="img-responsive" src="{{image.imageLink}}"
                                                                                                style="height: 250px" alt="No Image">
                                         </button>
                                     </form>
@@ -203,7 +200,7 @@
                                             <h6>Bedrooms: {{bedrooms}} Bathrooms: {{bathrooms}}</h6>
                                         </li>
                                         <br>
-                                        <button class="=btn btn-md btn-outline-secondary" formaction="/listingdetails/{{id}}"
+                                        <button class="btn btn-md btn-outline-secondary" formaction="/listingdetails/{{id}}"
                                                 name="listingdetailbutton" value="{{id}}">
                                             View Details
                                         </button>

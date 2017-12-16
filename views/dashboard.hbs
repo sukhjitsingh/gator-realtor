@@ -76,7 +76,7 @@
                                     <button style="border: none; padding:0; background: none;"
                                             formaction="/listingdetails/{{id}}"
                                             name="listingdetailbutton" value="{{id}}">
-                                        <u> {{streetAddress}}, {{city}}, {{state}} {{zipCode}}</u>
+                                        <u> {{streetAddress}}, {{city}}, {{state}} {{zipcode}}</u>
                                     </button>
                                 </form>
                             </div>
@@ -85,11 +85,11 @@
                             </div>
                             <div class="col-md-3">
                                 <form method="post" action="/dashboard">
-                                    <button type="submit" class="btn btn-outline-success"
+                                    <button type="submit" class="btn btn-sm btn-outline-success"
                                             formaction="/listingdetails/{{id}}"
                                             name="listingdetailbutton" value="{{id}}">Go To Listing
                                     </button>
-                                    <button type="submit" class="btn btn-outline-danger" formaction="/dashboard/delete"
+                                    <button type="submit" class="btn btn-sm btn-outline-danger" formaction="/dashboard/delete"
                                             name="deleteButton" value="{{id}}">Delete Listing
                                     </button>
                                 </form>
@@ -150,7 +150,7 @@
                             {{createdAt}}
                         </div>
                         <div class="col-md-2">
-                            <button type="button" class="btn btn-outline-info pull-right" data-toggle="collapse"
+                            <button type="button" class="btn btn-sm btn-outline-info pull-right" data-toggle="collapse"
                                     data-target="#message{{id}}">
                                 View Message
                             </button>
