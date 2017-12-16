@@ -61,9 +61,9 @@ let updateUserInfo = (id, fName, lName, email, phoneNum, psswd) => {
         })
 };
 
-let getUnsetPropertyId = () => {
-    return models.Properties.sequelize.query("SELECT * FROM `Properties` WHERE `isSet` = :isSet",
-        {replacements: {isSet: '0'}, type: sequelize.QueryTypes.SELECT})
+let getUnsetPropertyId = (agentid) => {
+    return models.Properties.sequelize.query("SELECT * FROM `Properties` WHERE `isSet` = :isSet AND agentid=:agentid",
+        {replacements: {isSet: '0', agentid: agentid}, type: sequelize.QueryTypes.SELECT})
 };
 
 let getImages = (propertyid) => {

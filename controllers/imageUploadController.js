@@ -46,29 +46,35 @@ module.exports.upload = (req, res) => {
                     msg: 'Error: No File Selected!'
                 });
             } else {
-                queriesController.getUnsetPropertyId()
-                    .then(result => {
+                queriesController.getAgentId(req.user.id)
+                    .then(agentid => {
+                        queriesController.getUnsetPropertyId(agentid)
+                            .then(result => {
 
-                        let image = new models.Images({
-                            propertyId: result[0].id,
-                            imageLink: `/images/uploads/${req.file.filename}`
-                        });
+                                let image = new models.Images({
+                                    propertyId: result[0].id,
+                                    imageLink: `/images/uploads/${req.file.filename}`
+                                });
 
 
-                        image.save((err) => {
-                            if (err) {
-                                return res.send(err);
-                            }
-                        })
-                            .then(() => {
-                                queriesController.getImages(result[0].id)
-                                    .then(images => {
-                                        res.render('imagePage', {
-                                            msg: 'File Uploaded!',
-                                            images: images
-                                        });
+                                image.save((err) => {
+                                    if (err) {
+                                        return res.send(err);
+                                    }
+                                })
+                                    .then(() => {
+                                        queriesController.getImages(result[0].id)
+                                            .then(images => {
+                                                res.render('imagePage', {
+                                                    msg: 'File Uploaded!',
+                                                    images: images
+                                                });
+                                            })
                                     })
                             })
+                            .catch((err) => {
+                                return res.send(err);
+                            });
                     })
                     .catch((err) => {
                         return res.send(err);
