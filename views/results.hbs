@@ -34,7 +34,7 @@
     <!--Filter Panel Start-->
     <div class="container-fluid">
         <div class="row">
-            <div class="filter col-sm-2">
+            <div class="filter col-md-2">
                 <div id="accordion" class="panel panel-primary behclick-panel">
                     <div class="panel-heading">
                         <h6 class="panel-title">Search Filter</h6>
@@ -166,7 +166,7 @@
             </div>
             <!--Filter Panel End-->
             <!--Results Listings Start-->
-            <div class="col-sm-9">
+            <div class="col-md-9">
                 <div class="container-fluid">
 
                     {{#if found}}
@@ -178,7 +178,7 @@
                     {{/if}}
                     <div class="d-flex flex-row align-items-stretch flex-wrap">
                         {{#each results}}
-                            <div class="col-sm-4" style="padding-bottom: 15px">
+                            <div class="col-md-4" style="padding-bottom: 15px">
                                 <div class="card" style="height:100%">
                                     <!--Card Image-->
 
@@ -187,7 +187,7 @@
 
                                     <form method="post">
                                         <button class="=btn btn-sm btn-outline-secondary" formaction="/listingdetails/{{id}}"
-                                                name="listingdetailbutton" value="{{id}}"><img class="img-thumbnail" src="/{{imageLink}}"
+                                                name="listingdetailbutton" value="{{id}}"><img class="img-thumbnail" src="{{image.imageLink}}"
                                                                                                style="height: 250px" alt="No Image">
                                         </button>
                                     </form>

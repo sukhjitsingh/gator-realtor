@@ -1,6 +1,27 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 <div class="container">
-    <h1>{{property.streetAddress}} {{property.streetAddress2}}, {{property.city}}
+    <h1 style="display: inline">{{property.streetAddress}} {{property.streetAddress2}}, {{property.city}}
         , {{property.state}} {{property.zipCode}}</h1>
+    {{#if user}}
+        {{#if user.agent}}
+            <button type="submit" id="favorites" name="addtofavorites"
+                    class="btn btn-secondary btn-md makealert" style="float: right; padding-bottom: auto">Add to
+                favorites
+            </button>
+        {{else}}
+            <form method="post" action="/listingDetails/favorites" style="float:right">
+                <button type="submit" id="favorites" name="favorites"
+                        class="btn btn-secondary btn-md pushme-with-color"
+                        formaction="/listingDetails/favorites/{{property.id}}" value="{{property.id}}">Add to favorites
+                </button>
+            </form>
+        {{/if}}
+    {{else}}
+        <button type="submit" id="favorites" name="addtofavorites"
+                class="btn btn-secondary btn-md makealert" style="float: right; padding-bottom: auto">Add to favorites
+        </button>
+    {{/if}}
     <hr>
     <!--house images-->
     <div class="row">
@@ -8,19 +29,19 @@
         <div class="col-sm-6">
             <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
 
-                    <ol class="carousel-indicators">
-                        {{#each images}}
+                <ol class="carousel-indicators">
+                    {{#each images}}
                         {{#if @first}}
                             <li data-target="#carouselIndicators" data-slide-to="{{images.imageId}}"
                                 class="active"></li>
                         {{else}}
                             <li data-target="#carouselIndicators" data-slide-to="{{images.imageId}}"></li>
                         {{/if}}
-                        {{/each}}
-                    </ol>
-                    <div class="carousel-inner" role="listbox">
-                        <!-- Slide One - Set the background image for this slide in the line below -->
-                        {{#each images}}
+                    {{/each}}
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <!-- Slide One - Set the background image for this slide in the line below -->
+                    {{#each images}}
                         {{#if @first}}
                             <div class="carousel-item active fixedHeight">
                                 <img class="img-responsive img-center"
@@ -34,8 +55,8 @@
                                      alt="House Slide"/>
                             </div>
                         {{/if}}
-                        {{/each}}
-                    </div>
+                    {{/each}}
+                </div>
                 <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
@@ -115,44 +136,61 @@
             <h1 class="text-center">Contact Agent:</h1>
             <hr>
 
-                <!--contact agent card start-->
-                <div class="container-fluid card pb-3 pt-3">
-                    <h4 class="card-header text-center">{{agent.firstName}} {{agent.lastName}}
+            <!--contact agent card start-->
+            <div class="container-fluid card pb-3 pt-3">
+                <h4 class="card-header text-center">{{agent.firstName}} {{agent.lastName}}
                     <br>
                     {{agent.phoneNumber}}
-                    </h4>
-                    <!--contact form start-->
-                    <div class="card-block">
-                        <form method="post" action="/listingDetails/contact">
-                            <div class="form-group pt-2">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Full Name"
-                                       value="" maxlength="40" pattern="[a-zA-Z ]+" required>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Email"
-                                       value="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" maxlength="40" required>
-                                <input type="phone-number" class="form-control" placeholder="Phone Number" name="phoneNumber"
-                                       value="" maxlength="11" required>
-                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject"
-                                       value="Listing Number: {{property.id}}"
-                                       required>
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control" type="textArea" name="message" id="message" placeholder="Message" rows="7">Hello {{agent.firstName}} {{agent.LastName}}, I am interested in your property: {{property.streetAddress}}, {{property.city}}, {{property.state}} {{property.zipCode}}</textarea>
-                            </div>
-                            <button type="submit" id="sendMessage" name="sendMessage"
-                                    class="btn btn-success btn-block" formaction="/listingDetails/contact/{{property.id}}"  value = "{{property.id}}">Contact Agent
-                            </button>
-                        </form>
-                    </div>
-                    <!--contact form end-->
-
+                </h4>
+                <!--contact form start-->
+                <div class="card-block">
+                    <form method="post" action="/listingDetails/contact">
+                        <div class="form-group pt-2">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Full Name"
+                                   value="" maxlength="40" pattern="[a-zA-Z ]+" required>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email"
+                                   value="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" maxlength="40" required>
+                            <input type="phone-number" class="form-control" placeholder="Phone Number"
+                                   name="phoneNumber"
+                                   value="" maxlength="11" required>
+                            <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject"
+                                   value="Listing Number: {{property.id}}"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" type="textArea" name="message" id="message"
+                                      placeholder="Message" rows="7">Hello {{agent.firstName}} {{agent.LastName}}, I am interested in your property: {{property.streetAddress}}
+                                , {{property.city}}, {{property.state}} {{property.zipCode}}</textarea>
+                        </div>
+                        <button type="submit" id="sendMessage" name="sendMessage"
+                                class="btn btn-success btn-block" formaction="/listingDetails/contact/{{property.id}}"
+                                value="{{property.id}}">Contact Agent
+                        </button>
+                    </form>
                 </div>
                 <!--contact form end-->
 
             </div>
-            <!--contact agent card end-->
+            <!--contact form end-->
 
         </div>
-        <!--contact agent end-->
+        <!--contact agent card end-->
 
     </div>
+    <!--contact agent end-->
+
 </div>
+
+<script>
+    $(document).ready(function () {
+        $(".pushme-with-color").click(function () {
+            $(this).text("Added to favorites");
+            $(this).addClass("btn-success");
+            $(this).removeClass("btn-secondary");
+        });
+
+        $(".makealert").click(function () {
+            alert("Please login as a user!");
+        })
+    });
+</script>

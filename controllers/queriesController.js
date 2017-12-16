@@ -71,11 +71,31 @@ let getImages = (propertyid) => {
         {replacements: {propertyId: propertyid}, type: sequelize.QueryTypes.SELECT})
 };
 
+let getAllImages = () => {
+    return models.Images.sequelize.query("SELECT * FROM `Images` ORDER BY `createdAt` DESC",
+        {type: sequelize.QueryTypes.SELECT})
+};
+
 let updatePropertyValue = () => {
     return models.Properties.sequelize.query("UPDATE `Properties` SET `isSet` = :isSet WHERE `isSet` = :value",
         {
             replacements: {isSet: '1', value: '0'}, type: sequelize.QueryTypes.UPDATE
         })
+};
+
+let findFavorites = (userid, propertyid) => {
+    return models.User.sequelize.query("SELECT * FROM `favorites` WHERE `userid` = :userid AND `propertyid` = :propertyid",
+        {replacements: {userid: userid, propertyid: propertyid}, type: sequelize.QueryTypes.SELECT})
+};
+
+let getFavorites = (userid) => {
+    return models.User.sequelize.query("SELECT * FROM `Properties` WHERE `id` IN (SELECT `propertyid` FROM `favorites` WHERE  `userid` = :userid)",
+        {replacements: {userid: userid}, type: sequelize.QueryTypes.SELECT})
+};
+
+let deleteFavorite = (propertyid, userid) => {
+    return models.Properties.sequelize.query("DELETE FROM `favorites` WHERE `userid` = :userid AND `propertyid` = :propertyid",
+        {replacements: {userid: userid, propertyid: propertyid}, type: sequelize.QueryTypes.DELETE})
 };
 
 module.exports = {
@@ -92,5 +112,9 @@ module.exports = {
     updateUserInfo,
     getUnsetPropertyId,
     getImages,
-    updatePropertyValue
+    updatePropertyValue,
+    getAllImages,
+    findFavorites,
+    getFavorites,
+    deleteFavorite
 };

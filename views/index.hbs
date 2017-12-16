@@ -52,7 +52,7 @@
     <!--First Left and Right Card End-->
     <div class="d-flex flex-row align-items-stretch flex-wrap">
         {{#each results}}
-            <div class="col-sm-4" style="padding-bottom: 15px">
+            <div class="col-lg-4" style="padding-bottom: 15px">
                 <div class="card" style="height:100%">
                     <div class="card-header" style="font-size: larger; font-weight: bold">Featured</div>
                     <!--Card Image-->
@@ -66,7 +66,7 @@
 
                     <form method="post">
                         <button class="=btn btn-outline-secondary removeBorder" formaction="/listingdetails/{{id}}"
-                                name="listingdetailbutton" value="{{id}}"><img class="img-thumbnail" src="{{imageLink}}"
+                                name="listingdetailbutton" value="{{id}}"><img class="img-thumbnail" src="{{image.imageLink}}"
                                                                                style="height: 250px" alt="No Image">
                         </button>
                     </form>
