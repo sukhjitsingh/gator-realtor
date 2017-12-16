@@ -50,6 +50,7 @@ module.exports.createListing = (req, res) => {
                         bathrooms: bath,
                         lotSize: size,
                         type: type,
+                        parking: parking,
                         isSet: 0
                     });
                     res.render('imagePage');
