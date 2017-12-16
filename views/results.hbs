@@ -1,14 +1,4 @@
-<script>
-    window.onbeforeunload = function () {
-        sessionStorage.setItem("searchResult", $('#searchResult').val());
-    };
-    window.onload = function () {
-        let searchResult = sessionStorage.getItem("searchResult");
-        if (searchResult !== null) {
-            $('#searchResult').val(searchResult);
-        }
-    }
-</script>
+<script src="javascripts/results.js"></script>
 
 <form method="POST">
     
@@ -215,18 +205,3 @@
     </div>
     </div>
 </form>
-
-
-<script>
-    function Clear() {
-        clearRadioGroup("price");
-        clearRadioGroup("bedrooms");
-        clearRadioGroup("bathrooms")
-    }
-
-    function clearRadioGroup(GroupName) {
-        let ele = document.getElementsByName(GroupName);
-        for (let i = 0; i < ele.length; i++)
-            ele[i].checked = false;
-    }
-</script>
