@@ -1,13 +1,4 @@
-<script>
-    window.onbeforeunload = function () {
-        sessionStorage.setItem("searchResult", $('#searchResult').val());
-    };
-    window.onload = function () {
-        sessionStorage.removeItem("searchResult");
-        let currentPage = document.getElementById("home");
-        currentPage.className += " active";
-    }
-</script>
+<script src="javascripts/index.js"></script>
 
 <div class="banner d-flex align-items-center">
 
@@ -66,7 +57,8 @@
 
                     <form method="post">
                         <button class="btn btn-outline-secondary" formaction="/listingdetails/{{id}}"
-                                name="listingdetailbutton" value="{{id}}"><img class="img-thumbnail" src="{{image.imageLink}}"
+                                name="listingdetailbutton" value="{{id}}"><img class="img-thumbnail"
+                                                                               src="{{image.imageLink}}"
                                                                                style="height: 250px" alt="No Image">
                         </button>
                     </form>
