@@ -13,11 +13,11 @@ module.exports = (sequelize, DataTypes) => {
         bathrooms: DataTypes.INTEGER,
         lotSize: DataTypes.INTEGER,
         type: DataTypes.STRING,
-        imageLink: DataTypes.STRING,
         agentId: DataTypes.BIGINT(20),
+        parking: DataTypes.INTEGER,
+        isSet: DataTypes.BOOLEAN,
         createdAt: DataTypes.DATE,
         updatedAt: DataTypes.DATE,
-        isSet: DataTypes.BOOLEAN
     }, {
         timestamps: true,
         tableName: 'Properties'

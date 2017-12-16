@@ -13,6 +13,7 @@ module.exports.createListing = (req, res) => {
     let bed = req.body.bedroomNumber;
     let type = req.body.typeOfHome;
     let size = req.body.lotSize;
+    let parking = req.body.parking;
 
 
     req.checkBody('streetAddress', 'Address is required').notEmpty();
