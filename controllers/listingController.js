@@ -7,7 +7,7 @@ module.exports.createListing = (req, res) => {
     let city = req.body.city;
     let state = req.body.state;
     let zip = req.body.zipcode;
-    let price = parseFloat(req.body.price).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+    let price = req.body.price;
     let buildYear = req.body.buildYear;
     let bath = req.body.bathroomNumber;
     let bed = req.body.bedroomNumber;
@@ -70,21 +70,27 @@ module.exports.createListing = (req, res) => {
 };
 
 module.exports.cancelCreation = (req, res) => {
-    queriesController.getUnsetPropertyId()
+
+    queriesController.getAgentId(req.user.id)
+    .then(agentid => {
+        console.log('AGENT ID getAgentId: ', agentid[0].agentId)
+        queriesController.getUnsetPropertyId(agentid[0].agentId)
         .then(result => {
-                console.log(result[0].id);
-                queriesController.deleteProperty(result[0].id)
-                    .then(() => {
-                        res.redirect('/dashboard')
-                    })
-                    .catch((err) => {
-                        return res.send(err);
-                    });
-            }
+            console.log(result[0].id);
+            queriesController.deleteProperty(result[0].id)
+                .then(() => {
+                    res.redirect('/dashboard')
+                })
+                .catch((err) => {
+                    return res.send(err);
+                });
+        }
         )
         .catch((err) => {
             return res.send(err);
         });
+
+    })
 };
 
 module.exports.finishCreate = (req, res) => {

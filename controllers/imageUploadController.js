@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
     storage: storage,
-    limits: {fileSize: 3000000},
+    limits: { fileSize: 3000000 },
     fileFilter: (req, file, cb) => {
         checkFileType(file, cb);
     }
@@ -47,39 +47,46 @@ module.exports.upload = (req, res) => {
                 });
             } else {
                 queriesController.getAgentId(req.user.id)
-                    .then(agentid => {
-                        queriesController.getUnsetPropertyId(agentid)
-                            .then(result => {
+                .then(agentid => {
+                    console.log('AGENT ID getAgentId: ', agentid[0].agentId)
+                    queriesController.getUnsetPropertyId(agentid[0].agentId)
+                    .then(result => {
+                        console.log('RESULT INSIDE getUnsetPropertyId: ', result)
+                        console.log('RESULT FOR PropertyId: ', result[0].id)
+                        let image = new models.Images({
+                            propertyId: result[0].id,
+                            imageLink: `/images/uploads/${req.file.filename}`
+                        });
+                            image.save((err) => {
+                                console.log('ERROR LOG FOR SAVE IMAGE: ', err)
 
-                                let image = new models.Images({
-                                    propertyId: result[0].id,
-                                    imageLink: `/images/uploads/${req.file.filename}`
-                                });
-
-
-                                image.save((err) => {
-                                    if (err) {
-                                        return res.send(err);
-                                    }
-                                })
-                                    .then(() => {
-                                        queriesController.getImages(result[0].id)
-                                            .then(images => {
-                                                res.render('imagePage', {
-                                                    msg: 'File Uploaded!',
-                                                    images: images
-                                                });
-                                            })
-                                    })
+                                if (err) {
+                                    return res.send(err);
+                                }
                             })
-                            .catch((err) => {
-                                return res.send(err);
+      
+                    .then(() => {
+                        console.log('RESULT FOR getImages: ', result[0].id)
+                        
+                        queriesController.getImages(result[0].id)
+                        .then(images => {
+                            console.log('IMAGES INSIDE getImages: ', images)
+                            res.render('imagePage', {
+                                msg: 'File Uploaded!',
+                                images: images
                             });
+                        })
+                        .catch((err) => {
+                            console.log('CATCH ERROR LOG FOR getImages: ', err)
+                            return res.send(err);
+                        });
                     })
                     .catch((err) => {
                         return res.send(err);
                     });
+                })
+                }) // End of getAgentId
             }
         }
     });
-};
+} // End of export
