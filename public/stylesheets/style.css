@@ -1,6 +1,7 @@
 body {
-  padding: 50px;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #e9ecef;
 }
 
 a {
@@ -12,4 +13,179 @@ a {
   height: 20rem;
   background: url(images/img1.jpg) center no-repeat;
   background-size: cover;
+}
+
+.behclick-panel  .list-group {
+  margin-bottom: 0px;
+}
+.behclick-panel .list-group-item:first-child {
+  border-top-left-radius:0px;
+  border-top-right-radius:0px;
+}
+.behclick-panel .list-group-item {
+  border-right:0px;
+  border-left:0px;
+}
+.behclick-panel .list-group-item:last-child{
+  border-bottom-right-radius:0px;
+  border-bottom-left-radius:0px;
+}
+.behclick-panel .list-group-item {
+  padding: 5px;
+}
+.behclick-panel .panel-heading {
+  /* 				padding: 10px 15px;
+                  border-bottom: 1px solid transparent; */
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  border-bottom: 1px solid darkslategrey;
+}
+.behclick-panel .panel-heading:last-child{
+  /* border-bottom: 0px; */
+}
+.behclick-panel {
+  border-radius: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  border-bottom: 0px;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
+}
+.behclick-panel .radio, .checkbox {
+  margin: 0px;
+  padding-left: 10px;
+}
+.behclick-panel .panel-title > a, .panel-title > small, .panel-title > .small, .panel-title > small > a, .panel-title > .small > a {
+  outline: none;
+}
+.behclick-panel .panel-body > .panel-heading{
+  padding:10px 10px;
+}
+.behclick-panel .panel-body {
+  padding: 0px;
+}
+/* unvisited link */
+.behclick-panel a:link {
+  text-decoration:none;
+}
+
+/* visited link */
+.behclick-panel a:visited {
+  text-decoration:none;
+}
+
+/* mouse over link */
+.behclick-panel a:hover {
+  text-decoration:none;
+}
+
+/* selected link */
+.behclick-panel a:active {
+  text-decoration:none;
+}
+
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.iframe-container > * {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.img-center {
+  margin: 0 auto;
+}
+
+.fixedHeight{
+  max-height: 400px;
+}
+
+.widthOneHundredPercent{
+  width:100%;
+}
+
+.widthAndHeightOneHundredPercent{
+  width:100%;
+  height: 100%;
+}
+
+.removeBorder{
+  border: 0;
+}
+
+/*main banner*/
+.banner,
+.banner2 {
+  height: 650px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  width: 100%;
+  color: #fff;
+  z-index: -9999;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
+  background: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.5) 0%), url("/images/jgarden.jpg") no-repeat center;
+  background-size: cover;
+}
+
+section{
+  margin-top: 100px;
+}
+
+.col-md-12.info {
+  top: 150px;
+  bottom: 35%;
+  text-align: center;
+}
+
+.banner h1 {
+  font-size: 4em;
+  text-align: center;
+}
+
+.banner h3 {
+  font-size: 1.4em;
+  margin-bottom: 20px;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.banner h5 {
+  color: #e2e222;
+  font-size: 1.2em;
+  margin-bottom: 3%;
+  text-shadow: 1px 1px 2px rgba(0,0,0, 1);
+  text-transform: capitalize;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.custom-file-control:before {
+  content: "Browse";
+}
+.custom-file-control:after {
+  content: "Choose files...";
+}
+
+.underNavBarPadding{
+  padding-top: 108px;
+}
+
+.filter{
+  margin-top: 100px;
+  margin-left: 10px;
+  margin-right: 10px;
 }

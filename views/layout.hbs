@@ -1,78 +1,112 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
+
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110863210-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-110863210-1');
+    </script>
     <title>{{title}}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+          crossorigin="anonymous">
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
-<body>
-<nav class="navbar-nav fixed-top navbar-expand-lg navbar-light bg-light">
-    <a class="pull-left" href="/"><img src="/images/sfsu-gators.png" width="50" height="50"></a>
-    <a class="navbar-brand" style="margin-left: 20px;" href="/">Gator Realtor</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-            {{#if user}}
-                <li class="nav-item"><a class="nav-link" href="/">Main</a></li>
-                <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link" href="/listing">List Property</a></li>
-                <li class="nav-item"><a class="nav-link" href="/settings">Account settings</a></li>
-                <li class="nav-item"><a class="nav-link" href="/agent/logout">Logout</a></li>
-                <!--<li class="nav-item"><a class="nav-link" href="/contactseller">Contact Seller</a></li>-->
-            {{else}}
-                <li class="nav-item"><a class="nav-link" href="/">Main</a></li>
-                <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
 
-                <!--<li class="nav-item"><a class="nav-link" href="/contactseller">Contact Seller</a></li>-->
-            {{/if}}
-        </ul>
-    </div>
-</nav>
-<div class="jumbotron">
-    <div class="row">
-        <div class="col-lg-12">
-            {{#if success_msg}}
-                <div class="alert alert-success">{{success_msg}}</div>
-            {{/if}}
+<body class="container-fluid" style="background-color: #e9ecef">
+<div class="alert alert-secondary fixed-top text-center">
+    <h6>This is a school project for SFSU Software Engineering for Fall 2017</h6>
+</div>
+<div class="row fixed-top pt-5">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark col-lg-12" style="padding-top: 5px; padding-bottom: 5px;">
+        <a class="pull-left" href="/">
+            <img src="/images/sfsu-gators.png" width="50" height="50">
+        </a>
+        <a class="navbar-brand" style="margin-left: 1rem" href="/">Gator Realtor</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto text-center">
+                <li id="aboutUs" class="nav-item">
+                    <a class="nav-link" href="/aboutUs">About Us</a>
+                </li>
 
-            {{#if error_msg}}
+                {{#if user}}
+                    {{#if user.agent}}
+                        <li id="dashboard" class="nav-item">
+                            <a class="nav-link" href="/dashboard">Dashboard</a>
+                        </li>
+                        <li id="createListing" class="nav-item">
+                            <a class="nav-link" href="/listing">Create Listing</a>
+                        </li>
+                    {{else}}
+                        <li id="favorites" class="nav-item">
+                            <a class="nav-link" href="/favorites">Favorites</a>
+                        </li>
+                    {{/if}}
+                    <li id="accountSettings" class="nav-item">
+                        <a class="nav-link" href="/settings">Account settings</a>
+                    </li>
+
+                    <li id="logout" class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                {{else}}
+                    <li id="login" class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                {{/if}}
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="underNavBarPadding">
+    <div class="jumbotron jumbotron-fluid" style="margin-bottom: 0px">
+        <div class="row">
+            <div class="col-md-12" style="text-align:center">
+                {{#if success_msg}}
+                    <div class="alert alert-success">{{success_msg}}</div>
+                {{/if}} {{#if error_msg}}
                 <div class="alert alert-danger">{{error_msg}}</div>
-            {{/if}}
-            {{#if error}}
+            {{/if}} {{#if error}}
                 <div class="alert alert-danger">{{error}}</div>
             {{/if}}
+            </div>
         </div>
+        {{{body}}}
     </div>
-    {{{body}}}
-</div> <!-- /container -->
-<footer>
-    <h4 style="text-align: center; position:fixed; bottom:0; width:100%; height:30px; background: #99ede4;">Disclaimer:
-        this is a school project</h4>
-</footer>
-
+</div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" 
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" 
-        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
         crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" 
-        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
         crossorigin="anonymous"></script>
 
 </body>
+
 </html>
-
-

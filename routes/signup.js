@@ -1,20 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const agentController = require('../controllers/agentController');
+const registerController = require('../controllers/registerController');
 
 // Render Signup Page
-router.get('/', function(req, res){
+router.get('/', (req, res) =>{
     res.render('signup');
 });
 
 // Signup Page
-
-router.post('/create', agentController.create);
-// router.post('/create', userController.create);
-
+router.post('/create', registerController.create);
 
 // Redirect Signin Page
-router.post('/', function(req, res){
+router.post('/', (req, res) => {
     res.redirect('/login');
 });
 
