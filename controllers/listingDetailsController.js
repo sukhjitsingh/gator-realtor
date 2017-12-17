@@ -41,8 +41,10 @@ const saveMessage = (request, response, next) => {
                 return response.send(err);
             }
         });
-        response.sendStatus(304);
-
+        const reloadPage = request.body.sendMessage
+        // console.log("SEND MESSAGE ID:", reloadPage)
+        request.flash('success_msg', 'Message has been sent.')
+             return response.redirect(`/listingDetails/${reloadPage}`)
     }).catch((err) => {
         return response.send(err);
     });
@@ -66,8 +68,9 @@ const addToFavorites = (request, response) => {
                     }
                 });
             }
-            response.sendStatus(304);
-
+            const reloadPage = request.body.favorites
+            request.flash('success_msg', 'Property has been added to favorites.')
+            return response.redirect(`/listingDetails/${reloadPage}`)
         })
         .catch((err) => {
             return response.send(err);
