@@ -34,7 +34,8 @@ module.exports.createListing = (req, res) => {
             errors: errors
         });
     } else {
-        let agentid = req.user.dataValues.agentId
+        let agentid = req.user.dataValues.agentId;
+        //console.log(agentid)
         queriesController.updatePropertyValue(agentid)
             .then(() => {
                 let properties = new models.Properties({

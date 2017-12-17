@@ -8,6 +8,8 @@ const expressValidator = require('express-validator');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
+const handlebarsIntl = require('handlebars-intl');
+const handlebars = require('hbs');
 
 const index = require('./routes/index');
 const signup = require('./routes/signup');
@@ -26,7 +28,7 @@ const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-
+handlebarsIntl.registerWith(handlebars)
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

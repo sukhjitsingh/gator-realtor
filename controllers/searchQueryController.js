@@ -17,10 +17,14 @@ const famousSearch = () => {
         {replacements: {search_name: '%' + 'San Francisco' + '%'}, type: sequelize.QueryTypes.SELECT})
 };
 
+const topPriceSearch = () => {
+    return models.Properties.sequelize.query("SELECT * FROM `Properties` WHERE `price` >= :price",
+        {replacements: {price: 1000001}, type: sequelize.QueryTypes.SELECT})
+};
 
 const filterSearchByCity = (city, minPrice, maxPrice, minNumBedrooms, maxNumBedrooms, minNumBathrooms, maxNumBathrooms) => {
     return models.Properties.sequelize.query("SELECT * FROM `Properties` " +
-        "WHERE `city` LIKE :search_name AND :minPrice <= `price` AND :maxPrice > `price` AND " +
+        "WHERE `city` LIKE :search_name AND :minPrice <= `price` AND :maxPrice >= `price` AND " +
         ":minNumBedrooms <= bedrooms AND :maxNumBedrooms >= bedrooms AND " +
         ":minNumBathrooms <= bathrooms AND :maxNumBathrooms >= bathrooms",
         {
@@ -34,7 +38,7 @@ const filterSearchByCity = (city, minPrice, maxPrice, minNumBedrooms, maxNumBedr
 
 const filterSearchByZipCode = (zipCode, minPrice, maxPrice, minNumBedrooms, maxNumBedrooms, minNumBathrooms, maxNumBathrooms) => {
     return models.Properties.sequelize.query("SELECT * FROM `Properties` " +
-        "WHERE `zipcode` LIKE :search_zipcode AND :minPrice <= `price` AND :maxPrice > `price` AND " +
+        "WHERE `zipcode` LIKE :search_zipcode AND :minPrice <= `price` AND :maxPrice >= `price` AND " +
         ":minNumBedrooms <= bedrooms AND :maxNumBedrooms >= bedrooms AND " +
         ":minNumBathrooms <= bathrooms AND :maxNumBathrooms >= bathrooms",
         {
@@ -51,5 +55,6 @@ module.exports = {
     searchByCity,
     famousSearch,
     filterSearchByCity,
-    filterSearchByZipCode
+    filterSearchByZipCode,
+    topPriceSearch
 };
