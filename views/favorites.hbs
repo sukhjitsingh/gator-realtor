@@ -1,45 +1,67 @@
+<script type="text/javascript" src="/javascripts/favorites.js"></script>
+
 <div class="container">
     <div class="row">
 
-
+        <!--favorites listings-->
         <div class="col-md-12">
-            <h4>My Favorites</h4>
-            <div class="table-responsive-sm table-striped">
+            <h2>My Favorites</h2>
+            <hr>
 
+            <!--tab content start-->
+            <div class="tab-content">
 
-                <table id="mytable" class="table table-bordred table-striped">
+                <div class="tab-pane active" id="listings" role="tabpanel">
+                    <!--listing header start-->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <h4 class="col-md-5">Address:</h4>
+                                <h4 class="col-md-4">Saved At:</h4>
+                                <h4 class="col-md-3">Options:</h4>
+                            </div>
 
-                    <thead class="thread-light">
-                    <th>Address</th>
-                    <th>Saved At</th>
-                    <th>Delete</th>
-                    </thead>
-                    <tbody>
+                        </div>
+                    </div>
+                    <!--listing header end-->
 
                     {{#each result}}
-                        <tr>
-                            <td>
-                                <form method="post">
-                                    <button style="border: none; padding:0; background: none;"
-                                            formaction="/listingdetails/{{id}}"
-                                            name="listingdetailbutton" value="{{id}}">
-                                        <u>{{streetAddress}}{{city}}{{state}}{{zipcode}}</u>
-                                    </button>
-                                </form>
-                            </td>
+                        <!--card listing start-->
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <form method="post">
+                                            <button style="border: none; padding:0; background: none;"
+                                                    formaction="/listingdetails/{{id}}"
+                                                    name="listingdetailbutton" value="{{id}}">
+                                                <u>{{streetAddress}}, {{city}}, {{state}} {{zipcode}}</u>
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-4">
 
-                            <td>{{createdAt}}</td>
-                            <td>
-                                <form method="post">
-                                    <button type="submit" class="btn btn-danger" formaction="/favorites/delete" name="deleteButton" value="{{id}}">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
+                                        {{createdAt}}
+
+                                    </div>
+                                    <div class="col-md-3">
+
+                                        <form method="post">
+                                            <button type="submit" class="btn btn-danger" formaction="/favorites/delete" name="deleteButton" value="{{id}}">Delete</button>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--card listing end-->
                     {{/each}}
-                    </tbody>
-                </table>
+                </div>
+
             </div>
         </div>
+        <!--favorites listings end-->
+
     </div>
 </div>
 
