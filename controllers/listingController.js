@@ -34,33 +34,30 @@ module.exports.createListing = (req, res) => {
             errors: errors
         });
     } else {
-        queriesController.updatePropertyValue()
+        let agentid = req.user.dataValues.agentId
+        queriesController.updatePropertyValue(agentid)
             .then(() => {
-                queriesController.getAgentId(req.user.id).then(agentId => {
-                    let properties = new models.Properties({
-                        streetAddress: address,
-                        streetAddress2: address2,
-                        city: city,
-                        state: state,
-                        agentId: agentId[0].agentId,
-                        zipcode: zip,
-                        price: price,
-                        buildYear: buildYear,
-                        bedrooms: bed,
-                        bathrooms: bath,
-                        lotSize: size,
-                        type: type,
-                        parking: parking,
-                        isSet: 0
-                    });
-                    res.render('imagePage');
-                    properties.save((err) => {
-                        if (err) {
-                            return res.send(err);
-                        }
-                    });
-                }).catch((err) => {
-                    return res.send(err);
+                let properties = new models.Properties({
+                    streetAddress: address,
+                    streetAddress2: address2,
+                    city: city,
+                    state: state,
+                    agentId: agentid,
+                    zipcode: zip,
+                    price: price,
+                    buildYear: buildYear,
+                    bedrooms: bed,
+                    bathrooms: bath,
+                    lotSize: size,
+                    type: type,
+                    parking: parking,
+                    isSet: 0
+                });
+                res.render('imagePage');
+                properties.save((err) => {
+                    if (err) {
+                        return res.send(err);
+                    }
                 });
             })
             .catch((err) => {
@@ -72,29 +69,29 @@ module.exports.createListing = (req, res) => {
 module.exports.cancelCreation = (req, res) => {
 
     queriesController.getAgentId(req.user.id)
-    .then(agentid => {
-        console.log('AGENT ID getAgentId: ', agentid[0].agentId)
-        queriesController.getUnsetPropertyId(agentid[0].agentId)
-        .then(result => {
-            console.log(result[0].id);
-            queriesController.deleteProperty(result[0].id)
-                .then(() => {
-                    res.redirect('/dashboard')
-                })
+        .then(agentid => {
+            console.log('AGENT ID getAgentId: ', agentid[0].agentId)
+            queriesController.getUnsetPropertyId(agentid[0].agentId)
+                .then(result => {
+                    console.log(result[0].id);
+                    queriesController.deleteProperty(result[0].id)
+                        .then(() => {
+                            res.redirect('/dashboard')
+                        })
+                        .catch((err) => {
+                            return res.send(err);
+                        });
+                }
+                )
                 .catch((err) => {
                     return res.send(err);
                 });
-        }
-        )
-        .catch((err) => {
-            return res.send(err);
-        });
 
-    })
+        })
 };
 
 module.exports.finishCreate = (req, res) => {
-    queriesController.updatePropertyValue()
+    queriesController.updatePropertyValue(req.user.dataValues.agentId)
         .then(() => {
             req.flash('success_msg', 'Listing was created successfully');
             res.redirect('/dashboard');

@@ -33,7 +33,7 @@ let getAgent = (propertyId) => {
 };
 
 let dashboardMessages = (userId) => {
-    return models.Properties.sequelize.query("SELECT * FROM `buyerMessages` WHERE `agentId` IN ( SELECT `agentId` FROM `Users` WHERE  `id` = :id)",
+    return models.buyerMessages.sequelize.query("SELECT * FROM `buyerMessages` WHERE `agentId` IN ( SELECT `agentId` FROM `Users` WHERE  `id` = :id)",
         {replacements: {id: userId}, type: sequelize.QueryTypes.SELECT})
 };
 
@@ -62,8 +62,8 @@ let updateUserInfo = (id, fName, lName, email, phoneNum, psswd) => {
 };
 
 let getUnsetPropertyId = (agentid) => {
-    return models.Properties.sequelize.query("SELECT * FROM `Properties` WHERE `isSet` = :isSet AND agentid=:agentid",
-        {replacements: {isSet: '0', agentid: agentid}, type: sequelize.QueryTypes.SELECT})
+    return models.Properties.sequelize.query("SELECT * FROM `Properties` WHERE `isSet` = :isSet AND `agentId` = :agentId",
+        {replacements: {isSet: '0', agentId: agentid}, type: sequelize.QueryTypes.SELECT})
 };
 
 let getImages = (propertyid) => {
@@ -76,25 +76,25 @@ let getAllImages = () => {
         {type: sequelize.QueryTypes.SELECT})
 };
 
-let updatePropertyValue = () => {
-    return models.Properties.sequelize.query("UPDATE `Properties` SET `isSet` = :isSet WHERE `isSet` = :value",
+let updatePropertyValue = (agentId) => {
+    return models.Properties.sequelize.query("UPDATE `Properties` SET `isSet` = :isSet WHERE `isSet` = :value AND `agentId` = :agentId",
         {
-            replacements: {isSet: '1', value: '0'}, type: sequelize.QueryTypes.UPDATE
+            replacements: {isSet: '1', value: '0', agentId: agentId}, type: sequelize.QueryTypes.UPDATE
         })
 };
 
 let findFavorites = (userid, propertyid) => {
-    return models.User.sequelize.query("SELECT * FROM `favorites` WHERE `userid` = :userid AND `propertyid` = :propertyid",
+    return models.favorites.sequelize.query("SELECT * FROM `favorites` WHERE `userid` = :userid AND `propertyid` = :propertyid",
         {replacements: {userid: userid, propertyid: propertyid}, type: sequelize.QueryTypes.SELECT})
 };
 
 let getFavorites = (userid) => {
-    return models.User.sequelize.query("SELECT * FROM `Properties` WHERE `id` IN (SELECT `propertyid` FROM `favorites` WHERE  `userid` = :userid)",
+    return models.Properties.sequelize.query("SELECT * FROM `Properties` WHERE `id` IN (SELECT `propertyid` FROM `favorites` WHERE  `userid` = :userid)",
         {replacements: {userid: userid}, type: sequelize.QueryTypes.SELECT})
 };
 
 let deleteFavorite = (propertyid, userid) => {
-    return models.Properties.sequelize.query("DELETE FROM `favorites` WHERE `userid` = :userid AND `propertyid` = :propertyid",
+    return models.favorites.sequelize.query("DELETE FROM `favorites` WHERE `userid` = :userid AND `propertyid` = :propertyid",
         {replacements: {userid: userid, propertyid: propertyid}, type: sequelize.QueryTypes.DELETE})
 };
 
