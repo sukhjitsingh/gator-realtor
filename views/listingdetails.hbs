@@ -96,7 +96,7 @@
                         , {{property.state}} {{property.zipcode}}
                     </li>
                     <li class="list-group-item">
-                        <b>Price:</b> ${{property.price}}
+                        <b>Price:</b> {{formatNumber property.price style="currency" currency="USD"}}
                     </li>
                     <li class="list-group-item">
                         <b>Number of Bedrooms:</b> {{property.bedrooms}}
@@ -160,7 +160,7 @@
                         <div class="form-group">
                             <textarea class="form-control" type="textArea" name="message" id="message"
                                       placeholder="Message" rows="5">Hello {{agent.firstName}} {{agent.LastName}}, I am interested in your property: {{property.streetAddress}}
-                                , {{property.city}}, {{property.state}} {{property.zipCode}}</textarea>
+                                , {{property.city}}, {{property.state}} {{property.zipcode}}</textarea>
                         </div>
                         <button type="submit" id="sendMessage" name="sendMessage"
                                 class="btn btn-success btn-block" formaction="/listingDetails/contact/{{property.id}}"

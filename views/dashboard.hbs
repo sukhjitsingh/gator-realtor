@@ -137,7 +137,7 @@
                                         formaction="/listingdetails/{{property.id}}"
                                         name="listingdetailbutton" value="{{property.id}}">
                                     <u> {{property.streetAddress}}, {{property.city}}
-                                        , {{property.state}} {{property.zipCode}}</u>
+                                        , {{property.state}} {{property.zipcode}}</u>
                                 </button>
                             </form>
                         </div>
@@ -156,6 +156,14 @@
                     <div class="row">
                         <div id="message{{id}}" class="collapse col-md-12">
                             {{message}}
+                            <br>
+                            <b>My contact information is:</b>
+                            <br>
+                            <b>Name:</b> {{buyerFullName}}
+                            <br>
+                            <b>Phone number:</b> {{buyerPhoneNumber}}
+                            <br>
+                            <b>email:</b> {{buyerEmail}}
                         </div>
                     </div>
                 </div>

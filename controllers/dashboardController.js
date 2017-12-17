@@ -35,7 +35,7 @@ module.exports.displayDashboardProperties = (request, response) => {
 module.exports.deleteProperty = (request, response) => {
     queriesController.deleteProperty(request.body.deleteButton)
         .then(results => {
-            request.flash('success_msg', 'Property has been deleted successfully.')
+            request.flash('success_msg', 'Property has been deleted successfully.');
             response.redirect('/dashboard');
         }).catch((err) => {
         return response.send(err);

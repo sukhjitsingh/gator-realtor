@@ -103,15 +103,15 @@ module.exports.applyFilters = (request, response) => {
                 maxPrice = 100000;
                 break;
             case '2':
-                minPrice = 100000;
+                minPrice = 100001;
                 maxPrice = 500000;
                 break;
             case '3':
-                minPrice = 500000;
+                minPrice = 500001;
                 maxPrice = 1000000;
                 break;
             case '4':
-                minPrice = 1000000;
+                minPrice = 1000001;
                 break;
         }
     }
@@ -147,12 +147,21 @@ module.exports.applyFilters = (request, response) => {
     }
 
     const byCity = (query, minPrice, maxPrice, minNumBedrooms, maxNumBedrooms, minNumBathrooms, maxNumBathrooms) => {
+
         searchQueryController.filterSearchByCity(query, minPrice, maxPrice, minNumBedrooms, maxNumBedrooms, minNumBathrooms, maxNumBathrooms)
             .then(results => {
                 if (results.length === 0) {
-                    searchQueryController.famousSearch()
-                        .then(results => {
-                            response.render('results', {results, found: 0})
+                    searchQueryController.topPriceSearch()
+                        .then(res => {
+                            queriesController.getAllImages()
+                                .then(images => {
+
+                                    const imageMap = images.reduce((memo, image) =>
+                                        Object.assign({}, memo, {[image.propertyId]: image}), {});
+                                    const results = res.map(property =>
+                                        Object.assign({}, property, {image: imageMap[property.id]}));
+                                    response.render('results', {results, found: 0})
+                                });
                         })
                         .catch((err) => {
                             return response.send(err);
@@ -170,9 +179,17 @@ module.exports.applyFilters = (request, response) => {
         searchQueryController.filterSearchByZipCode(query, minPrice, maxPrice, minNumBedrooms, maxNumBedrooms, minNumBathrooms, maxNumBathrooms)
             .then(results => {
                 if (results.length === 0) {
-                    searchQueryController.famousSearch()
-                        .then(results => {
-                            response.render('results', {results, found: 0})
+                    searchQueryController.topPriceSearch()
+                        .then(res => {
+                            queriesController.getAllImages()
+                                .then(images => {
+
+                                    const imageMap = images.reduce((memo, image) =>
+                                        Object.assign({}, memo, {[image.propertyId]: image}), {});
+                                    const results = res.map(property =>
+                                        Object.assign({}, property, {image: imageMap[property.id]}));
+                                    response.render('results', {results, found: 0})
+                                });
                         })
                         .catch((err) => {
                             return response.send(err);

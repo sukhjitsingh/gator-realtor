@@ -41,10 +41,10 @@ const saveMessage = (request, response, next) => {
                 return response.send(err);
             }
         });
-        const reloadPage = request.body.sendMessage
+        const reloadPage = request.body.sendMessage;
         // console.log("SEND MESSAGE ID:", reloadPage)
-        request.flash('success_msg', 'Message has been sent.')
-             return response.redirect(`/listingDetails/${reloadPage}`)
+        request.flash('success_msg', 'Message has been sent.');
+        return response.redirect(`/listingDetails/${reloadPage}`)
     }).catch((err) => {
         return response.send(err);
     });

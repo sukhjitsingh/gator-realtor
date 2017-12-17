@@ -51,7 +51,7 @@
                                     <div class="checkbox">
                                         <label>
                                             <input type="radio" name="price" value="2">
-                                            100,000$ - 500,000$
+                                            100,001$ - 500,000$
                                         </label>
                                     </div>
                                 </li>
@@ -59,7 +59,7 @@
                                     <div class="checkbox">
                                         <label>
                                             <input type="radio" name="price" value="3">
-                                            500,000$ - 1,000,000$
+                                            500,001$ - 1,000,000$
                                         </label>
                                     </div>
                                 </li>
@@ -67,7 +67,7 @@
                                     <div class="checkbox">
                                         <label>
                                             <input type="radio" name="price" value="4">
-                                            More Than 1,000,000$
+                                            More Than 1,000,001$
                                         </label>
                                     </div>
                                 </li>
@@ -182,7 +182,7 @@
                                     <!--Card Body-->
                                     <div class="card-body">
                                         <li class="list-group-item">
-                                            <h4>Price: ${{price}}</h4>
+                                            <h4>Price: {{formatNumber price style="currency" currency="USD"}}</h4>
                                             <hr>
                                             <h6>{{streetAddress}}</h6>
                                             <h6>{{city}}, {{state}} {{zipcode}}</h6>
