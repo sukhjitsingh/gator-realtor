@@ -104,6 +104,11 @@ a {
   width: 100%;
 }
 
+.img-fluid{
+  width: 200px;
+  height: 200px !important;
+}
+
 .img-center {
   margin: 0 auto;
 }
