@@ -1,14 +1,21 @@
-<div class="container">
-    <div class="row">
+<script type="text/javascript" src="/fa17g11/javascripts/index.js"></script>
+
+<div class="banner d-flex align-items-center">
+
+    <div class="container">
         <!--Search Bar Start-->
         <div style="padding: 40px; " class="col-md-12">
-            <form action="/search" method="POST">
+            <h1>GATOR REALTOR</h1>
+            <h3>Find Your Dream Home Today!</h3>
+
+            <form action="/fa17g11/search" method="POST">
                 <div id="custom-search-input">
                     <div class="input-group col-md-12">
-                        <input type="text" class="form-control input-lg" placeholder="Search by city or zip"
+                        <input id="searchResult" type="text" class="form-control input-lg"
+                               placeholder="Search by city or zip"
                                name="searchQuery"/>
                         <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="submit" formaction="/search">
+                        <button class="btn btn-info btn-lg" type="submit" formaction="/fa17g11/search">
                             <i class="fa fa-search"></i>
                         </button>
                     </span>
@@ -16,51 +23,56 @@
                 </div>
             </form>
         </div>
+        <!--Search Bar End-->
     </div>
-    <!--Search Bar End-->
 </div>
 
 <style>
     .img-thumbnail:hover {
-        box-shadow: 0px 0px 150px #000000 ;
-        z-index: 2;
-        -webkit-transition: all 200ms ease-in;
-        -webkit-transform: scale(1.5);
-        -ms-transition: all 200ms ease-in;
-        -ms-transform: scale(1.5);
-        -moz-transition: all 200ms ease-in;
-        -moz-transform: scale(1.5);
-        transition: all 200ms ease-in;
-        transform: scale(1.5);
+        box-shadow: 0px 0px 150px #000000;
     }
+
 </style>
 <!--Featured Listings Start-->
 <div class="container">
-    <h1 style="text-align: center; padding: 50px;">Featured Listings</h1>
-    <!--First Left and Right Card Start-->
-    <div class="d-flex flex-row flex-wrap m-auto justify-content-around">
+    <h1 style="text-align: center; padding: 20px;">Featured Listings</h1>
+
+
+    <!--First Left and Right Card End-->
+    <div class="d-flex flex-row align-items-stretch flex-wrap">
         {{#each results}}
-            <div class="p-4">
-                <h3>Property: {{propertyId}}</h3>
-                <h5>{{streetAddress}}</h5>
-                <h5>{{city}}, {{state}} {{zipcode}}</h5>
-                <h5>Built Year: {{buildYear}} </h5>
-                <h5>Bedrooms: {{bedrooms}} Bathrooms: {{bathrooms}}</h5>
+            <div class="col-lg-4" style="padding-bottom: 15px">
+                <div class="card" style="height:100%">
+                    <div class="card-header" style="font-size: larger; font-weight: bold">Featured</div>
+                    <form method="post">
+                        <button class="btn btn-outline-secondary" formaction="/fa17g11/listingdetails/{{id}}"
+                                name="listingdetailbutton" value="{{id}}"><img class="img-responsive"
+                                                                               src="{{image.imageLink}}"
+                                                                               style="height: 250px" alt="No Image">
+                        </button>
+                    </form>
 
-                <img src="{{imageLink}}" class="img-thumbnail" alt="No Image" style = "width:250px; height:250px">
-
-                <div>
-                    <iframe
-                            width="250"
-                            height="250"
-                            frameborder="0" style="border:0"
-                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAeJ-EPgN1ctwzOBO6-jyseWKdl_C-wqxA&q={{city}} {{streetAddress}} {{state}} {{zipcode}}"
-                            allowfullscreen>
-                    </iframe>
+                    <!--Card Body-->
+                    <div class="card-body">
+                        <li class="list-group-item">
+                            <h4>${{formatNumber price}}</h4>
+                            <hr>
+                            <h6>{{streetAddress}}</h6>
+                            <h6>{{city}}, {{state}} {{zipcode}}</h6>
+                            <h6>Built Year: {{buildYear}}</h6>
+                            <h6>Bedrooms: {{bedrooms}} Bathrooms: {{bathrooms}}</h6>
+                        </li>
+                        <br>
+                        <form method="post" action="/fa17g11/listingdetails">
+                            <button class="btn btn-md btn-outline-secondary" formaction="/fa17g11/listingdetails/{{id}}"
+                                    name="listingdetailbutton" value="{{id}}">
+                                View Details
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         {{/each}}
     </div>
-    <!--First Left and Right Card End-->
 </div>
 <!--Featured Listings End-->

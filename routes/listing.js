@@ -1,21 +1,33 @@
 const express = require('express');
 const router = express.Router();
+
+const authController = require('../controllers/authController');
 const listingController = require('../controllers/listingController');
-const uploadController = require('../controllers/uploadController');
-const searchController = require('../controllers/searchController');
+const imageUploadController = require('../controllers/imageUploadController');
+const queriesController = require('../controllers/queriesController');
 
-
-router.get('/', function (req, res, next) {
-    res.render('listing');
+router.get('/', authController.isAuthenticated, (req, res) => {
+    queriesController.getUser(req.user.id)
+        .then(user => {
+            if (user[0].agent === 1) {
+                res.render('listing');
+            } else {
+                res.redirect('/fa17g11/')
+            }
+        })
+    res.title('Create Listing')
 });
 
-router.post('/create', listingController.createListing);
+router.post('/photos', listingController.createListing);
 
-router.post('/', function (req, res, next) {
-    uploadController.upload(req, res);
-    next()
-}, function (req, res, next) {
-    searchController.displayImages(req, res);
+router.post('/finish', listingController.finishCreate);
+
+router.post('/interrupt', listingController.cancelCreation);
+
+router.post('/cancel', (request, response) => {
+    response.redirect('/fa17g11/dashboard');
 });
+
+router.post('/upload', imageUploadController.upload);
 
 module.exports = router;

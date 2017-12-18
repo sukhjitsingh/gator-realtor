@@ -1,0 +1,56 @@
+<div class="container">
+    <h1>Upload Images</h1>
+    <hr>
+
+    <!--breadcrumb start-->
+    <nav class="breadcrumb">
+        <span class="breadcrumb-item">Create Listing</span>
+        <a class="breadcrumb-item" href="#">Upload Images</a>
+    </nav>
+    <!--breadcrumb end-->
+
+    <h1>Photos of property</h1>
+    {{#if msg }}
+        {{msg}}
+    {{/if}}
+    <form action="/fa17g11/listing" method="POST" enctype="multipart/form-data">
+        <div class="file-field input-field">
+            <div class="btn grey">
+                <span>File</span>
+                <input name="pics" type="file">
+            </div>
+            <button type="submit" class="btn btn-outline-secondary" formaction="/fa17g11/listing/upload">Add</button>
+
+        </div>
+    </form>
+    <div>
+        <h1 style="text-align: center; padding: 20px;">Uploaded Pictures: {{images.length}}</h1>
+        <div class="d-flex flex-row align-items-stretch flex-wrap">
+            {{#each images}}
+                <div class="col-sm-4" style="padding-bottom: 15px">
+                    <div class="card" style="height:100%">
+                        <img class="img-thumbnail" src="{{imageLink}}" style="height: 250px;"
+                             alt="No Image">
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+    <br>
+
+    <form method="POST" action="/fa17g11/listing">
+        <button type="submit" class="btn btn-danger pull-left" formaction="/fa17g11/listing/interrupt">Cancel</button>
+        <button type="submit" class="btn btn-primary pull-right" formaction="/fa17g11/listing/finish">Create Listing
+        </button>
+    </form>
+</div>
+
+
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+
+
