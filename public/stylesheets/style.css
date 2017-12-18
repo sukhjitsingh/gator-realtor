@@ -194,3 +194,9 @@ section{
   margin-left: 10px;
   margin-right: 10px;
 }
+
+/*Delete This if there is bugs to the message panel*/
+.collapse.col-md-12{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}

@@ -1,5 +1,6 @@
 <script type="text/javascript" src="/javascripts/dashboard.js"></script>
 
+
 <!--container start-->
 <div class="container">
 
@@ -115,9 +116,11 @@
                 </div>
                 <hr>
                 <div class="row">
-                    <h4 class="col-md-3">Name:</h4>
-                    <h4 class="col-md-3">Address:</h4>
-                    <h4 class="col-md-3">Date:</h4>
+                    <h4 class="col-md-2">Name</h4>
+                    <h4 class="col-md-2">Phone#</h4>
+                    <h4 class="col-md-2">Email</h4>
+                    <h4 class="col-md-2">Address</h4>
+                    <h4 class="col-md-2">Date</h4>
                 </div>
             </div>
         </div>
@@ -128,10 +131,16 @@
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             {{buyerFullName}}
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
+                            {{buyerPhoneNumber}}
+                        </div>
+                        <div class="col-md-2">
+                            {{buyerEmail}}
+                        </div>
+                        <div class="col-md-2">
                             <form method="post">
                                 <button style="border: none; padding:0; background: none;"
                                         formaction="/listingdetails/{{property.id}}"
@@ -141,8 +150,8 @@
                                 </button>
                             </form>
                         </div>
-                        <div class="col-md-4">
-                            {{createdAt}}
+                        <div class="col-md-2">
+                            {{formatDate createdAt day="numeric" month="numeric" year="numeric"}}
                         </div>
                         <div class="col-md-2">
                             <button type="button" class="btn btn-sm btn-outline-info pull-right" data-toggle="collapse"
@@ -154,8 +163,9 @@
                 </div>
                 <div class="card-block">
                     <div class="row">
+                        <!--Refer to stylesheet if styling for 'collapse col-md-12' causes problems-->
                         <div id="message{{id}}" class="collapse col-md-12">
-                            {{message}}
+                            <h5>{{message}}</h5>
                             <br>
                             <b>My contact information is:</b>
                             <br>
