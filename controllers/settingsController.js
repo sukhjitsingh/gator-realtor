@@ -48,14 +48,14 @@ module.exports.modify = (req, res) => {
                         .then(userArr => {
                             if (userArr.length !== 0) {
                                 req.flash('error', 'Account with such Email already exist, please choose different one');
-                                res.redirect('/settings');
+                                res.redirect('/fa17g11/settings');
                             } else {
                                 defaultEmail = email;
                                 queriesController.updateUserInfo(user[0].id, defaultFName, defaultLName, defaultEmail,
                                     defaultPhoneNumber, defaultPsswd)
                                     .then(results => {
                                         req.flash('success_msg', 'Profile was updated successfully');
-                                        res.redirect('/settings');
+                                        res.redirect('/fa17g11/settings');
                                     })
                                     .catch((err) => {
                                         return res.send(err);
@@ -70,7 +70,7 @@ module.exports.modify = (req, res) => {
                         defaultPhoneNumber, defaultPsswd)
                         .then(results => {
                             req.flash('success_msg', 'Profile was updated successfully');
-                            res.redirect('/settings');
+                            res.redirect('/fa17g11/settings');
                         })
                         .catch((err) => {
                             return res.send(err);
@@ -95,7 +95,7 @@ module.exports.deleteAccount = (request, response) => {
 
     queriesController.deleteAccount(request.user.id)
         .then((user) => {
-            response.redirect('/login');
+            response.redirect('/fa17g11/login');
             request.logout();
             request.session.destroy();
         })

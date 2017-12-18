@@ -1,4 +1,4 @@
-<script type="text/javascript" src="/javascripts/dashboard.js"></script>
+<script type="text/javascript" scr="/fa17g11/javascripts/dashboard.js"></script>
 
 <!--container start-->
 <div class="container">
@@ -7,7 +7,7 @@
         <h1 class="col-md-6">Welcome <u>{{user.firstName}} {{user.lastName}}</u></h1>
         {{#if user.agent}}
             <div class="col-md-6">
-                <form action="/listing">
+                <form action="/fa17g11/listing">
                     <button type="submit" class="btn btn-outline-success pull-right">Add Listing
                     </button>
                 </form>
@@ -43,12 +43,12 @@
                 <div class="card-header">
                     <div class="row">
                         <h3 class="col-md-8">Total number of active listings: {{properties.length}}</h3>
-                        <form class="col-md-4" method="post" action="/dashboard">
+                        <form class="col-md-4" method="post" action="/fa17g11/dashboard">
                             <p style="display: inline">Sort By:</p>
                             <input type="radio" id="pdate"
                                    name="pdate" value="pdate">
                             <label>created date</label>
-                            <button type="submit" class="btn btn-xs" formaction="/dashboard/sort">Apply</button>
+                            <button type="submit" class="btn btn-xs" formaction="/fa17g11/dashboard/sort">Apply</button>
                         </form>
                     </div>
                     <hr>
@@ -69,7 +69,7 @@
                             <div class="col-md-5">
                                 <form method="post">
                                     <button style="border: none; padding:0; background: none;"
-                                            formaction="/listingdetails/{{id}}"
+                                            formaction="/fa17g11/listingdetails/{{id}}"
                                             name="listingdetailbutton" value="{{id}}">
                                         <u> {{streetAddress}}, {{city}}, {{state}} {{zipcode}}</u>
                                     </button>
@@ -79,12 +79,12 @@
                                 {{createdAt}}
                             </div>
                             <div class="col-md-3">
-                                <form method="post" action="/dashboard">
+                                <form method="post" action="/fa17g11/dashboard">
                                     <button type="submit" class="btn btn-sm btn-outline-success"
-                                            formaction="/listingdetails/{{id}}"
+                                            formaction="/fa17g11/listingdetails/{{id}}"
                                             name="listingdetailbutton" value="{{id}}">Go To Listing
                                     </button>
-                                    <button type="submit" class="btn btn-sm btn-outline-danger" formaction="/dashboard/delete"
+                                    <button type="submit" class="btn btn-sm btn-outline-danger" formaction="/fa17g11/dashboard/delete"
                                             name="deleteButton" value="{{id}}">Delete Listing
                                     </button>
                                 </form>
@@ -105,12 +105,12 @@
             <div class="card-header">
                 <div class="row">
                     <h3 class="col-md-8">Total number of messages: {{result.length}}</h3>
-                    <form class="col-md-4" method="post" action="/dashboard">
+                    <form class="col-md-4" method="post" action="/fa17g11/dashboard">
                         <p style="display: inline">Sort By:</p>
                         <input type="radio" id="mdate"
                                name="mdate" value="mdate">
                         <label>created date</label>
-                        <button type="submit" class="btn btn-xs" formaction="/dashboard/sort">Apply</button>
+                        <button type="submit" class="btn btn-xs" formaction="/fa17g11/dashboard/sort">Apply</button>
                     </form>
                 </div>
                 <hr>
@@ -134,7 +134,7 @@
                         <div class="col-md-3">
                             <form method="post">
                                 <button style="border: none; padding:0; background: none;"
-                                        formaction="/listingdetails/{{property.id}}"
+                                        formaction="/fa17g11/listingdetails/{{property.id}}"
                                         name="listingdetailbutton" value="{{property.id}}">
                                     <u> {{property.streetAddress}}, {{property.city}}
                                         , {{property.state}} {{property.zipcode}}</u>

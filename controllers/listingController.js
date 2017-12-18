@@ -77,7 +77,7 @@ module.exports.cancelCreation = (req, res) => {
                     console.log(result[0].id);
                     queriesController.deleteProperty(result[0].id)
                         .then(() => {
-                            res.redirect('/dashboard')
+                            res.redirect('/fa17g11/dashboard')
                         })
                         .catch((err) => {
                             return res.send(err);
@@ -95,7 +95,7 @@ module.exports.finishCreate = (req, res) => {
     queriesController.updatePropertyValue(req.user.dataValues.agentId)
         .then(() => {
             req.flash('success_msg', 'Listing was created successfully');
-            res.redirect('/dashboard');
+            res.redirect('/fa17g11/dashboard');
         })
         .catch((err) => {
             return res.send(err);

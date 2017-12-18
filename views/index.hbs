@@ -1,4 +1,4 @@
-<script type="text/javascript" src="/javascripts/index.js"></script>
+<script type="text/javascript" scr="/fa17g11/javascripts/index.js"></script>
 
 <div class="banner d-flex align-items-center">
 
@@ -9,14 +9,14 @@
             <h1>GATOR REALTOR</h1>
             <h3>Find Your Dream Home Today!</h3>
 
-            <form action="/search" method="POST">
+            <form action="/fa17g11/search" method="POST">
                 <div id="custom-search-input">
                     <div class="input-group col-md-12">
                         <input id="searchResult" type="text" class="form-control input-lg"
                                placeholder="Search by city or zip"
                                name="searchQuery"/>
                         <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="submit" formaction="/search">
+                        <button class="btn btn-info btn-lg" type="submit" formaction="/fa17g11/search">
                             <i class="fa fa-search"></i>
                         </button>
                     </span>
@@ -46,17 +46,8 @@
             <div class="col-lg-4" style="padding-bottom: 15px">
                 <div class="card" style="height:100%">
                     <div class="card-header" style="font-size: larger; font-weight: bold">Featured</div>
-                    <!--Card Image-->
-                    <!--<img class="img-thumbnail" src="{{imageLink}}" style="height: 250px" alt="No Image">-->
-
-                    <!--<form method="post">-->
-                    <!--<input class="img-thumbnail submit" formaction="/listingdetails" name="listingdetailbutton"-->
-                    <!--value="{{id}}" type="image" src="{{imageLink}}" style="height: 250px" alt="No Image"-->
-                    <!--border="0" alt="Submit">-->
-                    <!--</form>-->
-
                     <form method="post">
-                        <button class="btn btn-outline-secondary" formaction="/listingdetails/{{id}}"
+                        <button class="btn btn-outline-secondary" formaction="/fa17g11/listingdetails/{{id}}"
                                 name="listingdetailbutton" value="{{id}}"><img class="img-thumbnail"
                                                                                src="{{image.imageLink}}"
                                                                                style="height: 250px" alt="No Image">
@@ -74,8 +65,8 @@
                             <h6>Bedrooms: {{bedrooms}} Bathrooms: {{bathrooms}}</h6>
                         </li>
                         <br>
-                        <form method="post" action="/listingdetails">
-                            <button class="btn btn-md btn-outline-secondary" formaction="/listingdetails/{{id}}"
+                        <form method="post" action="/fa17g11/listingdetails">
+                            <button class="btn btn-md btn-outline-secondary" formaction="/fa17g11/listingdetails/{{id}}"
                                     name="listingdetailbutton" value="{{id}}">
                                 View Details
                             </button>

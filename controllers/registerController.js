@@ -34,7 +34,7 @@ module.exports.create = (req, res) => {
         queriesController.isRegistered(email).then(user => {
             if (user.length !== 0) {
                 req.flash('error', 'Account with such Email already exist, please choose different one');
-                res.redirect('/signup');
+                res.redirect('/fa17g11/signup');
             } else {
                 const salt = bcrypt.genSaltSync();
                 const hash = bcrypt.hashSync(password, salt);
@@ -55,7 +55,7 @@ module.exports.create = (req, res) => {
                     }
                 });
                 req.flash('success_msg', 'You are registered and now can login');
-                return res.redirect('/login');
+                return res.redirect('/fa17g11/login');
             }
         })
     }

@@ -6,8 +6,8 @@
     <button type="submit" id="favorites" name="addtofavorites" class="btn btn-secondary btn-md makealert" style="float: right; padding-bottom: auto">Add to favorites
     </button>
     {{else}}
-    <form method="post" action="/listingDetails/favorites" style="float:right">
-        <button type="submit" id="favorites" name="favorites" class="btn btn-secondary btn-md pushme-with-color" formaction="/listingDetails/favorites/{{property.id}}"
+    <form method="post" action="/fa17g11/listingDetails/favorites" style="float:right">
+        <button type="submit" id="favorites" name="favorites" class="btn btn-secondary btn-md pushme-with-color" formaction="/fa17g11/listingDetails/favorites/{{property.id}}"
             value="{{property.id}}">Add to favorites
         </button>
     </form>
@@ -126,7 +126,7 @@
                 </h4>
                 <!--contact form start-->
                 <div class="card-block">
-                    <form method="post" action="/listingDetails/contact">
+                    <form method="post" action="/fa17g11/listingDetails/contact">
                         <div class="form-group pt-2">
                             <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" value="" maxlength="40" pattern="[a-zA-Z ]+"
                                 required>
@@ -139,7 +139,7 @@
                         <div class="form-group">
                             <textarea class="form-control" type="textArea" name="message" id="message" placeholder="Message" rows="5">Hello {{agent.firstName}} {{agent.LastName}}, I am interested in your property: {{property.streetAddress}}, {{property.city}},{{property.state}} {{property.zipcode}}</textarea>
                         </div>
-                        <button type="submit" id="sendMessage" name="sendMessage" class="btn btn-success btn-block" formaction="/listingDetails/contact/{{property.id}}"
+                        <button type="submit" id="sendMessage" name="sendMessage" class="btn btn-success btn-block" formaction="/fa17g11/listingDetails/contact/{{property.id}}"
                             value="{{property.id}}">Contact Agent
                         </button>
                     </form>

@@ -1,5 +1,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="/javascripts/listings.js"></script>
+<script type="text/javascript" scr="/fa17g11/javascripts/listings.js"></script>
 
 {{#if errors}} {{#each errors}}
     <div class="alert alert-danger">{{msg}}</div>
@@ -12,13 +12,13 @@
 
     <!--breadcrumb start-->
     <nav class="breadcrumb">
-        <a class="breadcrumb-item" href="/listing">Create Listing</a>
+        <a class="breadcrumb-item" href="/fa17g11/listing">Create Listing</a>
         <span class="breadcrumb-item active">Upload Images</span>
     </nav>
     <!--breadcrumb end-->
 
     <!--Form tag start-->
-    <form method="POST" action="/listing">
+    <form method="POST" action="/fa17g11/listing">
         <h5>* Required Fields</h5>
         <br>
         <div class="row">
@@ -223,8 +223,8 @@
             </div>
             <br>
         </div>
-        <button type="submit" class="btn btn-danger pull-left" formaction="/listing/cancel">Cancel</button>
-        <button type="submit" class="btn btn-primary pull-right" formaction="/listing/photos">Continue</button>
+        <button type="submit" class="btn btn-danger pull-left" formaction="/fa17g11/listing/cancel">Cancel</button>
+        <button type="submit" class="btn btn-primary pull-right" formaction="/fa17g11/listing/photos">Continue</button>
     </form>
 </div>
 

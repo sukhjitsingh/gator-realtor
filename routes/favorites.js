@@ -11,7 +11,7 @@ router.get('/', authController.isAuthenticated, (req, res) => {
             if (user[0].agent === 0) {
                favoritesController.displayFavorites(req, res)
             } else {
-                res.redirect('/')
+                res.redirect('/fa17g11/')
             }
         })
     res.title('Favorites')

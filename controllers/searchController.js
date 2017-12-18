@@ -43,7 +43,7 @@ module.exports.porcessSearch = (request, response) => {
     else {
         if (!validator.isPostalCode(query, 'US')) {
             request.flash('error_msg', 'Invalid Zip Code'); //should be validated in bootstrap
-            response.redirect('/')      //should be rendered result page
+            response.redirect('/fa17g11/')      //should be rendered result page
         }
         else {
             searchQueryController.searchByZipcode(query)
@@ -212,7 +212,7 @@ module.exports.applyFilters = (request, response) => {
     } else {
         if (!validator.isPostalCode(query, 'US')) {
             request.flash('error_msg', 'Invalid Zip Code'); //should be validated in bootstrap
-            response.redirect('/')      //should be rendered result page
+            response.redirect('/fa17g11/')      //should be rendered result page
         }
         else {
             byZipcode(query, minPrice, maxPrice, minNumBedrooms, maxNumBedrooms, minNumBathrooms, maxNumBathrooms);

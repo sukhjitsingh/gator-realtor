@@ -19,7 +19,7 @@ const deleteFavorite = (request, response) => {
     queriesController.deleteFavorite(request.body.deleteButton, request.user.id)
         .then(results => {
             request.flash('success_msg', 'Favorite property has been deleted successfully.')
-            response.redirect('/favorites');
+            response.redirect('/fa17g11/favorites');
         }).catch((err) => {
         return response.send(err);
     });

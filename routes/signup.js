@@ -12,7 +12,7 @@ router.post('/create', registerController.create);
 
 // Redirect Signin Page
 router.post('/', (req, res) => {
-    res.redirect('/login');
+    res.redirect('/fa17g11/login');
 });
 
 module.exports = router;

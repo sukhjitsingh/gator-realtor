@@ -141,7 +141,7 @@ a {
   color: #fff;
   z-index: -9999;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
-  background: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.5) 0%), url("/images/jgarden.jpg") no-repeat center;
+  background: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.5) 0%), url("/fa17g11/images/jgarden.jpg") no-repeat center;
   background-size: cover;
 }
 

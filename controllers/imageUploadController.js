@@ -55,7 +55,7 @@ module.exports.upload = (req, res) => {
                         console.log('RESULT FOR PropertyId: ', result[0].id)
                         let image = new models.Images({
                             propertyId: result[0].id,
-                            imageLink: `/images/uploads/${req.file.filename}`
+                            imageLink: `/fa17g11/images/uploads/${req.file.filename}`
                         });
                             image.save((err) => {
                                 console.log('ERROR LOG FOR SAVE IMAGE: ', err)

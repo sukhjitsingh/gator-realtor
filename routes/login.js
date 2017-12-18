@@ -12,12 +12,12 @@ router.post('/signin', loginController.login);
 
 // Redirect to Dashboard Page via signup button
 router.post('/signup', (request, response) => {
-    response.redirect('/signup')
+    response.redirect('/fa17g11/signup')
 });
 
 // Redirect to Homepage (Cancel Button )
 router.post('/', (request, response) =>{
-    response.redirect('/')
+    response.redirect('/fa17g11/')
 });
 
 module.exports = router;

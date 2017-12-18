@@ -13,13 +13,13 @@
     {{#if msg }}
         {{msg}}
     {{/if}}
-    <form action="/listing" method="POST" enctype="multipart/form-data">
+    <form action="/fa17g11/listing" method="POST" enctype="multipart/form-data">
         <div class="file-field input-field">
             <div class="btn grey">
                 <span>File</span>
                 <input name="pics" type="file">
             </div>
-            <button type="submit" class="btn btn-outline-secondary" formaction="/listing/upload">Add</button>
+            <button type="submit" class="btn btn-outline-secondary" formaction="/fa17g11/listing/upload">Add</button>
 
         </div>
     </form>
@@ -38,9 +38,9 @@
     </div>
     <br>
 
-    <form method="POST" action="/listing">
-        <button type="submit" class="btn btn-danger pull-left" formaction="/listing/interrupt">Cancel</button>
-        <button type="submit" class="btn btn-primary pull-right" formaction="/listing/finish">Create Listing
+    <form method="POST" action="/fa17g11/listing">
+        <button type="submit" class="btn btn-danger pull-left" formaction="/fa17g11/listing/interrupt">Cancel</button>
+        <button type="submit" class="btn btn-primary pull-right" formaction="/fa17g11/listing/finish">Create Listing
         </button>
     </form>
 </div>

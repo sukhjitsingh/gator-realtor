@@ -1,4 +1,4 @@
-<script type="text/javascript" src="/javascripts/accountSettings.js"></script>
+<script type="text/javascript" scr="/fa17g11/javascripts/accountSettings.js"></script>
 
 {{#if errors}}
     {{#each errors}}
@@ -15,7 +15,7 @@
 
             <h2>Personal info</h2>
 
-            <form method="post" class="form-horizontal" role="form" action="/settings">
+            <form method="post" class="form-horizontal" role="form" action="/fa17g11/settings">
                 {{#each results}}
 
                     <div class="form-group">
@@ -60,11 +60,11 @@
                 <div class="form-group">
                     <label class="col-md-3 control-label"></label>
                     <div class="col-md-8">
-                        <button type="submit" class="btn btn-danger" formaction="/settings/delete">
+                        <button type="submit" class="btn btn-danger" formaction="/fa17g11/settings/delete">
                             Delete account
                         </button>
-                        <button type="submit" class="btn btn-default" formaction="/settings/cancel">Clear</button>
-                        <button type="submit" class="btn btn-primary pull-right" formaction="/settings/save"> Save
+                        <button type="submit" class="btn btn-default" formaction="/fa17g11/settings/cancel">Clear</button>
+                        <button type="submit" class="btn btn-primary pull-right" formaction="/fa17g11/settings/save"> Save
                             Changes
                         </button>
                     </div>

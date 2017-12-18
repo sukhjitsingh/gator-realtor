@@ -36,7 +36,7 @@ module.exports.deleteProperty = (request, response) => {
     queriesController.deleteProperty(request.body.deleteButton)
         .then(results => {
             request.flash('success_msg', 'Property has been deleted successfully.');
-            response.redirect('/dashboard');
+            response.redirect('/fa17g11/dashboard');
         }).catch((err) => {
         return response.send(err);
     });

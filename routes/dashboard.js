@@ -18,7 +18,7 @@ router.get('/', authController.isAuthenticated, (req, res, next) => {
             if (user[0].agent === 1) {
                 dashboardController.displayDashboardProperties(req, res)
             } else {
-                res.redirect('/')
+                res.redirect('/fa17g11/')
             }
         })
         res.title('Dashboard')       

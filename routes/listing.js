@@ -12,7 +12,7 @@ router.get('/', authController.isAuthenticated, (req, res) => {
             if (user[0].agent === 1) {
                 res.render('listing');
             } else {
-                res.redirect('/')
+                res.redirect('/fa17g11/')
             }
         })
     res.title('Create Listing')
@@ -25,7 +25,7 @@ router.post('/finish', listingController.finishCreate);
 router.post('/interrupt', listingController.cancelCreation);
 
 router.post('/cancel', (request, response) => {
-    response.redirect('/dashboard');
+    response.redirect('/fa17g11/dashboard');
 });
 
 router.post('/upload', imageUploadController.upload);
