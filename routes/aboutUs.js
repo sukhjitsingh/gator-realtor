@@ -5,7 +5,7 @@ const loginController = require('../controllers/loginController');
 
 // Render Login Page
 router.get('/', (request, response, next) => {
-    response.render('aboutUs')
+    response.title('About Us').render('aboutUs')
 });
 
 

@@ -88,6 +88,7 @@ module.exports.loadInfo = (request, response) => {
         .catch((err) => {
             return response.send(err);
         });
+    response.title('Account Settings')
 };
 
 module.exports.deleteAccount = (request, response) => {

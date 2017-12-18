@@ -23,6 +23,7 @@ const displayListing = (request, response, next) => {
                 response.redirect('/');
             }
         });
+    response.title('Listing Details')
 };
 
 const saveMessage = (request, response, next) => {

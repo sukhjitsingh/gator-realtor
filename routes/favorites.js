@@ -14,6 +14,7 @@ router.get('/', authController.isAuthenticated, (req, res) => {
                 res.redirect('/')
             }
         })
+    res.title('Favorites')
 });
 
 router.post('/delete', favoritesController.deleteFavorite);

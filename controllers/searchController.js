@@ -235,4 +235,5 @@ module.exports.famousSearch = (request, response) => {
         .catch((err) => {
             return response.send(err);
         });
+    response.title('Home')
 };

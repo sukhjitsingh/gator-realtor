@@ -25,6 +25,10 @@ const favorites = require('./routes/favorites');
 
 const app = express();
 
+//Setting Page Titles 
+app.use(require('express-title')());
+app.set('title', 'Gator Realtor');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

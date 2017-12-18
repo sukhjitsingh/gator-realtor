@@ -5,7 +5,7 @@ const loginController = require('../controllers/loginController');
 
 // Render Login Page
 router.get('/', (request, response, next) => {
-    response.render('login')
+    response.title('Login').render('login')
 });
 
 router.post('/signin', loginController.login);

@@ -21,6 +21,7 @@ router.get('/', authController.isAuthenticated, (req, res, next) => {
                 res.redirect('/')
             }
         })
+        res.title('Dashboard')       
 });
 router.post('/sort', dashboardController.displayDashboardProperties);
 router.post('/delete', dashboardController.deleteProperty);

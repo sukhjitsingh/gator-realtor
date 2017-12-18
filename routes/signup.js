@@ -4,7 +4,7 @@ const registerController = require('../controllers/registerController');
 
 // Render Signup Page
 router.get('/', (req, res) =>{
-    res.render('signup');
+    res.title('Signup').render('signup');
 });
 
 // Signup Page

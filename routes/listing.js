@@ -15,6 +15,7 @@ router.get('/', authController.isAuthenticated, (req, res) => {
                 res.redirect('/')
             }
         })
+    res.title('Create Listing')
 });
 
 router.post('/photos', listingController.createListing);
