@@ -43,7 +43,7 @@
                                     <div class="checkbox">
                                         <label>
                                             <input type="radio" name="price" value="1">
-                                            0 - 100,000$
+                                            0 - $100,000
                                         </label>
                                     </div>
                                 </li>
@@ -51,7 +51,7 @@
                                     <div class="checkbox">
                                         <label>
                                             <input type="radio" name="price" value="2">
-                                            100,001$ - 500,000$
+                                            $100,001 - $500,000
                                         </label>
                                     </div>
                                 </li>
@@ -59,7 +59,7 @@
                                     <div class="checkbox">
                                         <label>
                                             <input type="radio" name="price" value="3">
-                                            500,001$ - 1,000,000$
+                                            $500,001$ - $1,000,000
                                         </label>
                                     </div>
                                 </li>
@@ -67,7 +67,7 @@
                                     <div class="checkbox">
                                         <label>
                                             <input type="radio" name="price" value="4">
-                                            More Than 1,000,001$
+                                            More Than $1,000,001
                                         </label>
                                     </div>
                                 </li>
@@ -167,11 +167,6 @@
                         {{#each results}}
                             <div class="col-md-4" style="padding-bottom: 15px">
                                 <div class="card" style="height:100%">
-                                    <!--Card Image-->
-
-                                    <!--<img class="img-thumbnail" src="/{{imageLink}}" style="height: 250px"-->
-                                         <!--alt="No Image">-->
-
                                     <form method="post">
                                         <button class="btn btn-sm btn-outline-secondary" formaction="/fa17g11/listingdetails/{{id}}"
                                                 name="listingdetailbutton" value="{{id}}"><img class="img-responsive" src="{{image.imageLink}}"
