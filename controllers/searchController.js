@@ -73,6 +73,7 @@ module.exports.porcessSearch = (request, response) => {
                 })
         }
     }
+    response.title('Results')
 };
 
 
@@ -217,6 +218,7 @@ module.exports.applyFilters = (request, response) => {
             byZipcode(query, minPrice, maxPrice, minNumBedrooms, maxNumBedrooms, minNumBathrooms, maxNumBathrooms);
         }
     }
+    response.title('Results')
 };
 
 
