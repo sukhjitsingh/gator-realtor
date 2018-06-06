@@ -1,7 +1,28 @@
-# csc648-fall17-team11
+# Gator-Realtor
+A real estate website worked on in CSC 648 Software Engineering at SFSU with five other team members.
 
-- TODO
+Application uses Node.js, Express, Handlebars, Bootstrap, Javascript, HTML, CSS, SQL.
 
-  - [X] Change the repo name to csc648-fall17-teamNN , where nn is your team number
+## Home Page of Gator-Realtor
+![](Demo/home.png)
 
-  - [X] add ALL your team members to your team's repo.
+## About Us Page
+![](Demo/aboutus.png)
+
+## Login Page
+![](Demo/login.png)
+
+## Sign Up Page
+![](Demo/signup.png)
+
+## Edit Profile Page
+![](Demo/editprofile.png)
+
+## Dashboard Page
+![](Demo/dashboard.png)
+
+## Listings Page
+![](Demo/listing.png)
+
+## Create Listings Page
+![](Demo/createlisting.png)
